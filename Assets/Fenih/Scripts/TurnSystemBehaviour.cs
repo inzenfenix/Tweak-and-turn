@@ -1,4 +1,5 @@
 using MoreMountains.Tools;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,9 @@ public enum CurrentState
 
 public class TurnSystemBehaviour : MonoBehaviour
 {
+    public static event EventHandler<GameObject> OnCardChose;
+    public static event EventHandler OnCardChoseExited;
+
     private List<GameObject> availableCards;
 
     private List<GameObject> discardCards;
@@ -43,11 +47,13 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private float enemyTimeTest = 0;
 
+    private GameObject hoveredCard;
     private GameObject selectedCard;
     private Vector3[] defaultCardScale;
 
     [SerializeField] private LayerMask cardMask;
 
+    [SerializeField] private Transform chosenCardPos;
 
     private void Awake()
     {
@@ -67,7 +73,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         DrawCards();
 
-        selectedCard = null;
+        hoveredCard = null;
         
     }
 
@@ -98,37 +104,79 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 break;
             case (CurrentState.PuttingCardsOnBoard):
-                Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, cardMask))
-                {
-                    if (selectedCard == hit.collider.gameObject) return;
-
-                    if(selectedCard != null)
-                    {
-                        StartCoroutine(ReturnToDefaultScale(selectedCard));
-                        selectedCard = hit.collider.gameObject;
-
-                        StartCoroutine(CardScale(selectedCard.transform.localScale, selectedCard.transform.localScale + new Vector3(1, 0, 1) * .2f, selectedCard));
-                    }
-
-                    if(selectedCard == null)
-                    {
-                        selectedCard = hit.collider.gameObject;
-                        StartCoroutine(CardScale(selectedCard.transform.localScale, selectedCard.transform.localScale + new Vector3(1, 0, 1) * .2f, selectedCard));
-                    }
-                }
-
-                else
-                {
-                    if(selectedCard != null)
-                    {
-                        StartCoroutine(ReturnToDefaultScale(selectedCard));
-                        selectedCard = null;
-                    }
-                }
+                PuttingCardsOnBoard();
                 break;
             default: 
                 break;
+        }
+    }
+
+
+    private void PuttingCardsOnBoard()
+    {
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, cardMask))
+        {
+            if (hoveredCard != hit.collider.gameObject)
+            {
+
+                if (hoveredCard != null)
+                {
+                    StartCoroutine(ReturnToDefaultScale(hoveredCard));
+                    hoveredCard = hit.collider.gameObject;
+
+                    StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .2f, hoveredCard));
+                }
+
+                if (hoveredCard == null)
+                {
+                    hoveredCard = hit.collider.gameObject;
+                    StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .2f, hoveredCard));
+                }
+            }
+        }
+        else
+        {
+            if (hoveredCard != null)
+            {
+                StartCoroutine(ReturnToDefaultScale(hoveredCard));
+                hoveredCard = null;
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0) && hoveredCard != null)
+        {
+            OnCardChose?.Invoke(this, hoveredCard);
+            hoveredCard.transform.position = chosenCardPos.position;
+            hoveredCard.transform.rotation = chosenCardPos.rotation;
+            hoveredCard.transform.parent = chosenCardPos;
+            hoveredCard.layer = LayerMask.NameToLayer("Default");
+            selectedCard = hoveredCard;
+
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            OnCardChose?.Invoke(this, null);
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            OnCardChoseExited?.Invoke(this, EventArgs.Empty);
+
+            if (selectedCard != null)
+            {
+                int index = currentCards.IndexOf(selectedCard);
+                selectedCard.transform.position = cardsPositions[index].position;
+                selectedCard.transform.rotation = cardsPositions[index].rotation;
+                selectedCard.transform.parent = cardsPositions[index];
+                selectedCard.layer = LayerMask.NameToLayer("DrawnCards");
+                selectedCard = null;
+            }
+
+            return;
         }
     }
 

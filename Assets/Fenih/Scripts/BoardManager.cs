@@ -17,6 +17,16 @@ public class BoardManager : MonoBehaviour
 
     private BoardTile[,] tiles;
 
+    [SerializeField] private Transform acceptSymbol;
+    [SerializeField] private Transform rejectSymbol;
+
+    private GameObject selectedCard;
+    private GameObject selectedTile;
+
+    private bool selectingBoardTile = false;
+
+    [SerializeField] private LayerMask tileMask;
+
     private void Awake()
     {
         XCardSeparation = 0;
@@ -37,7 +47,7 @@ public class BoardManager : MonoBehaviour
 
                 currentTile.transform.localPosition += Vector3.right * XCardSeparation + Vector3.forward * ZCardSeparation;
 
-                XCardSeparation += .6f;
+                XCardSeparation += .48f;
 
                 UnityEngine.Color curColor = UnityEngine.Color.blue;
                 bool isPlayersTile = true;
@@ -50,11 +60,89 @@ public class BoardManager : MonoBehaviour
 
                 tiles[i, j] = new BoardTile(curColor, currentTile, isPlayersTile);
 
+                currentTile.GetComponent<TileIndices>().row = i;
+                currentTile.GetComponent<TileIndices>().col = j;
+
                 currentTileNum++;
             }
 
             XCardSeparation = 0f;
-            ZCardSeparation += .5f;
+            ZCardSeparation += .53f;
         }
+    }
+
+    private void OnEnable()
+    {
+        TurnSystemBehaviour.OnCardChose += TurnSystemBehaviour_OnCardChose;
+        TurnSystemBehaviour.OnCardChoseExited += TurnSystemBehaviour_OnCardChoseExited;
+    }
+
+    private void OnDisable()
+    {
+        TurnSystemBehaviour.OnCardChose -= TurnSystemBehaviour_OnCardChose;
+        TurnSystemBehaviour.OnCardChoseExited -= TurnSystemBehaviour_OnCardChoseExited;
+    }
+
+    private void Update()
+    {
+        if (selectingBoardTile)
+        {
+            Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, tileMask))
+            {
+                if (selectedTile != hit.collider.gameObject)
+                {
+
+                    TileIndices tileIndices = hit.collider.gameObject.GetComponent<TileIndices>();
+                    selectedTile = hit.collider.gameObject;
+
+                    int i = tileIndices.row;
+                    int j = tileIndices.col;
+
+
+                    BoardTile tile = tiles[i, j];
+
+                    if (tile.isPlayersTile)
+                    {
+                        rejectSymbol.gameObject.SetActive(false);
+                        acceptSymbol.gameObject.SetActive(true);
+                        acceptSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
+                    }
+
+                    else
+                    {
+                        acceptSymbol.gameObject.SetActive(false);
+                        rejectSymbol.gameObject.SetActive(true);
+                        rejectSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
+                    }
+                }
+            }
+
+            else
+            {
+                selectedTile = null;
+
+                acceptSymbol.gameObject.SetActive(false);
+                rejectSymbol.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void TurnSystemBehaviour_OnCardChose(object sender, GameObject e)
+    {
+        if (e == null) return;
+
+        selectingBoardTile = true;
+        selectedCard = e;
+    }
+
+    private void TurnSystemBehaviour_OnCardChoseExited(object sender, System.EventArgs e)
+    {
+        selectedCard = null;
+        selectedTile = null;
+        selectingBoardTile = false;
+
+        acceptSymbol.gameObject.SetActive(false);
+        rejectSymbol.gameObject.SetActive(false);
     }
 }
