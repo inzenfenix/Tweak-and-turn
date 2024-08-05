@@ -43,6 +43,11 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private float enemyTimeTest = 0;
 
+    private GameObject selectedCard;
+    private Vector3[] defaultCardScale;
+
+    [SerializeField] private LayerMask cardMask;
+
 
     private void Awake()
     {
@@ -56,9 +61,14 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         currentState = CurrentState.DrawingCards;
 
+        defaultCardScale = new Vector3[maxAmountOfCards];
+
         CreateCards();
 
         DrawCards();
+
+        selectedCard = null;
+        
     }
 
     private void OnEnable()
@@ -87,6 +97,36 @@ public class TurnSystemBehaviour : MonoBehaviour
                 }
 
                 break;
+            case (CurrentState.PuttingCardsOnBoard):
+                Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, cardMask))
+                {
+                    if (selectedCard == hit.collider.gameObject) return;
+
+                    if(selectedCard != null)
+                    {
+                        StartCoroutine(ReturnToDefaultScale(selectedCard));
+                        selectedCard = hit.collider.gameObject;
+
+                        StartCoroutine(CardScale(selectedCard.transform.localScale, selectedCard.transform.localScale + new Vector3(1, 0, 1) * .2f, selectedCard));
+                    }
+
+                    if(selectedCard == null)
+                    {
+                        selectedCard = hit.collider.gameObject;
+                        StartCoroutine(CardScale(selectedCard.transform.localScale, selectedCard.transform.localScale + new Vector3(1, 0, 1) * .2f, selectedCard));
+                    }
+                }
+
+                else
+                {
+                    if(selectedCard != null)
+                    {
+                        StartCoroutine(ReturnToDefaultScale(selectedCard));
+                        selectedCard = null;
+                    }
+                }
+                break;
             default: 
                 break;
         }
@@ -100,6 +140,40 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         currentState = CurrentState.PlayingCards;
     }
+
+    private IEnumerator CardScale(Vector3 currentScale, Vector3 goalScale, GameObject card)
+    {
+        float lerp = 0;
+        float speed = 4f;
+
+        while(lerp < 1f)
+        {
+            lerp += Time.deltaTime * speed;
+            card.transform.localScale = Vector3.Lerp(currentScale, goalScale, lerp);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private IEnumerator ReturnToDefaultScale(GameObject card)
+    {
+        int index = currentCards.IndexOf(card);
+        Vector3 currentScale = card.transform.localScale;
+
+        if (index != -1)
+        {
+
+            float lerp = 0;
+            float speed = 4f;
+
+            while (lerp < 1f)
+            {
+                lerp += Time.deltaTime * speed;
+                card.transform.localScale = Vector3.Lerp(currentScale, defaultCardScale[index], lerp);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+
 
     private void CreateCards()
     {
@@ -155,10 +229,17 @@ public class TurnSystemBehaviour : MonoBehaviour
             curCardTransform.localPosition = Vector3.zero;
             curCardTransform.localRotation = Quaternion.identity;
 
+            curCard.layer = LayerMask.NameToLayer("DrawnCards");
+
             currentCardAmount++;
         }
 
         currentState = CurrentState.PuttingCardsOnBoard;
+
+        for(int i = 0; i < currentCards.Count; i++)
+        {
+            defaultCardScale[i] = currentCards[i].transform.localScale;
+        }
     }
 
     private void ToDiscardPile()

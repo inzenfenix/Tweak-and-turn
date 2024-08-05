@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[ExecuteInEditMode]
 public class OrtoCameraBehaviour : MonoBehaviour
 {
-    private void Update()
+    private void LateUpdate()
     {
-        transform.SetPositionAndRotation(Camera.main.transform.position, Camera.main.transform.rotation);
+        this.transform.SetPositionAndRotation(Vector3.zero, Camera.main.transform.rotation);
     }
 }
