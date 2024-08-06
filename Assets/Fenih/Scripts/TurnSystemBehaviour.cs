@@ -80,10 +80,28 @@ public class TurnSystemBehaviour : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnEndTurn += GameManager_OnEndTurn;
+        BoardManager.OnPutCardOnBoard += BoardManager_OnPutCardOnBoard;
     }
+
+    
+
     private void OnDisable()
     {
         GameManager.OnEndTurn -= GameManager_OnEndTurn;
+        BoardManager.OnPutCardOnBoard -= BoardManager_OnPutCardOnBoard;
+    }
+
+    private void BoardManager_OnPutCardOnBoard(object sender, GameObject e)
+    {
+        if(e == selectedCard)
+        {
+            int index = currentCards.IndexOf(e);
+
+            OnCardChoseExited?.Invoke(this, EventArgs.Empty);
+
+            currentCards.Remove(selectedCard);
+            selectedCard = null;
+        }
     }
 
     private void Update()

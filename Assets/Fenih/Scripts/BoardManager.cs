@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,6 +27,11 @@ public class BoardManager : MonoBehaviour
     private bool selectingBoardTile = false;
 
     [SerializeField] private LayerMask tileMask;
+
+    public static event EventHandler<GameObject> OnPutCardOnBoard;
+
+    bool playableTile = false;
+    private BoardTile hoveredTile = null;
 
     private void Awake()
     {
@@ -87,6 +93,8 @@ public class BoardManager : MonoBehaviour
     {
         if (selectingBoardTile)
         {
+            BoardTile tile = null;
+
             Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, tileMask))
             {
@@ -100,10 +108,11 @@ public class BoardManager : MonoBehaviour
                     int j = tileIndices.col;
 
 
-                    BoardTile tile = tiles[i, j];
+                    hoveredTile = tile = tiles[i, j];
 
-                    if (tile.isPlayersTile)
+                    if (tile.isPlayersTile && i <= 0)
                     {
+                        playableTile = true;
                         rejectSymbol.gameObject.SetActive(false);
                         acceptSymbol.gameObject.SetActive(true);
                         acceptSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
@@ -114,6 +123,7 @@ public class BoardManager : MonoBehaviour
                         acceptSymbol.gameObject.SetActive(false);
                         rejectSymbol.gameObject.SetActive(true);
                         rejectSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
+                        playableTile = false;
                     }
                 }
             }
@@ -121,9 +131,37 @@ public class BoardManager : MonoBehaviour
             else
             {
                 selectedTile = null;
+                hoveredTile = null;
 
                 acceptSymbol.gameObject.SetActive(false);
                 rejectSymbol.gameObject.SetActive(false);
+
+                playableTile = false;
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (playableTile)
+                {
+                    selectedCard.transform.position = hoveredTile.tileHolder.transform.position + Vector3.up * .05f;
+                    selectedCard.transform.rotation = Quaternion.identity;
+                    selectedCard.transform.parent = selectedTile.transform;
+
+                    selectedCard.transform.localScale += new Vector3(1, 0, 1) * 0.04f;
+
+                    hoveredTile.currentCard = selectedCard.GetComponent<CardBehaviour>();
+
+                    selectedTile = null;
+                    hoveredTile = null;
+
+                    acceptSymbol.gameObject.SetActive(false);
+                    rejectSymbol.gameObject.SetActive(false);
+
+                    OnPutCardOnBoard?.Invoke(this, selectedCard);
+                    selectedCard = null;
+
+                    return;
+                }
             }
         }
     }
