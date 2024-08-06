@@ -767,6 +767,7 @@ GameObject:
   - component: {fileID: 482099083}
   - component: {fileID: 482099084}
   - component: {fileID: 482099085}
+  - component: {fileID: 482099086}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -849,6 +850,28 @@ MonoBehaviour:
   tileMask:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &482099086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482099082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf5a75d8b1edd346aa79f3655f2a020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyBatteries:
+  - {fileID: 1712511710}
+  - {fileID: 777151877}
+  - {fileID: 681411947}
+  - {fileID: 1454002721}
+  - {fileID: 1685690395}
+  - {fileID: 1542173761}
+  startEnergy: 3
+  maxEnergy: 6
+  currentEnergy: 0
 --- !u!1 &534151785
 GameObject:
   m_ObjectHideFlags: 0

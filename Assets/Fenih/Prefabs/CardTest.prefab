@@ -121,6 +121,6 @@ MonoBehaviour:
   damage: 1
   hp: 2
   range: 1
+  energyRequired: 2
   ability: 0
   cardName: Warrior
-  cardDescription: A warrior will fight for its lord till the end

@@ -48,12 +48,18 @@ public class TurnSystemBehaviour : MonoBehaviour
     private float enemyTimeTest = 0;
 
     private GameObject hoveredCard;
+    private CardBehaviour hoveredCardBehaviour;
+
     private GameObject selectedCard;
     private Vector3[] defaultCardScale;
 
     [SerializeField] private LayerMask cardMask;
 
     [SerializeField] private Transform chosenCardPos;
+
+    private EnergyManager energyManager;
+
+    private bool isCardSelected;
 
     private void Awake()
     {
@@ -74,6 +80,8 @@ public class TurnSystemBehaviour : MonoBehaviour
         DrawCards();
 
         hoveredCard = null;
+
+        energyManager = GetComponent<EnergyManager>();
         
     }
 
@@ -101,6 +109,10 @@ public class TurnSystemBehaviour : MonoBehaviour
 
             currentCards.Remove(selectedCard);
             selectedCard = null;
+
+            isCardSelected = false;
+
+            RefreshDrawnCardsPositions();
         }
     }
 
@@ -141,7 +153,11 @@ public class TurnSystemBehaviour : MonoBehaviour
                 if (hoveredCard != null)
                 {
                     StartCoroutine(ReturnToDefaultScale(hoveredCard));
+
                     hoveredCard = hit.collider.gameObject;
+                    hoveredCardBehaviour = hoveredCard.GetComponent<CardBehaviour>();
+
+                    energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired);
 
                     StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .2f, hoveredCard));
                 }
@@ -149,6 +165,9 @@ public class TurnSystemBehaviour : MonoBehaviour
                 if (hoveredCard == null)
                 {
                     hoveredCard = hit.collider.gameObject;
+                    hoveredCardBehaviour = hoveredCard.GetComponent<CardBehaviour>();
+                    energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired);
+
                     StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .2f, hoveredCard));
                 }
             }
@@ -158,18 +177,34 @@ public class TurnSystemBehaviour : MonoBehaviour
             if (hoveredCard != null)
             {
                 StartCoroutine(ReturnToDefaultScale(hoveredCard));
+
+                if(!isCardSelected)
+                    energyManager.StopHoveringEnergy();
+
                 hoveredCard = null;
+                hoveredCardBehaviour = null;
             }
         }
 
         if (Input.GetMouseButtonDown(0) && hoveredCard != null)
         {
+            if(!energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired))
+            { 
+                StartCoroutine(CardHorizontalMovementNonUsable(hoveredCard));
+                return;
+            }
+
             OnCardChose?.Invoke(this, hoveredCard);
+            
             hoveredCard.transform.position = chosenCardPos.position;
             hoveredCard.transform.rotation = chosenCardPos.rotation;
             hoveredCard.transform.parent = chosenCardPos;
+
             hoveredCard.layer = LayerMask.NameToLayer("Default");
+
             selectedCard = hoveredCard;
+
+            isCardSelected = true;
 
             return;
         }
@@ -192,6 +227,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                 selectedCard.transform.parent = cardsPositions[index];
                 selectedCard.layer = LayerMask.NameToLayer("DrawnCards");
                 selectedCard = null;
+
+                isCardSelected = false;
             }
 
             return;
@@ -220,6 +257,48 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
     }
 
+    private IEnumerator CardHorizontalMovementNonUsable(GameObject card)
+    {
+        float lerp = 0;
+        float speed = 8f;
+
+        int index = currentCards.IndexOf(card);
+
+        Vector3 originalPos = cardsPositions[index].position;
+        Vector3 goalPos = originalPos + Vector3.right * .02f;
+
+        while (lerp < 1f)
+        {
+            lerp += Time.deltaTime * speed;
+            card.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+            yield return new WaitForEndOfFrame();
+        }
+
+        lerp = 0;
+
+        originalPos = card.transform.position;
+        goalPos = cardsPositions[index].position - Vector3.right * .02f;
+
+        while (lerp < 1f)
+        {
+            lerp += Time.deltaTime * speed;
+            card.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+            yield return new WaitForEndOfFrame();
+        }
+
+        lerp = 0;
+
+        originalPos = card.transform.position;
+        goalPos = cardsPositions[index].position;
+
+        while (lerp < 1f)
+        {
+            lerp += Time.deltaTime * speed;
+            card.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     private IEnumerator ReturnToDefaultScale(GameObject card)
     {
         int index = currentCards.IndexOf(card);
@@ -237,6 +316,24 @@ public class TurnSystemBehaviour : MonoBehaviour
                 card.transform.localScale = Vector3.Lerp(currentScale, defaultCardScale[index], lerp);
                 yield return new WaitForEndOfFrame();
             }
+        }
+    }
+
+    private void RefreshDrawnCardsPositions()
+    {
+        for (int i = 0; i < currentCards.Count; i++)
+        {
+            if (currentCards.Count <= 0)
+            {
+                break;
+            }
+
+            GameObject curCard = currentCards[i];
+            Transform curCardTransform = curCard.transform;
+
+            curCardTransform.parent = cardsPositions[i];
+            curCardTransform.localPosition = Vector3.zero;
+            curCardTransform.localRotation = Quaternion.identity;
         }
     }
 

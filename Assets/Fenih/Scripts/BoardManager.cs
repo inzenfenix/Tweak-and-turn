@@ -33,10 +33,14 @@ public class BoardManager : MonoBehaviour
     bool playableTile = false;
     private BoardTile hoveredTile = null;
 
+    private EnergyManager energyManager;
+
     private void Awake()
     {
         XCardSeparation = 0;
         ZCardSeparation = 0;
+
+        energyManager = GetComponent<EnergyManager>();
 
         tiles = new BoardTile[rowAmount,columnAmount];
 
@@ -143,6 +147,11 @@ public class BoardManager : MonoBehaviour
             {
                 if (playableTile)
                 {
+                    if(!energyManager.UseEnergy(selectedCard.GetComponent<CardBehaviour>().energyRequired))
+                    {
+                        return;
+                    }
+
                     selectedCard.transform.position = hoveredTile.tileHolder.transform.position + Vector3.up * .05f;
                     selectedCard.transform.rotation = Quaternion.identity;
                     selectedCard.transform.parent = selectedTile.transform;
