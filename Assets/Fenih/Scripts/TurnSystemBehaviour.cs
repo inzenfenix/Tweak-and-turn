@@ -8,6 +8,7 @@ public enum CurrentState
 {
     DrawingCards,
     PuttingCardsOnBoard,
+    EnemiesTurn,
     PlayingCards,
     PassTurn
 };
@@ -23,9 +24,9 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private List<GameObject> currentCards;
 
-    private int amountOfDrawCards = 4;    
+    private int amountOfDrawCards = 5;    
 
-    private int drawPileInitialAmount = 25;
+    private int drawPileInitialAmount = 50;
 
     private int currentCardAmount = 0;
 
@@ -40,8 +41,8 @@ public class TurnSystemBehaviour : MonoBehaviour
     [SerializeField] private Transform discardPile;
     private float currentDiscardPileYOffset = 0;
 
-    private int maxTurns = 5;
-    private int currentTurn = 1;
+    private int maxTurns = 15;
+    [HideInInspector] public int currentTurn = 1;
 
     private CurrentState currentState;
 
@@ -135,6 +136,10 @@ public class TurnSystemBehaviour : MonoBehaviour
                 PuttingCardsOnBoard();
                 break;
 
+            case (CurrentState.EnemiesTurn):
+                EnemiesTurn();
+                break;
+
             case (CurrentState.PlayingCards):
                 PlayingCards();
                 break;
@@ -156,6 +161,11 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
     }
 
+    private void EnemiesTurn()
+    {
+
+    }
+
     private void PlayingCards()
     {
         thisTurnTiles = boardManager.Tiles;
@@ -172,13 +182,13 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 curTile.currentCard.cardPlayed = true;
 
-                if (curTile.isPlayersTile)
+                if (curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
                 {
                     if(i + 1 < thisTurnTiles.GetLength(0))
                     {
                         if (thisTurnTiles[i + 1, j].currentCard != null)
                         {
-                            if(curTile.currentCard.damage > 0)
+                            if(curTile.currentCard.damage > 0 && !thisTurnTiles[i + 1, j].isPlayersTile)
                             {
                                 int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
 
@@ -190,7 +200,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                             }
                         }
 
-                        else
+                        else if(thisTurnTiles[i + 1, j].currentCard == null)
                         {
                             thisTurnTiles[i + 1, j].currentCard = curTile.currentCard;
                             curTile.currentCard = null;
@@ -205,13 +215,14 @@ public class TurnSystemBehaviour : MonoBehaviour
                         }
                     }
                 }
-                else
+
+                else if(!curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
                 {
                     if (i - 1 >= 0)
                     {
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
-                            if (curTile.currentCard.damage > 0)
+                            if (curTile.currentCard.damage > 0 && thisTurnTiles[i + 1, j].isPlayersTile)
                             {
                                 int allyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
 
@@ -254,6 +265,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
 
 
+        currentTurn++;
         currentState = CurrentState.PassTurn;
         enemyTimeTest = 4;
     }
@@ -358,7 +370,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         ToDiscardPile();
 
-        currentState = CurrentState.PlayingCards;
+        currentState = CurrentState.EnemiesTurn;
     }
 
     private IEnumerator CardScale(Vector3 currentScale, Vector3 goalScale, GameObject card)

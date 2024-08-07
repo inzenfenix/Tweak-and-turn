@@ -35,6 +35,8 @@ public class BoardManager : MonoBehaviour
 
     private EnergyManager energyManager;
 
+    private TurnSystemBehaviour turnSystemBehaviour;
+
     public BoardTile[,] Tiles
     {
         get { return tiles; }
@@ -47,6 +49,8 @@ public class BoardManager : MonoBehaviour
         ZCardSeparation = 0;
 
         energyManager = GetComponent<EnergyManager>();
+
+        turnSystemBehaviour = GetComponent<TurnSystemBehaviour>();
 
         tiles = new BoardTile[rowAmount,columnAmount];
 
@@ -120,7 +124,15 @@ public class BoardManager : MonoBehaviour
 
                     hoveredTile = tile = tiles[i, j];
 
-                    if (tile.isPlayersTile && i <= 0)
+                    if (tile.isPlayersTile && (i == 0 || turnSystemBehaviour.currentTurn < 3) && selectedCard.GetComponent<CardBehaviour>().category == Category.Normal)
+                    {
+                        playableTile = true;
+                        rejectSymbol.gameObject.SetActive(false);
+                        acceptSymbol.gameObject.SetActive(true);
+                        acceptSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
+                    }
+
+                    else if (tile.isPlayersTile && i == 1 && selectedCard.GetComponent<CardBehaviour>().category == Category.Building)
                     {
                         playableTile = true;
                         rejectSymbol.gameObject.SetActive(false);
