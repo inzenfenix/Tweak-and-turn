@@ -35,6 +35,12 @@ public class BoardManager : MonoBehaviour
 
     private EnergyManager energyManager;
 
+    public BoardTile[,] Tiles
+    {
+        get { return tiles; }
+        private set { tiles = value; }
+    }
+
     private void Awake()
     {
         XCardSeparation = 0;

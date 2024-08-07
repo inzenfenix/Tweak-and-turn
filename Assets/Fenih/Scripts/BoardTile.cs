@@ -25,5 +25,10 @@ public class BoardTile
         tileMat.color = color;
     }
 
+    public void ChangeTileColor(Color color)
+    {
+        tileMat.color = color;
+    }
+
 
 }

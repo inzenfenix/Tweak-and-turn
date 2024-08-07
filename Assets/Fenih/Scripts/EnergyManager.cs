@@ -13,6 +13,7 @@ public class EnergyManager : MonoBehaviour
     private int maxAcumulatedEnergy = 3;
     private int acumulatedEnergy;
     [HideInInspector] public int currentEnergy;
+    private int currentRechargeEnergy;
     
 
     private void Awake()
@@ -31,7 +32,7 @@ public class EnergyManager : MonoBehaviour
             energyMats[i].color = Color.cyan;
         }
 
-        currentEnergy = startEnergy;
+        currentEnergy = currentRechargeEnergy = startEnergy;
         acumulatedEnergy = Mathf.Clamp(currentEnergy, 0, maxAcumulatedEnergy);
     }
 
@@ -66,6 +67,32 @@ public class EnergyManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void RefreshEnergy()
+    {
+        for (int i = 0; i < currentEnergy; i++)
+        {
+            energyMats[i].color = Color.cyan;
+        }
+
+        for (int i = currentEnergy; i < maxEnergy; i++)
+        {
+            energyMats[i].color = Color.black;
+        }
+    }
+
+    public void AddEnergyCharge()
+    {
+        currentRechargeEnergy++;
+
+        currentRechargeEnergy = Mathf.Min(maxEnergy, currentRechargeEnergy);
+    }
+
+    public void RestartEnergy()
+    {
+        currentEnergy = currentRechargeEnergy;
+        RefreshEnergy();
     }
 
     public void StopHoveringEnergy()

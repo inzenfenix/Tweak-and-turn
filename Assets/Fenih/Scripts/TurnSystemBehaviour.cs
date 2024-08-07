@@ -23,9 +23,9 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private List<GameObject> currentCards;
 
-    private int amountOfDrawCards = 5;    
+    private int amountOfDrawCards = 4;    
 
-    private int drawPileInitialAmount = 15;
+    private int drawPileInitialAmount = 25;
 
     private int currentCardAmount = 0;
 
@@ -58,6 +58,9 @@ public class TurnSystemBehaviour : MonoBehaviour
     [SerializeField] private Transform chosenCardPos;
 
     private EnergyManager energyManager;
+    private BoardManager boardManager;
+
+    private BoardTile[,] thisTurnTiles;
 
     private bool isCardSelected;
 
@@ -77,12 +80,14 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         CreateCards();
 
-        DrawCards();
-
         hoveredCard = null;
 
+        isCardSelected = false;
+
         energyManager = GetComponent<EnergyManager>();
-        
+        boardManager = GetComponent<BoardManager>();
+
+
     }
 
     private void OnEnable()
@@ -113,6 +118,8 @@ public class TurnSystemBehaviour : MonoBehaviour
             isCardSelected = false;
 
             RefreshDrawnCardsPositions();
+
+            currentCardAmount--;
         }
     }
 
@@ -120,7 +127,16 @@ public class TurnSystemBehaviour : MonoBehaviour
     {
         switch(currentState)
         {
+            case (CurrentState.DrawingCards):
+                DrawCards();
+                break;
+
+            case (CurrentState.PuttingCardsOnBoard):
+                PuttingCardsOnBoard();
+                break;
+
             case (CurrentState.PlayingCards):
+                PlayingCards();
                 break;
 
             case (CurrentState.PassTurn):
@@ -128,17 +144,118 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 else
                 {
+                    energyManager.AddEnergyCharge();
+                    energyManager.RestartEnergy();
                     currentState = CurrentState.DrawingCards;
-                    DrawCards();
+                    
                 }
-
                 break;
-            case (CurrentState.PuttingCardsOnBoard):
-                PuttingCardsOnBoard();
-                break;
+            
             default: 
                 break;
         }
+    }
+
+    private void PlayingCards()
+    {
+        thisTurnTiles = boardManager.Tiles;
+
+        for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
+        {
+            for(int j = 0; j < thisTurnTiles.GetLength(1); j++)
+            {
+                BoardTile curTile = thisTurnTiles[i, j];
+
+                if (curTile.currentCard == null) continue;
+
+                if (curTile.currentCard.cardPlayed) continue;
+
+                curTile.currentCard.cardPlayed = true;
+
+                if (curTile.isPlayersTile)
+                {
+                    if(i + 1 < thisTurnTiles.GetLength(0))
+                    {
+                        if (thisTurnTiles[i + 1, j].currentCard != null)
+                        {
+                            if(curTile.currentCard.damage > 0)
+                            {
+                                int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
+
+                                if(enemyHP <= 0)
+                                {
+                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
+                                    thisTurnTiles[i + 1, j].currentCard = null;
+                                }
+                            }
+                        }
+
+                        else
+                        {
+                            thisTurnTiles[i + 1, j].currentCard = curTile.currentCard;
+                            curTile.currentCard = null;
+
+                            if(!thisTurnTiles[i + 1, j].isPlayersTile)
+                            {
+                                thisTurnTiles[i + 1, j].isPlayersTile = true;
+                                thisTurnTiles[i + 1, j].ChangeTileColor(Color.blue);
+                            }
+
+                            thisTurnTiles[i + 1, j].currentCard.transform.position = thisTurnTiles[i + 1, j].tileHolder.transform.position + Vector3.up * .05f;
+                        }
+                    }
+                }
+                else
+                {
+                    if (i - 1 >= 0)
+                    {
+                        if (thisTurnTiles[i - 1, j].currentCard != null)
+                        {
+                            if (curTile.currentCard.damage > 0)
+                            {
+                                int allyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
+
+                                if (allyHP <= 0)
+                                {
+                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
+                                    thisTurnTiles[i + 1, j].currentCard = null;
+                                }
+                            }
+                        }
+
+                        else
+                        {
+                            thisTurnTiles[i - 1, j].currentCard = curTile.currentCard;
+                            curTile.currentCard = null;
+
+                            if (thisTurnTiles[i - 1, j].isPlayersTile)
+                            {
+                                thisTurnTiles[i - 1, j].isPlayersTile = false;
+                                thisTurnTiles[i - 1, j].ChangeTileColor(Color.red);
+                            }
+
+                            thisTurnTiles[i - 1, j].currentCard.transform.position = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < thisTurnTiles.GetLength(1); j++)
+            {
+                BoardTile curTile = thisTurnTiles[i, j];
+
+                if (curTile.currentCard == null) continue;
+
+                if (curTile.currentCard.cardPlayed) curTile.currentCard.cardPlayed = false;
+            }
+        }
+
+
+        currentState = CurrentState.PassTurn;
+        enemyTimeTest = 4;
     }
 
 
@@ -365,6 +482,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void DrawCards()
     {
+
         currentCards = new List<GameObject>();
 
         for(int i = 0; i < amountOfDrawCards; i++)
@@ -372,7 +490,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             if (availableCards.Count <= 0)
             {
                 Debug.Log("Out of available cards");
-                if (discardCards.Count >= 5)
+                if (discardCards.Count > 0)
                     FromDiscardPileToDrawPile();
                 else
                     break;
@@ -403,6 +521,8 @@ public class TurnSystemBehaviour : MonoBehaviour
         {
             defaultCardScale[i] = currentCards[i].transform.localScale;
         }
+
+        RefreshDrawnCardsPositions();
     }
 
     private void ToDiscardPile()
@@ -421,6 +541,8 @@ public class TurnSystemBehaviour : MonoBehaviour
             curCardTransform.localPosition += Vector3.up * currentDiscardPileYOffset;
 
             currentDiscardPileYOffset += .01f;
+
+            curCard.layer = LayerMask.NameToLayer("Default");
 
             currentCardAmount--;
         }

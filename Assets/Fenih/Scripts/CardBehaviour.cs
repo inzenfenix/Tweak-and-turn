@@ -22,4 +22,14 @@ public class CardBehaviour : MonoBehaviour
 
     public SpecialAbilities ability;
     public string cardName;
+
+    public bool cardPlayed = false;
+
+    public int TakeDamage(int amount)
+    {
+        hp -= amount;
+        if(hp < 0) hp = 0;
+
+        return hp;
+    }
 }
