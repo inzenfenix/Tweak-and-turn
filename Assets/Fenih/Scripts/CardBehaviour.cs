@@ -9,8 +9,14 @@ public enum SpecialAbilities
     AttackHorizontally,
     EnergyUP,
     DrawUP,
+};
 
-}
+public enum Category
+{
+    Normal,
+    Building,
+    Throwable
+};
 
 [Serializable]
 public class CardBehaviour : MonoBehaviour
@@ -21,9 +27,12 @@ public class CardBehaviour : MonoBehaviour
     public int energyRequired;
 
     public SpecialAbilities ability;
+    public Category category;
     public string cardName;
 
-    public bool cardPlayed = false;
+    [HideInInspector] public bool cardPlayed = false;
+
+
 
     public int TakeDamage(int amount)
     {
