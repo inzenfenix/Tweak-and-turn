@@ -26,7 +26,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private int amountOfDrawCards = 5;
 
-    private int drawPileInitialAmount = 50;
+    private int drawPileInitialAmount = 15;
 
     private int currentCardAmount = 0;
 
@@ -67,6 +67,8 @@ public class TurnSystemBehaviour : MonoBehaviour
     private bool isCardSelected;
 
     private List<GameObject> currentCardsAI;
+
+    private bool currentlyWorking = false;
 
     private void Awake()
     {
@@ -129,10 +131,12 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (currentlyWorking) return;
+
         switch (currentState)
         {
             case (CurrentState.DrawingCards):
-                DrawCards();
+                StartCoroutine(DrawCards());
                 break;
 
             case (CurrentState.PuttingCardsOnBoard):
@@ -310,6 +314,8 @@ public class TurnSystemBehaviour : MonoBehaviour
             }
         }
 
+        int plays = 0;
+
         do
         {
             playedCard = false;
@@ -333,9 +339,13 @@ public class TurnSystemBehaviour : MonoBehaviour
                             break;
                         }
                     }
+
+                    break;
                 }
             }
-        } while (playedCard);
+            plays++;
+
+        } while (playedCard && plays < 10);
 
 
         currentStateAI = CurrentState.PlayingCards;
@@ -697,7 +707,7 @@ public class TurnSystemBehaviour : MonoBehaviour
     {
         if (currentState != CurrentState.PuttingCardsOnBoard) return;
 
-        ToDiscardPile();
+        StartCoroutine(ToDiscardPile());
 
         currentState = CurrentState.PlayingCards;
     }
@@ -821,8 +831,9 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
     }
 
-    private void DrawCards()
+    private IEnumerator DrawCards()
     {
+        currentlyWorking = true;
 
         currentCards = new List<GameObject>();
 
@@ -832,7 +843,9 @@ public class TurnSystemBehaviour : MonoBehaviour
             {
                 Debug.Log("Out of available cards");
                 if (discardCards.Count > 0)
-                    FromDiscardPileToDrawPile();
+                {
+                    yield return StartCoroutine(FromDiscardPileToDrawPile());
+                }
                 else
                     break;
             }
@@ -848,12 +861,27 @@ public class TurnSystemBehaviour : MonoBehaviour
             currentDrawPileYOffset -= .01f;
 
             curCardTransform.parent = cardsPositions[currentCardAmount];
-            curCardTransform.localPosition = Vector3.zero;
-            curCardTransform.localRotation = Quaternion.identity;
+
+            float lerp = 0;
+            float lerpSpeed = 6.5f;
+            Vector3 originalPos = curCardTransform.localPosition;
+            Quaternion originalRot = curCardTransform.localRotation;
+
+            while(lerp < 1)
+            {
+                lerp += Time.deltaTime * lerpSpeed;
+
+                curCardTransform.localPosition = Vector3.Lerp(originalPos, Vector3.zero, lerp);
+                curCardTransform.localRotation = Quaternion.Slerp(originalRot, Quaternion.identity, lerp);
+
+                yield return new WaitForEndOfFrame();
+            }
 
             curCard.layer = LayerMask.NameToLayer("DrawnCards");
 
             currentCardAmount++;
+
+            yield return new WaitForSeconds(0.1f);
         }
 
         currentState = CurrentState.PuttingCardsOnBoard;
@@ -864,10 +892,14 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
 
         RefreshDrawnCardsPositions();
+
+        currentlyWorking = false;
     }
 
-    private void ToDiscardPile()
+    private IEnumerator ToDiscardPile()
     {
+        currentlyWorking = true;
+
         for (int i = 0; i < currentCards.Count; i++)
         {
             GameObject curCard = currentCards[i];
@@ -876,22 +908,37 @@ public class TurnSystemBehaviour : MonoBehaviour
             discardCards.Add(curCard);
 
             curCardTransform.parent = discardPile;
-            curCardTransform.localPosition = Vector3.zero;
-            curCardTransform.localRotation = Quaternion.identity;
 
-            curCardTransform.localPosition += Vector3.up * currentDiscardPileYOffset;
+            float lerp = 0;
+            float lerpSpeed = 6.5f;
+            Vector3 originalPos = curCardTransform.localPosition;
+            Quaternion originalRot = curCardTransform.localRotation;
+
+            while (lerp < 1)
+            {
+                lerp += Time.deltaTime * lerpSpeed;
+
+                curCardTransform.localPosition = Vector3.Lerp(originalPos, Vector3.zero + Vector3.up * currentDiscardPileYOffset, lerp);
+                curCardTransform.localRotation = Quaternion.Slerp(originalRot, Quaternion.identity, lerp);
+
+                yield return new WaitForEndOfFrame();
+            }
 
             currentDiscardPileYOffset += .01f;
 
             curCard.layer = LayerMask.NameToLayer("Default");
 
             currentCardAmount--;
+
+            yield return new WaitForEndOfFrame();
         }
 
         currentCards = null;
+
+        currentlyWorking = false;
     }
 
-    private void FromDiscardPileToDrawPile()
+    private IEnumerator FromDiscardPileToDrawPile()
     {
         discardCards.MMShuffle();
 
@@ -909,14 +956,25 @@ public class TurnSystemBehaviour : MonoBehaviour
             availableCards.Add(curCard);
 
             curCardTransform.parent = drawPile;
-            curCardTransform.localPosition = Vector3.zero;
-            curCardTransform.localRotation = Quaternion.identity;
+            float lerp = 0;
+            float lerpSpeed = 9f;
+            Vector3 originalPos = curCardTransform.localPosition;
+            Quaternion originalRot = curCardTransform.localRotation;
 
-            curCardTransform.localPosition += Vector3.up * currentDrawPileYOffset;
+            while(lerp < 1)
+            {
+                lerp += Time.deltaTime * lerpSpeed;
+
+                curCardTransform.localPosition = Vector3.Lerp(originalPos, Vector3.zero + Vector3.up * currentDrawPileYOffset, lerp);
+                curCardTransform.localRotation = Quaternion.Slerp(originalRot, Quaternion.identity, lerp);
+
+                yield return new WaitForEndOfFrame();
+            }
 
             currentDiscardPileYOffset -= .01f;
             currentDrawPileYOffset += .01f;
 
+            yield return new WaitForEndOfFrame();
         }
 
         discardCards = new List<GameObject>();
