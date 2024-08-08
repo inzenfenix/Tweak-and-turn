@@ -13,7 +13,7 @@ public class EnergyManager : MonoBehaviour
     private int maxAcumulatedEnergy = 3;
     private int acumulatedEnergy;
     [HideInInspector] public int currentEnergy;
-    private int currentRechargeEnergy;
+    [HideInInspector] public int currentRechargeEnergy;
     
 
     private void Awake()

@@ -37,6 +37,8 @@ public class BoardManager : MonoBehaviour
 
     private TurnSystemBehaviour turnSystemBehaviour;
 
+    private int curHPHealing = 1;
+
     public BoardTile[,] Tiles
     {
         get { return tiles; }
@@ -45,6 +47,8 @@ public class BoardManager : MonoBehaviour
 
     private void Awake()
     {
+        curHPHealing = 1;
+
         XCardSeparation = 0;
         ZCardSeparation = 0;
 
@@ -123,8 +127,9 @@ public class BoardManager : MonoBehaviour
 
 
                     hoveredTile = tile = tiles[i, j];
+                    CardBehaviour chosenCard = selectedCard.GetComponent<CardBehaviour>();
 
-                    if (tile.isPlayersTile && (i == 0 || turnSystemBehaviour.currentTurn < 3) && selectedCard.GetComponent<CardBehaviour>().category == Category.Normal)
+                    if (tile.isPlayersTile && (i == 0 || turnSystemBehaviour.currentTurn < 3) && chosenCard.category == Category.Normal && tile.currentCard == null)
                     {
                         playableTile = true;
                         rejectSymbol.gameObject.SetActive(false);
@@ -132,7 +137,15 @@ public class BoardManager : MonoBehaviour
                         acceptSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
                     }
 
-                    else if (tile.isPlayersTile && i == 1 && selectedCard.GetComponent<CardBehaviour>().category == Category.Building)
+                    else if (tile.isPlayersTile && i == 1 && chosenCard.category == Category.Building && tile.currentCard == null)
+                    {
+                        playableTile = true;
+                        rejectSymbol.gameObject.SetActive(false);
+                        acceptSymbol.gameObject.SetActive(true);
+                        acceptSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
+                    }
+
+                    else if (tile.currentCard != null && chosenCard.category == Category.Throwable)
                     {
                         playableTile = true;
                         rejectSymbol.gameObject.SetActive(false);
@@ -176,13 +189,28 @@ public class BoardManager : MonoBehaviour
 
                     selectedCard.transform.localScale += new Vector3(1, 0, 1) * 0.04f;
 
-                    hoveredTile.currentCard = selectedCard.GetComponent<CardBehaviour>();
+                    CardBehaviour chosenCardBehaviour = selectedCard.GetComponent<CardBehaviour>();
+
+                    if(chosenCardBehaviour.category != Category.Throwable)
+                        hoveredTile.currentCard = selectedCard.GetComponent<CardBehaviour>();
+
+                    else if(chosenCardBehaviour.category == Category.Throwable && hoveredTile.currentCard != null)
+                    {
+                        switch(chosenCardBehaviour.ability)
+                        {
+                            case (SpecialAbilities.HealCard):
+                                hoveredTile.currentCard.GetComponent<CardBehaviour>().HealDamage(curHPHealing);
+                                Destroy(selectedCard);
+                                break;
+                        }
+                    }
 
                     selectedTile = null;
                     hoveredTile = null;
 
                     acceptSymbol.gameObject.SetActive(false);
                     rejectSymbol.gameObject.SetActive(false);
+
 
                     OnPutCardOnBoard?.Invoke(this, selectedCard);
                     selectedCard = null;
@@ -197,8 +225,15 @@ public class BoardManager : MonoBehaviour
     {
         if (e == null) return;
 
+        StartCoroutine(WaitForCard(e));
+    }
+
+    private IEnumerator WaitForCard(GameObject card)
+    {
+        yield return new WaitForEndOfFrame();
+
         selectingBoardTile = true;
-        selectedCard = e;
+        selectedCard = card;
     }
 
     private void TurnSystemBehaviour_OnCardChoseExited(object sender, System.EventArgs e)

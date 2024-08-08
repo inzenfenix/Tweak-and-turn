@@ -24,7 +24,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private List<GameObject> currentCards;
 
-    private int amountOfDrawCards = 5;    
+    private int amountOfDrawCards = 5;
 
     private int drawPileInitialAmount = 50;
 
@@ -45,6 +45,7 @@ public class TurnSystemBehaviour : MonoBehaviour
     [HideInInspector] public int currentTurn = 1;
 
     private CurrentState currentState;
+    private CurrentState currentStateAI;
 
     private float enemyTimeTest = 0;
 
@@ -64,6 +65,8 @@ public class TurnSystemBehaviour : MonoBehaviour
     private BoardTile[,] thisTurnTiles;
 
     private bool isCardSelected;
+
+    private List<GameObject> currentCardsAI;
 
     private void Awake()
     {
@@ -97,7 +100,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         BoardManager.OnPutCardOnBoard += BoardManager_OnPutCardOnBoard;
     }
 
-    
+
 
     private void OnDisable()
     {
@@ -107,7 +110,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void BoardManager_OnPutCardOnBoard(object sender, GameObject e)
     {
-        if(e == selectedCard)
+        if (e == selectedCard)
         {
             int index = currentCards.IndexOf(e);
 
@@ -126,7 +129,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void Update()
     {
-        switch(currentState)
+        switch (currentState)
         {
             case (CurrentState.DrawingCards):
                 DrawCards();
@@ -136,43 +139,225 @@ public class TurnSystemBehaviour : MonoBehaviour
                 PuttingCardsOnBoard();
                 break;
 
-            case (CurrentState.EnemiesTurn):
-                EnemiesTurn();
-                break;
-
             case (CurrentState.PlayingCards):
                 PlayingCards();
                 break;
 
             case (CurrentState.PassTurn):
-                if (enemyTimeTest > 0) enemyTimeTest -= Time.deltaTime;
-
-                else
-                {
-                    energyManager.AddEnergyCharge();
-                    energyManager.RestartEnergy();
-                    currentState = CurrentState.DrawingCards;
-                    
-                }
+                currentState = CurrentState.EnemiesTurn;
+                currentStateAI = CurrentState.DrawingCards;
                 break;
-            
-            default: 
+
+            case (CurrentState.EnemiesTurn):
+                EnemyTurn();
+                break;
+
+            default:
                 break;
         }
     }
 
-    private void EnemiesTurn()
+    private void EnemyTurn()
     {
+        switch (currentStateAI)
+        {
+            case (CurrentState.DrawingCards):
+                DrawCardsAI();
+                break;
 
+            case (CurrentState.PuttingCardsOnBoard):
+                PuttingCardsOnBoardAI();
+                break;
+
+            case (CurrentState.PlayingCards):
+                PlayingCardsAI();
+                break;
+
+            case (CurrentState.PassTurn):
+                for (int i = 0; i < currentCardsAI.Count; i++)
+                {
+                    Destroy(currentCardsAI[i]);
+                }
+
+                currentState = CurrentState.DrawingCards;
+                break;
+
+            default:
+                break;
+        }
     }
 
-    private void PlayingCards()
+    private void DrawCardsAI()
+    {
+        currentCardsAI = new List<GameObject>();
+
+        for (int i = 0; i < amountOfDrawCards; i++)
+        {
+            int randomCardIndex = UnityEngine.Random.Range(0, cardsPrefabs.Length);
+
+            GameObject newCard = GameObject.Instantiate(cardsPrefabs[randomCardIndex], Vector3.up * 100f, Quaternion.identity);
+
+            currentCardsAI.Add(newCard);
+        }
+
+        currentStateAI = CurrentState.PuttingCardsOnBoard;
+    }
+
+    private void PuttingCardsOnBoardAI()
+    {
+        thisTurnTiles = boardManager.Tiles;
+
+        int energy = energyManager.currentRechargeEnergy;
+
+        bool playedCard;
+
+        int columns = boardManager.Tiles.GetLength(1);
+        int rows = boardManager.Tiles.GetLength(0);
+
+        bool[] winning = new bool[columns];
+
+        int buildingRow = boardManager.Tiles.GetLength(0) - 2;
+
+        //Decide if the ai is winning or losing a column
+        for (int i = 0; i < columns; i++)
+        {
+            int aiTiles = 0;
+            int playerTiles = 0;
+
+            for (int j = 0; j < rows; j++)
+            {
+                BoardTile currentTile = boardManager.Tiles[j, i];
+                if (currentTile.isPlayersTile) playerTiles++;
+                else aiTiles++;
+            }
+
+            if (aiTiles > playerTiles) winning[i] = true;
+            else winning[i] = false;
+        }
+
+        //Add normal cards
+        for (int i = 0; i < currentCardsAI.Count; i++)
+        {
+            CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
+
+            if ((card.category == Category.Normal || card.category == Category.Special) && card.energyRequired < energy)
+            {
+                if (currentTurn > 3)
+                {
+
+                    for (int j = 0; j < columns; j++)
+                    {
+                        if (!winning[j] && thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null && !thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].isPlayersTile)
+                        {
+                            currentCardsAI.Remove(card.gameObject);
+                            energy -= card.energyRequired;
+
+                            PlaceCardOnTileAI(card, thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j]);
+                            break;
+                        }
+                    }
+                }
+
+                else
+                {
+                    int farthestRow = boardManager.Tiles.GetLength(0) - 1;
+
+                    for (int j = 0; j < rows; j++)
+                    {
+                        for (int k = 0; k < columns; k++)
+                        {
+                            if (!thisTurnTiles[j, k].isPlayersTile)
+                            {
+                                if (j < farthestRow) farthestRow = j;
+                            }
+                        }
+
+                    }
+
+                    for (int j = 0; j < columns; j++)
+                    {
+                        if (!winning[j] && thisTurnTiles[farthestRow, j].currentCard == null && !thisTurnTiles[farthestRow, j].isPlayersTile)
+                        {
+                            currentCardsAI.Remove(card.gameObject);
+                            energy -= card.energyRequired;
+
+                            PlaceCardOnTileAI(card, thisTurnTiles[farthestRow, j]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < currentCardsAI.Count; i++)
+        {
+            CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
+
+            if (card.category == Category.Building && card.energyRequired < energy)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (!winning[j] && thisTurnTiles[buildingRow, j].currentCard == null)
+                    {
+                        currentCardsAI.Remove(card.gameObject);
+                        energy -= card.energyRequired;
+
+                        PlaceCardOnTileAI(card, thisTurnTiles[buildingRow, j]);
+                        break;
+
+                    }
+                }
+            }
+        }
+
+        do
+        {
+            playedCard = false;
+
+            for (int i = 0; i < currentCardsAI.Count; i++)
+            {
+                CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
+
+                if (card.energyRequired < energy && (card.category == Category.Normal || card.category == Category.Special))
+                {
+                    playedCard = true;
+
+                    for (int j = 0; j < columns; j++)
+                    {
+                        if (thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null)
+                        {
+                            currentCardsAI.Remove(card.gameObject);
+                            energy -= card.energyRequired;
+
+                            PlaceCardOnTileAI(card, thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j]);
+                            break;
+                        }
+                    }
+                }
+            }
+        } while (playedCard);
+
+
+        currentStateAI = CurrentState.PlayingCards;
+    }
+
+    private void PlaceCardOnTileAI(CardBehaviour card, BoardTile tile)
+    {
+        tile.currentCard = card;
+
+        card.transform.localPosition = Vector3.zero;
+        card.transform.parent = tile.tileHolder.transform;
+
+        card.transform.SetLocalPositionAndRotation(Vector3.up * .5f, Quaternion.identity);
+    }
+
+    private void PlayingCardsAI()
     {
         thisTurnTiles = boardManager.Tiles;
 
         for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
         {
-            for(int j = 0; j < thisTurnTiles.GetLength(1); j++)
+            for (int j = 0; j < thisTurnTiles.GetLength(1); j++)
             {
                 BoardTile curTile = thisTurnTiles[i, j];
 
@@ -182,54 +367,72 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 curTile.currentCard.cardPlayed = true;
 
-                if (curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
+
+                if (!curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
                 {
-                    if(i + 1 < thisTurnTiles.GetLength(0))
-                    {
-                        if (thisTurnTiles[i + 1, j].currentCard != null)
-                        {
-                            if(curTile.currentCard.damage > 0 && !thisTurnTiles[i + 1, j].isPlayersTile)
-                            {
-                                int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
-
-                                if(enemyHP <= 0)
-                                {
-                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
-                                    thisTurnTiles[i + 1, j].currentCard = null;
-                                }
-                            }
-                        }
-
-                        else if(thisTurnTiles[i + 1, j].currentCard == null)
-                        {
-                            thisTurnTiles[i + 1, j].currentCard = curTile.currentCard;
-                            curTile.currentCard = null;
-
-                            if(!thisTurnTiles[i + 1, j].isPlayersTile)
-                            {
-                                thisTurnTiles[i + 1, j].isPlayersTile = true;
-                                thisTurnTiles[i + 1, j].ChangeTileColor(Color.blue);
-                            }
-
-                            thisTurnTiles[i + 1, j].currentCard.transform.position = thisTurnTiles[i + 1, j].tileHolder.transform.position + Vector3.up * .05f;
-                        }
-                    }
-                }
-
-                else if(!curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
-                {
-                    if (i - 1 >= 0)
+                    if (i == thisTurnTiles.GetLength(0) - 1)
                     {
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
-                            if (curTile.currentCard.damage > 0 && thisTurnTiles[i + 1, j].isPlayersTile)
+                            if (thisTurnTiles[i - 1, j].currentCard.category == Category.Building && thisTurnTiles[i - 2, j].currentCard == null)
                             {
-                                int allyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
+                                thisTurnTiles[i - 2, j].currentCard = curTile.currentCard;
+                                curTile.currentCard = null;
+
+                                if (!thisTurnTiles[i - 2, j].isPlayersTile)
+                                {
+                                    thisTurnTiles[i - 2, j].isPlayersTile = false;
+                                    thisTurnTiles[i - 2, j].ChangeTileColor(Color.red);
+                                }
+
+                                thisTurnTiles[i - 2, j].currentCard.transform.position = thisTurnTiles[i - 2, j].tileHolder.transform.position + Vector3.up * .05f;
+                            }
+                        }
+
+                        else
+                        {
+                            thisTurnTiles[i - 1, j].currentCard = curTile.currentCard;
+                            curTile.currentCard = null;
+
+                            if (!thisTurnTiles[i - 1, j].isPlayersTile)
+                            {
+                                thisTurnTiles[i - 1, j].isPlayersTile = false;
+                                thisTurnTiles[i - 1, j].ChangeTileColor(Color.red);
+                            }
+
+                            thisTurnTiles[i - 1, j].currentCard.transform.position = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
+                        }
+                    }
+
+                    if (i - 1 == 0)
+                    {
+                        if (thisTurnTiles[i - 1, j].currentCard != null)
+                        {
+                            if (curTile.currentCard.damage > 0 && !thisTurnTiles[i - 1, j].isPlayersTile)
+                            {
+                                int enemyHP = thisTurnTiles[i - 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
+
+                                if (enemyHP <= 0)
+                                {
+                                    Destroy(thisTurnTiles[i - 1, j].currentCard.gameObject);
+                                    thisTurnTiles[i - 1, j].currentCard = null;
+                                }
+                            }
+                        }
+                    }
+
+                    if ((i - 1 >= 0) && (i != thisTurnTiles.GetLength(0) - 1) && (i - 1 != 0))
+                    {
+                        if (thisTurnTiles[i - 1, j].currentCard != null)
+                        {
+                            if (curTile.currentCard.damage > 0 && thisTurnTiles[i - 1, j].isPlayersTile)
+                            {
+                                int allyHP = thisTurnTiles[i - 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
 
                                 if (allyHP <= 0)
                                 {
-                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
-                                    thisTurnTiles[i + 1, j].currentCard = null;
+                                    Destroy(thisTurnTiles[i - 1, j].currentCard.gameObject);
+                                    thisTurnTiles[i - 1, j].currentCard = null;
                                 }
                             }
                         }
@@ -264,14 +467,140 @@ public class TurnSystemBehaviour : MonoBehaviour
             }
         }
 
+        currentStateAI = CurrentState.PassTurn;
+
+        energyManager.AddEnergyCharge();
+        energyManager.RestartEnergy();
+    }
+
+    private void PlayingCards()
+    {
+        thisTurnTiles = boardManager.Tiles;
+
+        for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < thisTurnTiles.GetLength(1); j++)
+            {
+                BoardTile curTile = thisTurnTiles[i, j];
+
+                if (curTile.currentCard == null) continue;
+
+                if (curTile.currentCard.cardPlayed) continue;
+
+                curTile.currentCard.cardPlayed = true;
+
+                if (curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
+                {
+                    if (i == 0)
+                    {
+                        if (thisTurnTiles[i + 1, j].currentCard != null)
+                        {
+                            if (thisTurnTiles[i + 1, j].currentCard.category == Category.Building && thisTurnTiles[i + 2, j].currentCard == null)
+                            {
+                                thisTurnTiles[i + 2, j].currentCard = curTile.currentCard;
+                                curTile.currentCard = null;
+
+                                if (!thisTurnTiles[i + 2, j].isPlayersTile)
+                                {
+                                    thisTurnTiles[i + 2, j].isPlayersTile = true;
+                                    thisTurnTiles[i + 2, j].ChangeTileColor(Color.blue);
+                                }
+
+                                thisTurnTiles[i + 2, j].currentCard.transform.position = thisTurnTiles[i + 2, j].tileHolder.transform.position + Vector3.up * .05f;
+                            }
+                        }
+
+                        else
+                        {
+                            thisTurnTiles[i + 1, j].currentCard = curTile.currentCard;
+                            curTile.currentCard = null;
+
+                            if (!thisTurnTiles[i + 1, j].isPlayersTile)
+                            {
+                                thisTurnTiles[i + 1, j].isPlayersTile = true;
+                                thisTurnTiles[i + 1, j].ChangeTileColor(Color.blue);
+                            }
+
+                            thisTurnTiles[i + 1, j].currentCard.transform.position = thisTurnTiles[i + 1, j].tileHolder.transform.position + Vector3.up * .05f;
+                        }
+                    }
+
+                    if (i + 1 == thisTurnTiles.GetLength(0) - 1)
+                    {
+                        if (thisTurnTiles[i + 1, j].currentCard != null)
+                        {
+                            if (curTile.currentCard.damage > 0 && !thisTurnTiles[i + 1, j].isPlayersTile)
+                            {
+                                int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
+
+                                if (enemyHP <= 0)
+                                {
+                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
+
+                                    thisTurnTiles[i + 1, j].currentCard = null;
+                                    
+                                    
+                                }
+                            }
+                        }
+                    }
+
+
+                    if ((i + 1 < thisTurnTiles.GetLength(0)) && (i != 0) && (i + 1 != thisTurnTiles.GetLength(0) - 1))
+                    {
+                        if (thisTurnTiles[i + 1, j].currentCard != null)
+                        {
+                            if (curTile.currentCard.damage > 0 && !thisTurnTiles[i + 1, j].isPlayersTile)
+                            {
+                                Debug.Log("A");
+
+                                int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
+
+                                if (enemyHP <= 0)
+                                {
+                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
+                                    thisTurnTiles[i + 1, j].currentCard = null;
+                                }
+                            }
+                        }
+
+                        else if (thisTurnTiles[i + 1, j].currentCard == null)
+                        {
+                            thisTurnTiles[i + 1, j].currentCard = curTile.currentCard;
+                            curTile.currentCard = null;
+
+                            if (!thisTurnTiles[i + 1, j].isPlayersTile)
+                            {
+                                thisTurnTiles[i + 1, j].isPlayersTile = true;
+                                thisTurnTiles[i + 1, j].ChangeTileColor(Color.blue);
+                            }
+
+                            thisTurnTiles[i + 1, j].currentCard.transform.position = thisTurnTiles[i + 1, j].tileHolder.transform.position + Vector3.up * .05f;
+                        }
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < thisTurnTiles.GetLength(1); j++)
+            {
+                BoardTile curTile = thisTurnTiles[i, j];
+
+                if (curTile.currentCard == null) continue;
+
+                if (curTile.currentCard.cardPlayed) curTile.currentCard.cardPlayed = false;
+            }
+        }
+
 
         currentTurn++;
         currentState = CurrentState.PassTurn;
-        enemyTimeTest = 4;
     }
 
 
-    private void PuttingCardsOnBoard()
+    private void PuttingCardsOnBoard() 
     {
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, cardMask))
@@ -307,7 +636,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             {
                 StartCoroutine(ReturnToDefaultScale(hoveredCard));
 
-                if(!isCardSelected)
+                if (!isCardSelected)
                     energyManager.StopHoveringEnergy();
 
                 hoveredCard = null;
@@ -317,14 +646,14 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && hoveredCard != null)
         {
-            if(!energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired))
-            { 
+            if (!energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired))
+            {
                 StartCoroutine(CardHorizontalMovementNonUsable(hoveredCard));
                 return;
             }
 
             OnCardChose?.Invoke(this, hoveredCard);
-            
+
             hoveredCard.transform.position = chosenCardPos.position;
             hoveredCard.transform.rotation = chosenCardPos.rotation;
             hoveredCard.transform.parent = chosenCardPos;
@@ -370,7 +699,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         ToDiscardPile();
 
-        currentState = CurrentState.EnemiesTurn;
+        currentState = CurrentState.PlayingCards;
     }
 
     private IEnumerator CardScale(Vector3 currentScale, Vector3 goalScale, GameObject card)
@@ -378,7 +707,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         float lerp = 0;
         float speed = 4f;
 
-        while(lerp < 1f)
+        while (lerp < 1f)
         {
             lerp += Time.deltaTime * speed;
             card.transform.localScale = Vector3.Lerp(currentScale, goalScale, lerp);
@@ -497,7 +826,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         currentCards = new List<GameObject>();
 
-        for(int i = 0; i < amountOfDrawCards; i++)
+        for (int i = 0; i < amountOfDrawCards; i++)
         {
             if (availableCards.Count <= 0)
             {
@@ -529,7 +858,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         currentState = CurrentState.PuttingCardsOnBoard;
 
-        for(int i = 0; i < currentCards.Count; i++)
+        for (int i = 0; i < currentCards.Count; i++)
         {
             defaultCardScale[i] = currentCards[i].transform.localScale;
         }

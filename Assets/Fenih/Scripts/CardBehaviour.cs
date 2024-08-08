@@ -9,13 +9,16 @@ public enum SpecialAbilities
     AttackHorizontally,
     EnergyUP,
     DrawUP,
+    HealCard,
+    RowAttack,
 };
 
 public enum Category
 {
     Normal,
     Building,
-    Throwable
+    Throwable,
+    Special
 };
 
 [Serializable]
@@ -37,7 +40,12 @@ public class CardBehaviour : MonoBehaviour
     public int TakeDamage(int amount)
     {
         hp -= amount;
-        if(hp < 0) hp = 0;
+        return hp;
+    }
+
+    public int HealDamage(int amount)
+    {
+        hp += amount;
 
         return hp;
     }
