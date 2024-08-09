@@ -7,11 +7,15 @@ using UnityEngine;
 public class BoardTile
 {
     public Color color;
+
     public CardBehaviour currentCard;
+    public CardBehaviour secondaryCard;
+
     public GameObject tileHolder;
     public bool isPlayersTile;
 
     private Material tileMat;
+
 
     public BoardTile(UnityEngine.Color color, GameObject tileHolder, bool isPlayersTile)
     {

@@ -181,7 +181,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 break;
 
             case (CurrentState.PlayingCards):
-                PlayingCardsAI();
+                StartCoroutine(PlayingCardsAI());
                 break;
 
             case (CurrentState.PassTurn):
@@ -385,7 +385,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    private void PlayingCardsAI()
+    private IEnumerator PlayingCardsAI()
     {
         thisTurnTiles = boardManager.Tiles;
 
@@ -413,13 +413,26 @@ public class TurnSystemBehaviour : MonoBehaviour
                                 thisTurnTiles[i - 2, j].currentCard = curTile.currentCard;
                                 curTile.currentCard = null;
 
+                                float lerp = 0;
+                                float speed = 7.5f;
+
+                                Vector3 originalPos = thisTurnTiles[i - 2, j].currentCard.transform.position;
+                                Vector3 goalPos = thisTurnTiles[i - 2, j].tileHolder.transform.position + Vector3.up * .05f;
+
+                                while (lerp < 1)
+                                {
+                                    lerp += Time.deltaTime * speed;
+                                    thisTurnTiles[i - 2, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+                                    yield return new WaitForEndOfFrame();
+                                }
+
                                 if (!thisTurnTiles[i - 2, j].isPlayersTile)
                                 {
                                     thisTurnTiles[i - 2, j].isPlayersTile = false;
                                     thisTurnTiles[i - 2, j].ChangeTileColor(enemyColor);
                                 }
 
-                                thisTurnTiles[i - 2, j].currentCard.transform.position = thisTurnTiles[i - 2, j].tileHolder.transform.position + Vector3.up * .05f;
+                                yield return new WaitForEndOfFrame();
                             }
                         }
 
@@ -428,13 +441,26 @@ public class TurnSystemBehaviour : MonoBehaviour
                             thisTurnTiles[i - 1, j].currentCard = curTile.currentCard;
                             curTile.currentCard = null;
 
+                            float lerp = 0;
+                            float speed = 7.5f;
+
+                            Vector3 originalPos = thisTurnTiles[i - 1, j].currentCard.transform.position;
+                            Vector3 goalPos = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
+
+                            while (lerp < 1)
+                            {
+                                lerp += Time.deltaTime * speed;
+                                thisTurnTiles[i - 1, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+                                yield return new WaitForEndOfFrame();
+                            }
+
                             if (!thisTurnTiles[i - 1, j].isPlayersTile)
                             {
                                 thisTurnTiles[i - 1, j].isPlayersTile = false;
                                 thisTurnTiles[i - 1, j].ChangeTileColor(enemyColor);
                             }
 
-                            thisTurnTiles[i - 1, j].currentCard.transform.position = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
+                            yield return new WaitForEndOfFrame();
                         }
                     }
 
@@ -476,13 +502,26 @@ public class TurnSystemBehaviour : MonoBehaviour
                             thisTurnTiles[i - 1, j].currentCard = curTile.currentCard;
                             curTile.currentCard = null;
 
+                            float lerp = 0;
+                            float speed = 7.5f;
+
+                            Vector3 originalPos = thisTurnTiles[i - 1, j].currentCard.transform.position;
+                            Vector3 goalPos = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
+
+                            while (lerp < 1)
+                            {
+                                lerp += Time.deltaTime * speed;
+                                thisTurnTiles[i - 1, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+                                yield return new WaitForEndOfFrame();
+                            }
+
                             if (thisTurnTiles[i - 1, j].isPlayersTile)
                             {
                                 thisTurnTiles[i - 1, j].isPlayersTile = false;
                                 thisTurnTiles[i - 1, j].ChangeTileColor(enemyColor);
                             }
 
-                            thisTurnTiles[i - 1, j].currentCard.transform.position = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
+                            yield return new WaitForEndOfFrame();
                         }
                     }
                 }
