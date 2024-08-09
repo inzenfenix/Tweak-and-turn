@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class EnergyManager : MonoBehaviour
     private int acumulatedEnergy;
     [HideInInspector] public int currentEnergy;
     [HideInInspector] public int currentRechargeEnergy;
+
+    [SerializeField] MMF_Player juicePlayer;
     
 
     private void Awake()
@@ -77,6 +80,11 @@ public class EnergyManager : MonoBehaviour
             energyMats[i].color = Color.black;
         }
 
+
+        yield return new WaitForSeconds(.1f);
+
+        juicePlayer.PlayFeedbacks();
+
         for (int i = 0; i < currentEnergy; i++)
         {
             yield return new WaitForEndOfFrame();
@@ -96,7 +104,7 @@ public class EnergyManager : MonoBehaviour
 
     public IEnumerator RestartEnergy()
     {
-        yield return new WaitForSeconds(.1f);
+        
         currentEnergy = currentRechargeEnergy;
 
         yield return StartCoroutine(RefreshEnergy());

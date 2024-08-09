@@ -85,6 +85,9 @@ public class TurnSystemBehaviour : MonoBehaviour
     public Color playerColor;
     public Color enemyColor;
 
+    [SerializeField] private AudioSource cardWhooshSounds;
+    [SerializeField] private AudioClip[] cardWhooshClips;
+
     private void Awake()
     {
         currentCardAmount = 0;
@@ -109,7 +112,8 @@ public class TurnSystemBehaviour : MonoBehaviour
         boardManager = GetComponent<BoardManager>();
         juicePlayer = GetComponent<MMF_Player>();
 
-
+        if (cardWhooshClips.Length > 0)
+            cardWhooshSounds.clip = cardWhooshClips[0];
     }
 
     private void OnEnable()
@@ -175,6 +179,18 @@ public class TurnSystemBehaviour : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void ChangeWhooshSound()
+    {
+        int index = Array.IndexOf(cardWhooshClips, cardWhooshSounds.clip);
+
+        int newIndex = index + 1;
+
+        if (newIndex >= cardWhooshClips.Length)
+            newIndex = 0;
+
+        cardWhooshSounds.clip = cardWhooshClips[newIndex];
     }
 
     private void EnemyTurn()
@@ -563,13 +579,15 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
 
         currentStateAI = CurrentState.PassTurn;
-        currentlyWorking = false;
+        
         energyManager.AddEnergyCharge();
         OnChangeCamera?.Invoke(this, CurrentCamera.BatteryCharging);
 
         yield return StartCoroutine(energyManager.RestartEnergy());
         yield return new WaitForEndOfFrame();
         OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
+
+        currentlyWorking = false;
     }
 
     private IEnumerator PlayingCards()
@@ -1011,6 +1029,12 @@ public class TurnSystemBehaviour : MonoBehaviour
             float lerpSpeed = 6.5f;
             Vector3 originalPos = curCardTransform.localPosition;
             Quaternion originalRot = curCardTransform.localRotation;
+
+            if (!cardWhooshSounds.isPlaying)
+            {
+                ChangeWhooshSound();
+                cardWhooshSounds.Play();
+            }
 
             while(lerp < 1)
             {
