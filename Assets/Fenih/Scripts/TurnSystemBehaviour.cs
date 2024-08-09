@@ -14,10 +14,19 @@ public enum CurrentState
     PassTurn
 };
 
+public enum CurrentCamera
+{
+    ChoosingCards,
+    PlayingCards,
+    BatteryCharging
+}
+
 public class TurnSystemBehaviour : MonoBehaviour
 {
     public static event EventHandler<GameObject> OnCardChose;
     public static event EventHandler OnCardChoseExited;
+
+    public static event EventHandler<CurrentCamera> OnChangeCamera;
 
     private List<GameObject> availableCards;
 
@@ -387,7 +396,10 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private IEnumerator PlayingCardsAI()
     {
+        OnChangeCamera?.Invoke(this, CurrentCamera.PlayingCards);
         thisTurnTiles = boardManager.Tiles;
+        currentlyWorking = true;
+        yield return new WaitForSeconds(0.1f);
 
         for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
         {
@@ -473,6 +485,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                         {
                             if (curTile.currentCard.damage > 0 && !thisTurnTiles[i - 1, j].isPlayersTile)
                             {
+                                juicePlayer.PlayFeedbacks();
                                 int enemyHP = thisTurnTiles[i - 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
 
                                 if (enemyHP <= 0)
@@ -490,6 +503,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                         {
                             if (curTile.currentCard.damage > 0 && thisTurnTiles[i - 1, j].isPlayersTile)
                             {
+                                juicePlayer.PlayFeedbacks();
                                 int allyHP = thisTurnTiles[i - 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
 
                                 if (allyHP <= 0)
@@ -530,7 +544,11 @@ public class TurnSystemBehaviour : MonoBehaviour
                     }
                 }
             }
+
+            yield return new WaitForSeconds(0.1f);
         }
+
+        yield return new WaitForSeconds(0.1f);
 
         for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
         {
@@ -545,13 +563,19 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
 
         currentStateAI = CurrentState.PassTurn;
-
+        currentlyWorking = false;
         energyManager.AddEnergyCharge();
-        energyManager.RestartEnergy();
+        OnChangeCamera?.Invoke(this, CurrentCamera.BatteryCharging);
+
+        yield return StartCoroutine(energyManager.RestartEnergy());
+        yield return new WaitForEndOfFrame();
+        OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
     }
 
     private IEnumerator PlayingCards()
     {
+        OnChangeCamera?.Invoke(this, CurrentCamera.PlayingCards);
+
         thisTurnTiles = boardManager.Tiles;
         currentlyWorking = true;
 
@@ -640,6 +664,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                             {
                                 int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
 
+                                juicePlayer.PlayFeedbacks();
+
                                 if (enemyHP <= 0)
                                 {
                                     Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
@@ -660,6 +686,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                             if (curTile.currentCard.damage > 0 && !thisTurnTiles[i + 1, j].isPlayersTile)
                             {
                                 int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
+
+                                juicePlayer.PlayFeedbacks();
 
                                 if (enemyHP <= 0)
                                 {
@@ -721,6 +749,9 @@ public class TurnSystemBehaviour : MonoBehaviour
         currentTurn++;
         currentState = CurrentState.PassTurn;
         currentlyWorking = false;
+        OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
+
+        yield return new WaitForEndOfFrame();
     }
 
 

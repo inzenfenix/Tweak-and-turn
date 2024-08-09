@@ -69,17 +69,22 @@ public class EnergyManager : MonoBehaviour
         return true;
     }
 
-    private void RefreshEnergy()
+    private IEnumerator RefreshEnergy()
     {
-        for (int i = 0; i < currentEnergy; i++)
-        {
-            energyMats[i].color = Color.cyan;
-        }
 
-        for (int i = currentEnergy; i < maxEnergy; i++)
+        for (int i = 0; i < energyBatteries.Length; i++)
         {
             energyMats[i].color = Color.black;
         }
+
+        for (int i = 0; i < currentEnergy; i++)
+        {
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(.1f);
+            energyMats[i].color = Color.cyan;
+        }
+
+        yield return new WaitForSeconds(.25f);
     }
 
     public void AddEnergyCharge()
@@ -89,10 +94,12 @@ public class EnergyManager : MonoBehaviour
         currentRechargeEnergy = Mathf.Min(maxEnergy, currentRechargeEnergy);
     }
 
-    public void RestartEnergy()
+    public IEnumerator RestartEnergy()
     {
+        yield return new WaitForSeconds(.1f);
         currentEnergy = currentRechargeEnergy;
-        RefreshEnergy();
+
+        yield return StartCoroutine(RefreshEnergy());
     }
 
     public void StopHoveringEnergy()
