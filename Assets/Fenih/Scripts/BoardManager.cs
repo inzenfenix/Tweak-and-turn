@@ -39,6 +39,9 @@ public class BoardManager : MonoBehaviour
 
     private int curHPHealing = 1;
 
+    private UnityEngine.Color playerColor;
+    private UnityEngine.Color enemyColor;
+
     public BoardTile[,] Tiles
     {
         get { return tiles; }
@@ -55,6 +58,9 @@ public class BoardManager : MonoBehaviour
         energyManager = GetComponent<EnergyManager>();
 
         turnSystemBehaviour = GetComponent<TurnSystemBehaviour>();
+
+        playerColor = turnSystemBehaviour.playerColor;
+        enemyColor = turnSystemBehaviour.enemyColor;
 
         tiles = new BoardTile[rowAmount,columnAmount];
 
@@ -73,12 +79,12 @@ public class BoardManager : MonoBehaviour
 
                 XCardSeparation += .48f;
 
-                UnityEngine.Color curColor = UnityEngine.Color.blue;
+                UnityEngine.Color curColor = playerColor;
                 bool isPlayersTile = true;
 
                 if (currentTileNum >= startTilesPerPlayer)
                 {
-                    curColor = UnityEngine.Color.red;
+                    curColor = enemyColor;
                     isPlayersTile = false;
                 }
 

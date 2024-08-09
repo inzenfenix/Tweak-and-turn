@@ -35,8 +35,6 @@ public class CardBehaviour : MonoBehaviour
 
     [HideInInspector] public bool cardPlayed = false;
 
-
-
     public int TakeDamage(int amount)
     {
         hp -= amount;
