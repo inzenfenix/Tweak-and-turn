@@ -432,6 +432,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                                     thisTurnTiles[i - 2, j].ChangeTileColor(enemyColor);
                                 }
 
+                                thisTurnTiles[i - 2, j].currentCard.transform.parent = thisTurnTiles[i - 2, j].tileHolder.transform;
+
                                 yield return new WaitForEndOfFrame();
                             }
                         }
@@ -460,6 +462,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                                 thisTurnTiles[i - 1, j].ChangeTileColor(enemyColor);
                             }
 
+                            thisTurnTiles[i - 1, j].currentCard.transform.parent = thisTurnTiles[i - 1, j].tileHolder.transform;
                             yield return new WaitForEndOfFrame();
                         }
                     }
@@ -521,6 +524,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                                 thisTurnTiles[i - 1, j].ChangeTileColor(enemyColor);
                             }
 
+                            thisTurnTiles[i - 1, j].currentCard.transform.parent = thisTurnTiles[i - 1, j].tileHolder.transform;
                             yield return new WaitForEndOfFrame();
                         }
                     }
@@ -593,6 +597,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                                     thisTurnTiles[i + 2, j].ChangeTileColor(playerColor);
                                 }
 
+                                thisTurnTiles[i + 2, j].currentCard.transform.parent = thisTurnTiles[i + 2, j].tileHolder.transform;
+
                                 yield return new WaitForEndOfFrame();
                             }
                         }
@@ -621,6 +627,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                                 thisTurnTiles[i + 1, j].ChangeTileColor(playerColor);
                             }
 
+                            thisTurnTiles[i + 1, j].currentCard.transform.parent = thisTurnTiles[i + 1, j].tileHolder.transform;
                             yield return new WaitForEndOfFrame();
                         }
                     }
@@ -686,6 +693,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                                 thisTurnTiles[i + 1, j].isPlayersTile = true;
                                 thisTurnTiles[i + 1, j].ChangeTileColor(playerColor);
                             }
+
+                            thisTurnTiles[i + 1, j].currentCard.transform.parent = thisTurnTiles[i + 1, j].tileHolder.transform;
 
                             yield return new WaitForEndOfFrame();
                         }
