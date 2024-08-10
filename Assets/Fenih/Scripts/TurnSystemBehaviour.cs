@@ -3,6 +3,7 @@ using MoreMountains.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum CurrentState
@@ -397,6 +398,8 @@ public class TurnSystemBehaviour : MonoBehaviour
         Vector3 originalPos = card.transform.localPosition;
         Quaternion originalRot = card.transform.localRotation;
 
+        card.PutCardOnBoard();
+
         while(lerp < 1)
         {
             lerp += Time.deltaTime * speed;
@@ -436,62 +439,15 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
-                            if (thisTurnTiles[i - 1, j].currentCard.category == Category.Building && thisTurnTiles[i - 2, j].currentCard == null)
+                            if (thisTurnTiles[i - 1, j].currentCard.category == Category.Building)
                             {
-                                thisTurnTiles[i - 2, j].currentCard = curTile.currentCard;
-                                curTile.currentCard = null;
-
-                                float lerp = 0;
-                                float speed = 7.5f;
-
-                                Vector3 originalPos = thisTurnTiles[i - 2, j].currentCard.transform.position;
-                                Vector3 goalPos = thisTurnTiles[i - 2, j].tileHolder.transform.position + Vector3.up * .05f;
-
-                                while (lerp < 1)
-                                {
-                                    lerp += Time.deltaTime * speed;
-                                    thisTurnTiles[i - 2, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-                                    yield return new WaitForEndOfFrame();
-                                }
-
-                                if (!thisTurnTiles[i - 2, j].isPlayersTile)
-                                {
-                                    thisTurnTiles[i - 2, j].isPlayersTile = false;
-                                    thisTurnTiles[i - 2, j].ChangeTileColor(enemyColor);
-                                }
-
-                                thisTurnTiles[i - 2, j].currentCard.transform.parent = thisTurnTiles[i - 2, j].tileHolder.transform;
-
-                                yield return new WaitForEndOfFrame();
+                                yield return MoveSecondaryCard(i - 1, j, curTile);
                             }
                         }
 
                         else
                         {
-                            thisTurnTiles[i - 1, j].currentCard = curTile.currentCard;
-                            curTile.currentCard = null;
-
-                            float lerp = 0;
-                            float speed = 7.5f;
-
-                            Vector3 originalPos = thisTurnTiles[i - 1, j].currentCard.transform.position;
-                            Vector3 goalPos = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
-
-                            while (lerp < 1)
-                            {
-                                lerp += Time.deltaTime * speed;
-                                thisTurnTiles[i - 1, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-                                yield return new WaitForEndOfFrame();
-                            }
-
-                            if (!thisTurnTiles[i - 1, j].isPlayersTile)
-                            {
-                                thisTurnTiles[i - 1, j].isPlayersTile = false;
-                                thisTurnTiles[i - 1, j].ChangeTileColor(enemyColor);
-                            }
-
-                            thisTurnTiles[i - 1, j].currentCard.transform.parent = thisTurnTiles[i - 1, j].tileHolder.transform;
-                            yield return new WaitForEndOfFrame();
+                            yield return MoveMainCard(i - 1, j, curTile, true);
                         }
                     }
 
@@ -499,17 +455,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
-                            if (curTile.currentCard.damage > 0 && !thisTurnTiles[i - 1, j].isPlayersTile)
-                            {
-                                juicePlayer.PlayFeedbacks();
-                                int enemyHP = thisTurnTiles[i - 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
-
-                                if (enemyHP <= 0)
-                                {
-                                    Destroy(thisTurnTiles[i - 1, j].currentCard.gameObject);
-                                    thisTurnTiles[i - 1, j].currentCard = null;
-                                }
-                            }
+                            yield return TryDoingDamage(i - 1, j, curTile);
                         }
                     }
 
@@ -517,45 +463,12 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
-                            if (curTile.currentCard.damage > 0 && thisTurnTiles[i - 1, j].isPlayersTile)
-                            {
-                                juicePlayer.PlayFeedbacks();
-                                int allyHP = thisTurnTiles[i - 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
-
-                                if (allyHP <= 0)
-                                {
-                                    Destroy(thisTurnTiles[i - 1, j].currentCard.gameObject);
-                                    thisTurnTiles[i - 1, j].currentCard = null;
-                                }
-                            }
+                            yield return TryDoingDamage(i - 1, j, curTile);
                         }
 
                         else
                         {
-                            thisTurnTiles[i - 1, j].currentCard = curTile.currentCard;
-                            curTile.currentCard = null;
-
-                            float lerp = 0;
-                            float speed = 7.5f;
-
-                            Vector3 originalPos = thisTurnTiles[i - 1, j].currentCard.transform.position;
-                            Vector3 goalPos = thisTurnTiles[i - 1, j].tileHolder.transform.position + Vector3.up * .05f;
-
-                            while (lerp < 1)
-                            {
-                                lerp += Time.deltaTime * speed;
-                                thisTurnTiles[i - 1, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-                                yield return new WaitForEndOfFrame();
-                            }
-
-                            if (thisTurnTiles[i - 1, j].isPlayersTile)
-                            {
-                                thisTurnTiles[i - 1, j].isPlayersTile = false;
-                                thisTurnTiles[i - 1, j].ChangeTileColor(enemyColor);
-                            }
-
-                            thisTurnTiles[i - 1, j].currentCard.transform.parent = thisTurnTiles[i - 1, j].tileHolder.transform;
-                            yield return new WaitForEndOfFrame();
+                            yield return MoveMainCard(i - 1, j, curTile, true);
                         }
                     }
                 }
@@ -590,6 +503,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         currentlyWorking = false;
     }
 
+
     private IEnumerator PlayingCards()
     {
         OnChangeCamera?.Invoke(this, CurrentCamera.PlayingCards);
@@ -615,62 +529,15 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[i + 1, j].currentCard != null)
                         {
-                            if (thisTurnTiles[i + 1, j].currentCard.category == Category.Building && thisTurnTiles[i + 2, j].currentCard == null)
+                            if (thisTurnTiles[i + 1, j].currentCard.category == Category.Building)
                             {
-                                thisTurnTiles[i + 2, j].currentCard = curTile.currentCard;
-                                curTile.currentCard = null;
-
-                                float lerp = 0;
-                                float speed = 7.5f;
-
-                                Vector3 originalPos = thisTurnTiles[i + 2, j].currentCard.transform.position;
-                                Vector3 goalPos = thisTurnTiles[i + 2, j].tileHolder.transform.position + Vector3.up * .05f;
-
-                                while (lerp < 1)
-                                {
-                                    lerp += Time.deltaTime * speed;
-                                    thisTurnTiles[i + 2, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-                                    yield return new WaitForEndOfFrame();
-                                }
-
-                                if (!thisTurnTiles[i + 2, j].isPlayersTile)
-                                {
-                                    thisTurnTiles[i + 2, j].isPlayersTile = true;
-                                    thisTurnTiles[i + 2, j].ChangeTileColor(playerColor);
-                                }
-
-                                thisTurnTiles[i + 2, j].currentCard.transform.parent = thisTurnTiles[i + 2, j].tileHolder.transform;
-
-                                yield return new WaitForEndOfFrame();
+                                yield return MoveSecondaryCard(i + 1, j, curTile);
                             }
                         }
 
                         else
                         {
-                            thisTurnTiles[i + 1, j].currentCard = curTile.currentCard;
-                            curTile.currentCard = null;
-
-                            float lerp = 0;
-                            float speed = 7.5f;
-
-                            Vector3 originalPos = thisTurnTiles[i + 1, j].currentCard.transform.position;
-                            Vector3 goalPos = thisTurnTiles[i + 1, j].tileHolder.transform.position + Vector3.up * .05f;
-
-                            while (lerp < 1)
-                            {
-                                lerp += Time.deltaTime * speed;
-                                thisTurnTiles[i + 1, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-                                yield return new WaitForEndOfFrame();
-                            }
-
-                            if (!thisTurnTiles[i + 1, j].isPlayersTile)
-                            {
-                                thisTurnTiles[i + 1, j].isPlayersTile = true;
-                                thisTurnTiles[i + 1, j].ChangeTileColor(playerColor);
-                            }
-
-                            thisTurnTiles[i + 1, j].currentCard.transform.parent = thisTurnTiles[i + 1, j].tileHolder.transform;
-                            yield return new WaitForEndOfFrame();
+                            yield return MoveMainCard(i + 1, j, curTile);
                         }
                     }
 
@@ -678,21 +545,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[i + 1, j].currentCard != null)
                         {
-                            if (curTile.currentCard.damage > 0 && !thisTurnTiles[i + 1, j].isPlayersTile)
-                            {
-                                int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
-
-                                juicePlayer.PlayFeedbacks();
-
-                                if (enemyHP <= 0)
-                                {
-                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
-
-                                    thisTurnTiles[i + 1, j].currentCard = null;
-                                    
-                                    
-                                }
-                            }
+                            yield return TryDoingDamage(i + 1, j, curTile);
                         }
                     }
 
@@ -701,48 +554,12 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[i + 1, j].currentCard != null)
                         {
-                            if (curTile.currentCard.damage > 0 && !thisTurnTiles[i + 1, j].isPlayersTile)
-                            {
-                                int enemyHP = thisTurnTiles[i + 1, j].currentCard.TakeDamage(curTile.currentCard.damage);
-
-                                juicePlayer.PlayFeedbacks();
-
-                                if (enemyHP <= 0)
-                                {
-                                    Destroy(thisTurnTiles[i + 1, j].currentCard.gameObject);
-                                    thisTurnTiles[i + 1, j].currentCard = null;
-                                }
-                            }
+                            yield return TryDoingDamage(i + 1, j, curTile);
                         }
 
                         else if (thisTurnTiles[i + 1, j].currentCard == null)
                         {
-                            thisTurnTiles[i + 1, j].currentCard = curTile.currentCard;
-                            curTile.currentCard = null;
-
-                            float lerp = 0;
-                            float speed = 7.5f;
-
-                            Vector3 originalPos = thisTurnTiles[i + 1, j].currentCard.transform.position;
-                            Vector3 goalPos = thisTurnTiles[i + 1, j].tileHolder.transform.position + Vector3.up * .05f;
-
-                            while (lerp < 1)
-                            {
-                                lerp += Time.deltaTime * speed;
-                                thisTurnTiles[i + 1, j].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-                                yield return new WaitForEndOfFrame();
-                            }
-
-
-                            if (!thisTurnTiles[i + 1, j].isPlayersTile)
-                            {
-                                thisTurnTiles[i + 1, j].isPlayersTile = true;
-                                thisTurnTiles[i + 1, j].ChangeTileColor(playerColor);
-                            }
-
-                            thisTurnTiles[i + 1, j].currentCard.transform.parent = thisTurnTiles[i + 1, j].tileHolder.transform;
-
-                            yield return new WaitForEndOfFrame();
+                            yield return MoveMainCard(i + 1, j, curTile);
                         }
                     }
                 }
@@ -772,6 +589,87 @@ public class TurnSystemBehaviour : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
+    private IEnumerator TryDoingDamage(int row, int col, BoardTile curTile)
+    {
+        if (curTile.currentCard.damage > 0 && thisTurnTiles[row, col].isPlayersTile)
+        {
+            curTile.currentCard.GetComponent<CardBehaviour>().MakeDamage();
+            yield return new WaitForSeconds(.1f);
+            juicePlayer.PlayFeedbacks();
+            int allyHP = thisTurnTiles[row, col].currentCard.TakeDamage(curTile.currentCard.damage);
+
+            if (allyHP <= 0)
+            {
+                Destroy(thisTurnTiles[row, col].currentCard.gameObject);
+                thisTurnTiles[row, col].currentCard = null;
+
+                if (thisTurnTiles[row, col].secondaryCard != null)
+                {
+                    thisTurnTiles[row, col].currentCard = thisTurnTiles[row, col].secondaryCard;
+                    thisTurnTiles[row, col].secondaryCard = null;
+
+                    thisTurnTiles[row, col].currentCard.transform.position = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
+                }
+            }
+        }
+    }
+
+    private IEnumerator MoveMainCard(int row, int col, BoardTile curTile, bool isEnemy = false)
+    {
+        thisTurnTiles[row, col].currentCard = curTile.currentCard;
+        curTile.currentCard = null;
+
+        float lerp = 0;
+        float speed = 7.5f;
+
+        Vector3 originalPos = thisTurnTiles[row, col].currentCard.transform.position;
+        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
+
+        while (lerp < 1)
+        {
+            lerp += Time.deltaTime * speed;
+            thisTurnTiles[row, col].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (thisTurnTiles[row, col].isPlayersTile && isEnemy)
+        {
+            thisTurnTiles[row, col].isPlayersTile = false;
+            thisTurnTiles[row, col].ChangeTileColor(enemyColor);
+        }
+
+        else if (!thisTurnTiles[row, col].isPlayersTile && !isEnemy)
+        {
+            thisTurnTiles[row, col].isPlayersTile = true;
+            thisTurnTiles[row, col].ChangeTileColor(playerColor);
+        }
+
+        thisTurnTiles[row, col].currentCard.transform.parent = thisTurnTiles[row, col].tileHolder.transform;
+        yield return new WaitForEndOfFrame();
+    }
+
+    private IEnumerator MoveSecondaryCard(int row, int col, BoardTile curTile)
+    {
+        thisTurnTiles[row, col].secondaryCard = curTile.currentCard;
+        curTile.currentCard = null;
+
+        float lerp = 0;
+        float speed = 7.5f;
+
+        Vector3 originalPos = thisTurnTiles[row, col].secondaryCard.transform.position;
+        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .1f;
+
+        while (lerp < 1)
+        {
+            lerp += Time.deltaTime * speed;
+            thisTurnTiles[row, col].secondaryCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
+            yield return new WaitForEndOfFrame();
+        }
+
+        thisTurnTiles[row, col].secondaryCard.transform.parent = thisTurnTiles[row, col].tileHolder.transform;
+
+        yield return new WaitForEndOfFrame();
+    }
 
     private void PuttingCardsOnBoard() 
     {
@@ -790,7 +688,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                     energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired);
 
-                    StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .2f, hoveredCard));
+                    StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .05f, hoveredCard));
                 }
 
                 if (hoveredCard == null)
@@ -799,7 +697,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     hoveredCardBehaviour = hoveredCard.GetComponent<CardBehaviour>();
                     energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired);
 
-                    StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .2f, hoveredCard));
+                    StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .05f, hoveredCard));
                 }
             }
         }
@@ -966,6 +864,11 @@ public class TurnSystemBehaviour : MonoBehaviour
             curCardTransform.localPosition = Vector3.zero;
             curCardTransform.localRotation = Quaternion.identity;
         }
+
+        for (int i = 0; i < currentCards.Count; i++)
+        {
+            defaultCardScale[i] = currentCards[i].transform.localScale;
+        }
     }
 
 
@@ -1036,6 +939,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                 cardWhooshSounds.Play();
             }
 
+            curCard.GetComponent<CardBehaviour>().ShowCard();
+
             while(lerp < 1)
             {
                 lerp += Time.deltaTime * lerpSpeed;
@@ -1054,11 +959,6 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
 
         currentState = CurrentState.PuttingCardsOnBoard;
-
-        for (int i = 0; i < currentCards.Count; i++)
-        {
-            defaultCardScale[i] = currentCards[i].transform.localScale;
-        }
 
         RefreshDrawnCardsPositions();
 
@@ -1082,6 +982,8 @@ public class TurnSystemBehaviour : MonoBehaviour
             float lerpSpeed = 6.5f;
             Vector3 originalPos = curCardTransform.localPosition;
             Quaternion originalRot = curCardTransform.localRotation;
+
+            curCard.GetComponent<CardBehaviour>().PutOnPile();
 
             while (lerp < 1)
             {

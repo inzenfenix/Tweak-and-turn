@@ -195,6 +195,8 @@ public class BoardManager : MonoBehaviour
 
                     selectedCard.transform.localScale += new Vector3(1, 0, 1) * 0.04f;
 
+                    selectedCard.GetComponent<CardBehaviour>().PutCardOnBoard();
+
                     CardBehaviour chosenCardBehaviour = selectedCard.GetComponent<CardBehaviour>();
 
                     if(chosenCardBehaviour.category != Category.Throwable)

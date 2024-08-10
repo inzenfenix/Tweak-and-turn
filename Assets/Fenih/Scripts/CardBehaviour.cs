@@ -11,6 +11,7 @@ public enum SpecialAbilities
     DrawUP,
     HealCard,
     RowAttack,
+    None
 };
 
 public enum Category
@@ -35,6 +36,13 @@ public class CardBehaviour : MonoBehaviour
 
     [HideInInspector] public bool cardPlayed = false;
 
+    [SerializeField] private GameObject drawnCardShow;
+    [SerializeField] private GameObject boardCardShow;
+    [SerializeField] private GameObject characterGO;
+
+    [SerializeField] private Animator characterAnimator;
+
+
     public int TakeDamage(int amount)
     {
         hp -= amount;
@@ -46,5 +54,31 @@ public class CardBehaviour : MonoBehaviour
         hp += amount;
 
         return hp;
+    }
+
+    public void ShowCard()
+    {
+        drawnCardShow.SetActive(true);
+        boardCardShow.SetActive(false);
+        characterGO.SetActive(false);
+    }
+
+    public void PutCardOnBoard()
+    {
+        drawnCardShow.SetActive(false);
+        boardCardShow.SetActive(true);
+        characterGO.SetActive(true);
+    }
+
+    public void PutOnPile()
+    {
+        drawnCardShow.SetActive(false);
+        boardCardShow.SetActive(true);
+        characterGO.SetActive(false);
+    }
+
+    public void MakeDamage()
+    {
+        characterAnimator.SetTrigger("OnMakeDamage");
     }
 }

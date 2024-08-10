@@ -8,6 +8,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] GameObject puttingCardOnBoardCamera;
     [SerializeField] GameObject lookingAtBatteryCamera;
 
+    [SerializeField] GameObject ortoCamera;
+
     private void OnEnable()
     {
         TurnSystemBehaviour.OnCardChose += TurnSystemBehaviour_OnCardChose;

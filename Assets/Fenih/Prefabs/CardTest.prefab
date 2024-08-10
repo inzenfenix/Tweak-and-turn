@@ -122,5 +122,7 @@ MonoBehaviour:
   hp: 2
   range: 1
   energyRequired: 2
-  ability: 0
+  ability: 6
+  category: 0
   cardName: Warrior
+  cardPlayed: 0
