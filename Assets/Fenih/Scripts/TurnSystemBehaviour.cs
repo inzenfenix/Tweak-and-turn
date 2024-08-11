@@ -904,7 +904,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                             }
                         }
 
-                        if(!madeDamage)
+                        if(!madeDamage && thisTurnTiles[i + 1, j].currentCard == null)
                         {
                             yield return MoveMainCard(i + 1, j, curTile);
                         }
