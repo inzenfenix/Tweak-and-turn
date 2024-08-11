@@ -993,19 +993,22 @@ public class TurnSystemBehaviour : MonoBehaviour
             curTile.currentCard.GetComponent<CardBehaviour>().MakeDamage();
             yield return new WaitForSeconds(.2f);
             juicePlayer.PlayFeedbacks();
-            int cardHP = thisTurnTiles[row, col].currentCard.TakeDamage(curTile.currentCard.damage);
-
-            if (cardHP <= 0)
+            if (thisTurnTiles[row, col].currentCard != null)
             {
-                Destroy(thisTurnTiles[row, col].currentCard.gameObject, .25f);
-                thisTurnTiles[row, col].currentCard = null;
+                int cardHP = thisTurnTiles[row, col].currentCard.TakeDamage(curTile.currentCard.damage);
 
-                if (thisTurnTiles[row, col].secondaryCard != null)
+                if (cardHP <= 0)
                 {
-                    thisTurnTiles[row, col].currentCard = thisTurnTiles[row, col].secondaryCard;
-                    thisTurnTiles[row, col].secondaryCard = null;
+                    Destroy(thisTurnTiles[row, col].currentCard.gameObject, .25f);
+                    thisTurnTiles[row, col].currentCard = null;
 
-                    thisTurnTiles[row, col].currentCard.transform.position = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
+                    if (thisTurnTiles[row, col].secondaryCard != null)
+                    {
+                        thisTurnTiles[row, col].currentCard = thisTurnTiles[row, col].secondaryCard;
+                        thisTurnTiles[row, col].secondaryCard = null;
+
+                        thisTurnTiles[row, col].currentCard.transform.position = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
+                    }
                 }
             }
         }
