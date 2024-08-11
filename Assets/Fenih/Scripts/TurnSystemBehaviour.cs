@@ -676,6 +676,9 @@ public class TurnSystemBehaviour : MonoBehaviour
                             case SpecialAbilities.EnergyUP:
                                 energyManager.extraEnergyAI++;
                                 break;
+                            case SpecialAbilities.AttackUp:
+                                extraAttackEnemy++;
+                                break;
 
                             default:
                                 break;
@@ -1039,6 +1042,9 @@ public class TurnSystemBehaviour : MonoBehaviour
                 case SpecialAbilities.EnergyUP:
                     energyManager.extraEnergyAI--;
                     break;
+                case SpecialAbilities.AttackUp:
+                    extraAttackEnemy--;
+                    break;
 
                 default:
                     break;
@@ -1056,6 +1062,9 @@ public class TurnSystemBehaviour : MonoBehaviour
                     break;
                 case SpecialAbilities.EnergyUP:
                     energyManager.extraEnergy--;
+                    break;
+                case SpecialAbilities.AttackUp:
+                    extraAttackPlayer--;
                     break;
 
                 default:
@@ -1148,7 +1157,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         float speed = 7.5f;
 
         Vector3 originalPos = thisTurnTiles[row, col].secondaryCard.transform.position;
-        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .1f;
+        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .15f;
 
         while (lerp < 1)
         {

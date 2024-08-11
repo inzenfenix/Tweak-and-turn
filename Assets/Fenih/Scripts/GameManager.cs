@@ -9,6 +9,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private LayerMask endTurnLayer;
 
+    [SerializeField] private AudioSource bgMusic1;
+    [SerializeField] private AudioSource bgMusic2;
+
+    private void OnEnable()
+    {
+        bgMusic1.Play(1);
+        bgMusic2.Play(1);
+    }
+
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
