@@ -25,6 +25,9 @@ public class EnergyManager : MonoBehaviour
     [HideInInspector] public int extraEnergy;
     [HideInInspector] public int extraEnergyAI;
 
+    [SerializeField] private AudioSource energySound;
+    [SerializeField] private AudioClip[] energyAudios;
+
 
     private void Awake()
     {
@@ -133,8 +136,10 @@ public class EnergyManager : MonoBehaviour
         {
             for (int i = 0; i < currentEnergy; i++)
             {
+                energySound.clip = energyAudios[i];
+                energySound.Play();
                 yield return new WaitForEndOfFrame();
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(.15f);
                 energyMats[i].color = Color.cyan;
             }
         }
@@ -143,8 +148,11 @@ public class EnergyManager : MonoBehaviour
         {
             for (int i = 0; i < energyMats.Length; i++)
             {
+                energySound.clip = energyAudios[i];
+                energySound.Play();
+
                 yield return new WaitForEndOfFrame();
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(.15f);
                 energyMats[i].color = Color.cyan;
             }
 

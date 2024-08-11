@@ -856,7 +856,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(.2f);
         }
 
         yield return new WaitForSeconds(0.1f);
@@ -989,7 +989,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.2f);
         }
 
         for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
@@ -1181,6 +1181,8 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         Vector3 originalPos = thisTurnTiles[row, col].currentCard.transform.position;
         Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
+
+        thisTurnTiles[row, col].currentCard.cardPlayed = true;
 
         while (lerp < 1)
         {

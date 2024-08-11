@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource bgMusic1;
     [SerializeField] private AudioSource bgMusic2;
 
+    [SerializeField] private AudioSource bellSound;
+
     private void OnEnable()
     {
-        bgMusic1.Play(1);
-        bgMusic2.Play(1);
+        bgMusic1.PlayDelayed(1);
+        bgMusic2.PlayDelayed(1);
     }
 
     private void Update()
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
 
             if(Physics.Raycast(cameraRay, float.MaxValue, endTurnLayer))
             {
+                bellSound.Play();
                 OnEndTurn?.Invoke(this, EventArgs.Empty);
             }
         }
