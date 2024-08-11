@@ -769,7 +769,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
-                            if (thisTurnTiles[i - 1, j].currentCard.category == Category.Building)
+                            if (thisTurnTiles[i - 1, j].currentCard.category == Category.Building && thisTurnTiles[i - 1, j].secondaryCard == null)
                             {
                                 yield return MoveSecondaryCard(i - 1, j, curTile);
                                 continue;
@@ -788,7 +788,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                             }
                         }
 
-                        if(!madeDamage)
+                        if(!madeDamage && thisTurnTiles[i - 1, j].currentCard == null)
                         {
                             yield return MoveMainCard(i - 1, j, curTile, true);
                         }
@@ -877,15 +877,13 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
                 {
-                    
-
                     if (i == 0)
                     {
                         bool madeDamage = false;
 
                         if (thisTurnTiles[i + 1, j].currentCard != null)
                         {
-                            if (thisTurnTiles[i + 1, j].currentCard.category == Category.Building)
+                            if (thisTurnTiles[i + 1, j].currentCard.category == Category.Building && thisTurnTiles[i + 1, j].secondaryCard == null)
                             {
                                 yield return MoveSecondaryCard(i + 1, j, curTile);
                                 continue;

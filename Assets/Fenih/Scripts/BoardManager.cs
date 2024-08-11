@@ -139,7 +139,7 @@ public class BoardManager : MonoBehaviour
                     hoveredTile = tile = tiles[i, j];
                     CardBehaviour chosenCard = selectedCard.GetComponent<CardBehaviour>();
 
-                    if (tile.isPlayersTile && (i == 0 || turnSystemBehaviour.currentTurn < 3) && chosenCard.category == Category.Normal && tile.currentCard == null)
+                    if (tile.isPlayersTile && (i == 0 || turnSystemBehaviour.currentTurn <= 3) && chosenCard.category == Category.Normal && tile.currentCard == null)
                     {
                         playableTile = true;
                         rejectSymbol.gameObject.SetActive(false);

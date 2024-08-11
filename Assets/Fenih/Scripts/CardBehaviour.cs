@@ -83,6 +83,7 @@ public class CardBehaviour : MonoBehaviour
 
     public void MakeDamage()
     {
-        characterAnimator.SetTrigger("OnMakeDamage");
+        if(characterAnimator != null)
+            characterAnimator.SetTrigger("OnMakeDamage");
     }
 }
