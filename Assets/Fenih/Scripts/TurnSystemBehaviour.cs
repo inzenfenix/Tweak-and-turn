@@ -967,15 +967,15 @@ public class TurnSystemBehaviour : MonoBehaviour
                             yield return MoveMainCard(i + 1, j, curTile);
                         }
                     }
+                }
 
-                    else if(curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
+                else if (curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
+                {
+                    if (curTile.secondaryCard != null)
                     {
-                        if (curTile.secondaryCard != null)
+                        if (thisTurnTiles[i + 1, j].currentCard == null)
                         {
-                            if (thisTurnTiles[i + 1, j].currentCard == null)
-                            {
-                                yield return MoveSecondaryCardForward(i + 1, j, curTile);
-                            }
+                            yield return MoveSecondaryCardForward(i + 1, j, curTile);
                         }
                     }
                 }
