@@ -3,6 +3,7 @@ using MoreMountains.Tools;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -36,6 +37,7 @@ public class TurnSystemBehaviour : MonoBehaviour
     private List<GameObject> currentCards;
 
     private int amountOfDrawCards = 5;
+    private int amountOfDrawCardsAI = 6;
 
     private int drawPileInitialAmount = 50;
 
@@ -52,13 +54,11 @@ public class TurnSystemBehaviour : MonoBehaviour
     [SerializeField] private Transform discardPile;
     private float currentDiscardPileYOffset = 0;
 
-    private int maxTurns = 15;
+    private int maxTurns = 2;
     [HideInInspector] public int currentTurn = 1;
 
     private CurrentState currentState;
     private CurrentState currentStateAI;
-
-    private float enemyTimeTest = 0;
 
     private GameObject hoveredCard;
     private CardBehaviour hoveredCardBehaviour;
@@ -89,10 +89,38 @@ public class TurnSystemBehaviour : MonoBehaviour
     [SerializeField] private AudioSource cardWhooshSounds;
     [SerializeField] private AudioClip[] cardWhooshClips;
 
+    [SerializeField] private TextMeshPro turnText;
+
+    private bool finishGame = false;
+
+    [SerializeField] private GameObject[] obeliskGemsPlayer;
+    [SerializeField] private GameObject[] obeliskGemsEnemy;
+
+    [SerializeField] private Material obelliskNormalMat;
+    [SerializeField] private Material obelliskEmissiveMat;
+
+    int currentTurnsObeliskPlayer = 0;
+    int currentTurnsObeliskEnemy = 0;
+
+    bool[] levelsObeliskPlayer;
+    bool[] levelsObeliskEnemy;
+
+    int extraHPPlayer = 0;
+    int extraHPEnemy = 0;
+
+    int extraAttackPlayer = 0;
+    int extraAttackEnemy = 0;
+
     private void Awake()
     {
+        amountOfDrawCards = 5;
+        amountOfDrawCardsAI = 6;
+
+        currentDrawPileYOffset = 0;
+        currentDiscardPileYOffset = 0;
+
         currentCardAmount = 0;
-        currentTurn = 1;
+        currentTurn = 20;
 
         availableCards = new List<GameObject>();
         discardCards = new List<GameObject>();
@@ -115,6 +143,19 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         if (cardWhooshClips.Length > 0)
             cardWhooshSounds.clip = cardWhooshClips[0];
+
+        turnText.text = "Current Turn\n" + currentTurn + "/" + maxTurns;
+
+        finishGame = false;
+
+        levelsObeliskPlayer = new bool[obeliskGemsPlayer.Length];
+        levelsObeliskEnemy = new bool[obeliskGemsEnemy.Length];
+
+        for(int i = 0; i < obeliskGemsPlayer.Length; i++)
+        {
+            levelsObeliskEnemy[i] = levelsObeliskPlayer[i] = false;
+        }
+
     }
 
     private void OnEnable()
@@ -152,6 +193,8 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (finishGame) return;
+
         if (currentlyWorking) return;
 
         switch (currentState)
@@ -211,6 +254,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 break;
 
             case (CurrentState.PassTurn):
+                CheckObelisks();
                 for (int i = 0; i < currentCardsAI.Count; i++)
                 {
                     Destroy(currentCardsAI[i]);
@@ -224,17 +268,252 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
     }
 
+    private void CheckObelisks()
+    {
+        BoardTile[,] tiles = boardManager.Tiles;
+
+        int playerWinningCols = 0;
+        int enemyWinningCols = 0;
+
+        for (int i = 0; i < tiles.GetLength(1); i++)
+        {
+            int tilesPerColPlayer = 0;
+            int tilesPerColEnemy = 0;
+
+            for (int j = 0; j < tiles.GetLength(0); j++)
+            {
+                if (tiles[j, i].isPlayersTile) tilesPerColPlayer++;
+                else tilesPerColEnemy++;
+            }
+
+            if (tilesPerColPlayer > tilesPerColEnemy) playerWinningCols++;
+            else enemyWinningCols++;
+        }
+
+        if(playerWinningCols != tiles.GetLength(1))
+        {
+            ResetObelisk();
+        }
+
+        if(enemyWinningCols != tiles.GetLength(1))
+        {
+            ResetObelisk(true);
+        }
+
+        if(playerWinningCols == tiles.GetLength(1))
+        {
+            currentTurnsObeliskPlayer++;
+
+            currentTurnsObeliskPlayer = Mathf.Min(currentTurnsObeliskPlayer, obeliskGemsPlayer.Length);
+
+            for(int i = 0; i < currentTurnsObeliskPlayer; i++)
+            {
+                obeliskGemsPlayer[i].GetComponent<MeshRenderer>().material = obelliskEmissiveMat;
+            }
+
+            switch(currentTurnsObeliskPlayer)
+            {
+                case (1):
+                    if (!levelsObeliskPlayer[currentTurnsObeliskPlayer - 1])
+                    {
+                        levelsObeliskPlayer[currentTurnsObeliskPlayer - 1] = true;
+                        energyManager.extraEnergy++;
+                    }
+                    break;
+                case (2):
+                    if (!levelsObeliskPlayer[currentTurnsObeliskPlayer - 1])
+                    {
+                        levelsObeliskPlayer[currentTurnsObeliskPlayer - 1] = true;
+                        energyManager.extraEnergy++;
+                    }
+                    break;
+                case (3):
+                    if (!levelsObeliskPlayer[currentTurnsObeliskPlayer - 1])
+                    {
+                        levelsObeliskPlayer[currentTurnsObeliskPlayer - 1] = true;
+                        extraHPPlayer++;
+                    }
+                    break;
+                case (4):
+                    if (!levelsObeliskPlayer[currentTurnsObeliskPlayer - 1])
+                    {
+                        levelsObeliskPlayer[currentTurnsObeliskPlayer - 1] = true;
+                        extraAttackPlayer++;
+                    }
+                    break;
+                case (5):
+                    if (!levelsObeliskPlayer[currentTurnsObeliskPlayer - 1])
+                    {
+                        levelsObeliskPlayer[currentTurnsObeliskPlayer - 1] = true;
+                        extraAttackPlayer++;
+                    }
+                    break;
+
+
+                default:
+                    break;
+            }
+        }
+
+        if(enemyWinningCols == tiles.GetLength(1))
+        {
+            currentTurnsObeliskEnemy++;
+
+            currentTurnsObeliskEnemy = Mathf.Min(currentTurnsObeliskEnemy, obeliskGemsEnemy.Length);
+
+            for (int i = 0; i < currentTurnsObeliskEnemy; i++)
+            {
+                obeliskGemsEnemy[i].GetComponent<MeshRenderer>().material = obelliskEmissiveMat;
+            }
+
+            switch (currentTurnsObeliskEnemy)
+            {
+                case (1):
+                    if (!levelsObeliskEnemy[currentTurnsObeliskEnemy - 1])
+                    {
+                        levelsObeliskEnemy[currentTurnsObeliskEnemy - 1] = true;
+                        energyManager.extraEnergyAI++;
+                    }
+                    break;
+                case (2):
+                    if (!levelsObeliskEnemy[currentTurnsObeliskEnemy - 1])
+                    {
+                        levelsObeliskEnemy[currentTurnsObeliskEnemy - 1] = true;
+                        energyManager.extraEnergyAI++;
+                    }
+                    break;
+                case (3):
+                    if (!levelsObeliskEnemy[currentTurnsObeliskEnemy - 1])
+                    {
+                        levelsObeliskEnemy[currentTurnsObeliskEnemy - 1] = true;
+                        extraHPEnemy++;
+                    }
+                    break;
+                case (4):
+                    if (!levelsObeliskEnemy[currentTurnsObeliskEnemy - 1])
+                    {
+                        levelsObeliskEnemy[currentTurnsObeliskEnemy - 1] = true;
+                        extraAttackEnemy++;
+                    }
+                    break;
+                case (5):
+                    if (!levelsObeliskEnemy[currentTurnsObeliskEnemy - 1])
+                    {
+                        levelsObeliskEnemy[currentTurnsObeliskEnemy - 1] = true;
+                        extraAttackEnemy++;
+                    }
+                    break;
+
+
+                default:
+                    break;
+            }
+        }
+
+
+    }
+
+    private void ResetObelisk(bool isOpponent = false)
+    {
+        GameObject[] obelisk;
+
+        if (isOpponent)
+        {
+
+            currentTurnsObeliskEnemy = 0;
+            obelisk = obeliskGemsEnemy;
+
+            switch (currentTurnsObeliskEnemy)
+            {
+                case (1):
+                    energyManager.extraEnergyAI -= 1;
+                    break;
+                case (2):
+                    energyManager.extraEnergyAI -= 2;
+                    break;
+                case (3):
+                    extraHPEnemy -= 1;
+                    energyManager.extraEnergyAI -= 2;
+                    break;
+                case (4):
+                    extraAttackEnemy -= 1;
+                    energyManager.extraEnergyAI -= 2;
+                    extraHPEnemy -= 1;
+                    break;
+                case (5):
+                    extraAttackEnemy -= 2;
+                    energyManager.extraEnergyAI -= 2;
+                    extraHPEnemy -= 1;
+                    break;
+                default:
+                    break;
+            }
+
+            for (int i = 0; i < levelsObeliskEnemy.Length; i++)
+            {
+                levelsObeliskEnemy[i] = false;
+            }
+        }
+
+        else
+        {
+            switch (currentTurnsObeliskPlayer)
+            {
+                case (1):
+                    energyManager.extraEnergy -= 1;
+                    break;
+                case (2):
+                        energyManager.extraEnergy -= 2;
+                    break;
+                case (3):
+                    extraHPPlayer -= 1;
+                    energyManager.extraEnergy -= 2;
+                    break;
+                case (4):
+                    extraAttackPlayer -= 1;
+                    energyManager.extraEnergy -= 2;
+                    extraHPPlayer -= 1;
+                    break;
+                case (5):
+                    extraAttackPlayer -= 2;
+                    energyManager.extraEnergy -= 2;
+                    extraHPPlayer -= 1;
+                    break;
+                default:
+                    break;
+            }
+
+            for(int i = 0; i < levelsObeliskPlayer.Length; i++)
+            {
+                levelsObeliskPlayer[i] = false;
+            }
+
+            currentTurnsObeliskPlayer = 0;
+            obelisk = obeliskGemsPlayer;
+        }
+
+        for(int i = 0; i < obelisk.Length;i++)
+        {
+            obelisk[i].GetComponent<MeshRenderer>().material = obelliskNormalMat;
+        }
+
+        
+    }
+
+
     private void DrawCardsAI()
     {
         currentCardsAI = new List<GameObject>();
 
-        for (int i = 0; i < amountOfDrawCards; i++)
+        for (int i = 0; i < amountOfDrawCardsAI; i++)
         {
             int randomCardIndex = UnityEngine.Random.Range(0, cardsPrefabs.Length);
 
             GameObject newCard = GameObject.Instantiate(cardsPrefabs[randomCardIndex], Vector3.up * 30f + Vector3.forward * 20f, Quaternion.identity);
 
             currentCardsAI.Add(newCard);
+            newCard.GetComponent<CardBehaviour>().hp += extraHPEnemy;
+            newCard.GetComponent<CardBehaviour>().damage += extraAttackEnemy;
         }
 
         currentStateAI = CurrentState.PuttingCardsOnBoard;
@@ -245,7 +524,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         thisTurnTiles = boardManager.Tiles;
         currentlyWorking = true;
 
-        int energy = energyManager.currentRechargeEnergy;
+        int energy = energyManager.currentEnergyAI;
 
         bool playedCard;
 
@@ -273,12 +552,61 @@ public class TurnSystemBehaviour : MonoBehaviour
             else winning[i] = false;
         }
 
+        int losingColumnIndex = 0;
+        bool losingRow = false;
+        for(int i = 0; i < winning.Length; i++)
+        {
+            if (!winning[i])
+            {
+                losingColumnIndex = i;
+                losingRow = true;
+                break;
+            }
+        }
+
+        if(losingRow)
+        {
+            int farthestRow = -1;
+
+            if(thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, losingColumnIndex].currentCard == null)
+            {
+                farthestRow = boardManager.Tiles.GetLength(0) - 1;
+            }
+
+            if (currentTurn < 3)
+            {
+                for (int i = rows - 1; i >= 0; i--)
+                {
+                    if (!thisTurnTiles[i, losingColumnIndex].isPlayersTile && thisTurnTiles[i, losingColumnIndex].currentCard == null)
+                    {
+                        farthestRow = i;
+                    }
+                }
+            }
+
+            if (farthestRow != -1)
+            {
+                for (int i = 0; i < currentCardsAI.Count; i++)
+                {
+                    CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
+                    if (card.category == Category.Normal && card.energyRequired <= energy)
+                    {
+                        currentCardsAI.Remove(card.gameObject);
+                        energy -= card.energyRequired;
+
+                        yield return StartCoroutine(PlaceCardOnTileAI(card, thisTurnTiles[farthestRow, losingColumnIndex]));
+                        break;
+                    }
+                }
+            }
+        }
+
         //Add normal cards
         for (int i = 0; i < currentCardsAI.Count; i++)
         {
             CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
 
-            if ((card.category == Category.Normal || card.category == Category.Special) && card.energyRequired < energy)
+            if ((card.category == Category.Normal || card.category == Category.Special) && card.energyRequired <= energy)
             {
                 if (currentTurn > 3)
                 {
@@ -331,7 +659,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         {
             CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
 
-            if (card.category == Category.Building && card.energyRequired < energy)
+            if (card.category == Category.Building && card.energyRequired <= energy)
             {
                 for (int j = 0; j < columns; j++)
                 {
@@ -358,7 +686,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             {
                 CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
 
-                if (card.energyRequired < energy && (card.category == Category.Normal || card.category == Category.Special))
+                if (card.energyRequired <= energy && (card.category == Category.Normal || card.category == Category.Special))
                 {
                     playedCard = true;
 
@@ -405,7 +733,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             lerp += Time.deltaTime * speed;
 
             card.transform.localPosition = Vector3.Lerp(originalPos, Vector3.zero + Vector3.up * .5f, lerp);
-            card.transform.localRotation = Quaternion.Lerp(originalRot, Quaternion.identity, lerp);
+            card.transform.localRotation = Quaternion.Lerp(originalRot, Quaternion.identity * Quaternion.Euler(0,180,0), lerp);
 
             yield return new WaitForEndOfFrame();
         }
@@ -437,15 +765,30 @@ public class TurnSystemBehaviour : MonoBehaviour
                 {
                     if (i == thisTurnTiles.GetLength(0) - 1)
                     {
+                        bool madeDamage = false;
+
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
                             if (thisTurnTiles[i - 1, j].currentCard.category == Category.Building)
                             {
                                 yield return MoveSecondaryCard(i - 1, j, curTile);
+                                continue;
                             }
                         }
 
-                        else
+                        for (int k = 1; k <= curTile.currentCard.range; k++)
+                        {
+                            if (i - k < 0) break;
+
+                            if (thisTurnTiles[i - k, j].isPlayersTile)
+                            {
+                                madeDamage = true;
+                                yield return TryDoingDamage(i - k, j, curTile, true);
+                                break;
+                            }
+                        }
+
+                        if(!madeDamage)
                         {
                             yield return MoveMainCard(i - 1, j, curTile, true);
                         }
@@ -455,18 +798,27 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[i - 1, j].currentCard != null)
                         {
-                            yield return TryDoingDamage(i - 1, j, curTile);
+                            yield return TryDoingDamage(i - 1, j, curTile, true);
                         }
                     }
 
                     if ((i - 1 >= 0) && (i != thisTurnTiles.GetLength(0) - 1) && (i - 1 != 0))
                     {
-                        if (thisTurnTiles[i - 1, j].currentCard != null)
+                        bool madeDamage = false;
+
+                        for (int k = 1; k <= curTile.currentCard.range; k++)
                         {
-                            yield return TryDoingDamage(i - 1, j, curTile);
+                            if (i - k < 0) break;
+
+                            else if(thisTurnTiles[i - k, j].currentCard != null && thisTurnTiles[i - k, j].isPlayersTile)
+                            {
+                                madeDamage = true;
+                                yield return TryDoingDamage(i - k, j, curTile, true);
+                                break;
+                            }
                         }
 
-                        else
+                        if (thisTurnTiles[i - 1, j].currentCard == null && !madeDamage)
                         {
                             yield return MoveMainCard(i - 1, j, curTile, true);
                         }
@@ -525,17 +877,34 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
                 {
+                    
+
                     if (i == 0)
                     {
+                        bool madeDamage = false;
+
                         if (thisTurnTiles[i + 1, j].currentCard != null)
                         {
                             if (thisTurnTiles[i + 1, j].currentCard.category == Category.Building)
                             {
                                 yield return MoveSecondaryCard(i + 1, j, curTile);
+                                continue;
                             }
                         }
 
-                        else
+                        for (int k = 1; k <= curTile.currentCard.range; k++)
+                        {
+                            if (i + k >= thisTurnTiles.GetLength(0)) break;
+
+                            if (thisTurnTiles[i + k, j].isPlayersTile)
+                            {
+                                madeDamage = true;
+                                yield return TryDoingDamage(i + k, j, curTile);
+                                break;
+                            }
+                        }
+
+                        if(!madeDamage)
                         {
                             yield return MoveMainCard(i + 1, j, curTile);
                         }
@@ -543,6 +912,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                     if (i + 1 == thisTurnTiles.GetLength(0) - 1)
                     {
+
                         if (thisTurnTiles[i + 1, j].currentCard != null)
                         {
                             yield return TryDoingDamage(i + 1, j, curTile);
@@ -552,12 +922,22 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                     if ((i + 1 < thisTurnTiles.GetLength(0)) && (i != 0) && (i + 1 != thisTurnTiles.GetLength(0) - 1))
                     {
-                        if (thisTurnTiles[i + 1, j].currentCard != null)
+
+                        bool madeDamage = false;
+
+                        for (int k = 1; k <= curTile.currentCard.range; k++)
                         {
-                            yield return TryDoingDamage(i + 1, j, curTile);
+                            if (i + k >= thisTurnTiles.GetLength(0)) break;
+
+                            if (thisTurnTiles[i + k, j].currentCard != null && !thisTurnTiles[i + k, j].isPlayersTile)
+                            {
+                                madeDamage = true;
+                                yield return TryDoingDamage(i + k, j, curTile);
+                                break;
+                            }
                         }
 
-                        else if (thisTurnTiles[i + 1, j].currentCard == null)
+                        if (thisTurnTiles[i + 1, j].currentCard == null && !madeDamage)
                         {
                             yield return MoveMainCard(i + 1, j, curTile);
                         }
@@ -582,25 +962,42 @@ public class TurnSystemBehaviour : MonoBehaviour
 
 
         currentTurn++;
-        currentState = CurrentState.PassTurn;
-        currentlyWorking = false;
-        OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
+        turnText.text = "Current Turn\n" + currentTurn + "/" + maxTurns;
+        if (currentTurn > maxTurns)
+        {
+            FinishGame();
+        }
+
+        else
+        {
+            currentState = CurrentState.PassTurn;
+            currentlyWorking = false;
+            OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
+        }
 
         yield return new WaitForEndOfFrame();
     }
 
-    private IEnumerator TryDoingDamage(int row, int col, BoardTile curTile)
+    private void FinishGame()
     {
-        if (curTile.currentCard.damage > 0 && thisTurnTiles[row, col].isPlayersTile)
+        finishGame = true;
+        boardManager.FinishGame();
+
+        GetComponent<FinishedGameManager>().FinishedGame(thisTurnTiles);
+    }
+
+    private IEnumerator TryDoingDamage(int row, int col, BoardTile curTile, bool isOpponnent = false)
+    {
+        if (curTile.currentCard.damage > 0 && ((thisTurnTiles[row, col].isPlayersTile && isOpponnent) ||(!thisTurnTiles[row, col].isPlayersTile && !isOpponnent)))
         {
             curTile.currentCard.GetComponent<CardBehaviour>().MakeDamage();
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.2f);
             juicePlayer.PlayFeedbacks();
-            int allyHP = thisTurnTiles[row, col].currentCard.TakeDamage(curTile.currentCard.damage);
+            int cardHP = thisTurnTiles[row, col].currentCard.TakeDamage(curTile.currentCard.damage);
 
-            if (allyHP <= 0)
+            if (cardHP <= 0)
             {
-                Destroy(thisTurnTiles[row, col].currentCard.gameObject);
+                Destroy(thisTurnTiles[row, col].currentCard.gameObject, .25f);
                 thisTurnTiles[row, col].currentCard = null;
 
                 if (thisTurnTiles[row, col].secondaryCard != null)
@@ -738,13 +1135,13 @@ public class TurnSystemBehaviour : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.mouseScrollDelta.y > 0)
         {
             OnCardChose?.Invoke(this, null);
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.mouseScrollDelta.y < 0)
         {
             OnCardChoseExited?.Invoke(this, EventArgs.Empty);
 
@@ -953,6 +1350,9 @@ public class TurnSystemBehaviour : MonoBehaviour
 
             curCard.layer = LayerMask.NameToLayer("DrawnCards");
 
+            curCard.GetComponent<CardBehaviour>().hp += extraHPPlayer;
+            curCard.GetComponent<CardBehaviour>().damage += extraAttackPlayer;
+
             currentCardAmount++;
 
             yield return new WaitForSeconds(0.1f);
@@ -1050,4 +1450,39 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         discardCards = new List<GameObject>();
     }
+
+    private void AddExtraDraw(int amount, bool isOpponent)
+    {
+        if (!isOpponent)
+        {
+            amountOfDrawCards += amount;
+
+            amountOfDrawCards = Mathf.Min(amountOfDrawCards, cardsPositions.Length);
+        }
+        else
+        {
+            amountOfDrawCardsAI += amount;
+
+            amountOfDrawCardsAI = Mathf.Min(amountOfDrawCardsAI, cardsPositions.Length);
+        }
+    }
+
+    private void SubstractExtraCharge(int amount, bool isOpponent)
+    {
+        if (!isOpponent)
+        {
+            amountOfDrawCards -= amount;
+
+            amountOfDrawCards = Mathf.Max(amountOfDrawCards, 5);
+        }
+
+        else
+        {
+            amountOfDrawCardsAI -= amount;
+
+            amountOfDrawCardsAI = Mathf.Max(amountOfDrawCards, 5);
+        }
+    }
+
+
 }

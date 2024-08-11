@@ -42,10 +42,14 @@ public class CardBehaviour : MonoBehaviour
 
     [SerializeField] private Animator characterAnimator;
 
+    [SerializeField] private ParticleSystem hitParticleEffect;
+
 
     public int TakeDamage(int amount)
     {
         hp -= amount;
+        hitParticleEffect.Play();
+
         return hp;
     }
 

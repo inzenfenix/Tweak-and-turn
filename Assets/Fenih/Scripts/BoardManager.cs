@@ -42,6 +42,8 @@ public class BoardManager : MonoBehaviour
     private UnityEngine.Color playerColor;
     private UnityEngine.Color enemyColor;
 
+    private bool finishGame = false;
+
     public BoardTile[,] Tiles
     {
         get { return tiles; }
@@ -115,6 +117,8 @@ public class BoardManager : MonoBehaviour
 
     private void Update()
     {
+        if (finishGame) return;
+
         if (selectingBoardTile)
         {
             BoardTile tile = null;
@@ -156,7 +160,7 @@ public class BoardManager : MonoBehaviour
                         playableTile = true;
                         rejectSymbol.gameObject.SetActive(false);
                         acceptSymbol.gameObject.SetActive(true);
-                        acceptSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
+                        acceptSymbol.position = tile.currentCard.transform.position + Vector3.up * 1f;
                     }
 
                     else
@@ -252,5 +256,10 @@ public class BoardManager : MonoBehaviour
 
         acceptSymbol.gameObject.SetActive(false);
         rejectSymbol.gameObject.SetActive(false);
+    }
+
+    public void FinishGame()
+    {
+        finishGame = true;
     }
 }
