@@ -105,11 +105,11 @@ public class TurnSystemBehaviour : MonoBehaviour
     bool[] levelsObeliskPlayer;
     bool[] levelsObeliskEnemy;
 
-    int extraHPPlayer = 0;
-    int extraHPEnemy = 0;
+    [HideInInspector] public int extraHPPlayer = 0;
+    [HideInInspector] public int extraHPEnemy = 0;
 
-    int extraAttackPlayer = 0;
-    int extraAttackEnemy = 0;
+    [HideInInspector] public int extraAttackPlayer = 0;
+    [HideInInspector] public int extraAttackEnemy = 0;
 
     private void Awake()
     {
@@ -665,6 +665,22 @@ public class TurnSystemBehaviour : MonoBehaviour
                 {
                     if (!winning[j] && thisTurnTiles[buildingRow, j].currentCard == null)
                     {
+                        switch (card.ability)
+                        {
+                            case SpecialAbilities.DrawUP:
+                                AddExtraDraw(1, true);
+                                break;
+                            case SpecialAbilities.HealCard:
+                                extraHPEnemy++;
+                                break;
+                            case SpecialAbilities.EnergyUP:
+                                energyManager.extraEnergyAI++;
+                                break;
+
+                            default:
+                                break;
+                        }
+
                         currentCardsAI.Remove(card.gameObject);
                         energy -= card.energyRequired;
 
@@ -998,6 +1014,46 @@ public class TurnSystemBehaviour : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
+    private void DestroyedBuilding(CardBehaviour destroyedCard, bool isOpponent = false)
+    {
+        if (isOpponent)
+        {
+            switch (destroyedCard.ability)
+            {
+                case SpecialAbilities.DrawUP:
+                    SubstractExtraCharge(1, true);
+                    break;
+                case SpecialAbilities.HealCard:
+                    extraHPEnemy--;
+                    break;
+                case SpecialAbilities.EnergyUP:
+                    energyManager.extraEnergyAI--;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (destroyedCard.ability)
+            {
+                case SpecialAbilities.DrawUP:
+                    SubstractExtraCharge(1, false);
+                    break;
+                case SpecialAbilities.HealCard:
+                    extraHPPlayer--;
+                    break;
+                case SpecialAbilities.EnergyUP:
+                    energyManager.extraEnergy--;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
     private void FinishGame()
     {
         finishGame = true;
@@ -1019,6 +1075,11 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (cardHP <= 0)
                 {
+                    if(thisTurnTiles[row, col].currentCard.category == Category.Building)
+                    {
+                        DestroyedBuilding(thisTurnTiles[row, col].currentCard, isOpponnent);
+                    }
+
                     Destroy(thisTurnTiles[row, col].currentCard.gameObject, .25f);
                     thisTurnTiles[row, col].currentCard = null;
 
@@ -1509,7 +1570,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         discardCards = new List<GameObject>();
     }
 
-    private void AddExtraDraw(int amount, bool isOpponent)
+    public void AddExtraDraw(int amount, bool isOpponent)
     {
         if (!isOpponent)
         {
@@ -1525,7 +1586,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
     }
 
-    private void SubstractExtraCharge(int amount, bool isOpponent)
+    public void SubstractExtraCharge(int amount, bool isOpponent)
     {
         if (!isOpponent)
         {
