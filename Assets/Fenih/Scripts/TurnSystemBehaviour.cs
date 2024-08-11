@@ -1148,7 +1148,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         float speed = 7.5f;
 
         Vector3 originalPos = thisTurnTiles[row, col].secondaryCard.transform.position;
-        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .075f;
+        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .1f;
 
         while (lerp < 1)
         {
@@ -1171,7 +1171,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         float speed = 7.5f;
 
         Vector3 originalPos = thisTurnTiles[row, col].currentCard.transform.position;
-        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .5f;
+        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
 
         while (lerp < 1)
         {
