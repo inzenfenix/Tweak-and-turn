@@ -11,6 +11,7 @@ public enum SpecialAbilities
     DrawUP,
     HealCard,
     RowAttack,
+    AttackUp,
     None
 };
 

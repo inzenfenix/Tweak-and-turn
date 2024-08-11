@@ -165,6 +165,9 @@ public class BoardManager : MonoBehaviour
                             case SpecialAbilities.EnergyUP:
                                 energyManager.extraEnergy++;
                                 break;
+                            case SpecialAbilities.AttackUp:
+                                turnSystemBehaviour.extraAttackPlayer++;
+                                break;
 
                             default:
                                 break;
