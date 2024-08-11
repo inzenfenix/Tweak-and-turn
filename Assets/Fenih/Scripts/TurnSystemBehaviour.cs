@@ -54,7 +54,7 @@ public class TurnSystemBehaviour : MonoBehaviour
     [SerializeField] private Transform discardPile;
     private float currentDiscardPileYOffset = 0;
 
-    private int maxTurns = 2;
+    private int maxTurns = 20;
     [HideInInspector] public int currentTurn = 1;
 
     private CurrentState currentState;
@@ -120,7 +120,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         currentDiscardPileYOffset = 0;
 
         currentCardAmount = 0;
-        currentTurn = 20;
+        currentTurn = 1;
 
         availableCards = new List<GameObject>();
         discardCards = new List<GameObject>();
@@ -896,7 +896,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                         {
                             if (i + k >= thisTurnTiles.GetLength(0)) break;
 
-                            if (thisTurnTiles[i + k, j].isPlayersTile)
+                            if (!thisTurnTiles[i + k, j].isPlayersTile)
                             {
                                 madeDamage = true;
                                 yield return TryDoingDamage(i + k, j, curTile);
