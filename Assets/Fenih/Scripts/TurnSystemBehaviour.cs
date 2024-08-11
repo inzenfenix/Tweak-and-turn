@@ -841,7 +841,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     }
                 }
 
-                if (!curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
+                else if(!curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
                 {
                     if (curTile.secondaryCard != null)
                     {
@@ -968,7 +968,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                         }
                     }
 
-                    if(curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
+                    else if(curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
                     {
                         if (curTile.secondaryCard != null)
                         {
