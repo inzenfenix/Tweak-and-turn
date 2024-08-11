@@ -845,7 +845,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 {
                     if (curTile.secondaryCard != null)
                     {
-                        if (thisTurnTiles[i - 1, j].currentCard == null)
+                        if (thisTurnTiles[i - 1, j].currentCard == null && !curTile.secondaryCard.cardPlayed)
                         {
                             yield return MoveSecondaryCardForward(i - 1, j, curTile, true);
                         }
@@ -867,6 +867,11 @@ public class TurnSystemBehaviour : MonoBehaviour
                 if (curTile.currentCard == null) continue;
 
                 if (curTile.currentCard.cardPlayed) curTile.currentCard.cardPlayed = false;
+
+                if (curTile.secondaryCard != null)
+                {
+                    if (curTile.secondaryCard.cardPlayed) curTile.secondaryCard.cardPlayed = false;
+                }
             }
         }
 
@@ -973,7 +978,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 {
                     if (curTile.secondaryCard != null)
                     {
-                        if (thisTurnTiles[i + 1, j].currentCard == null)
+                        if (thisTurnTiles[i + 1, j].currentCard == null && !curTile.secondaryCard.cardPlayed)
                         {
                             yield return MoveSecondaryCardForward(i + 1, j, curTile);
                         }
@@ -993,6 +998,11 @@ public class TurnSystemBehaviour : MonoBehaviour
                 if (curTile.currentCard == null) continue;
 
                 if (curTile.currentCard.cardPlayed) curTile.currentCard.cardPlayed = false;
+
+                if(curTile.secondaryCard != null)
+                {
+                    if (curTile.secondaryCard.cardPlayed) curTile.secondaryCard.cardPlayed = false;
+                }
             }
         }
 
