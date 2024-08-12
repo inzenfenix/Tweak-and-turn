@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Diabliyo_FlyInicial|Diabliyo_idle_poseAction
+      name: DiabliyoIdle
       takeName: Diabliyo_FlyInicial|Diabliyo_idle_poseAction
       internalID: 8762934986218752880
       firstFrame: 0
@@ -44,8 +44,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

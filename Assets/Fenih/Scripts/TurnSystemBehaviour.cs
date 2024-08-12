@@ -509,9 +509,9 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         for (int i = 0; i < amountOfDrawCardsAI; i++)
         {
-            int randomCardIndex = UnityEngine.Random.Range(0, cardsPrefabs.Length);
+            int randomCardIndex = UnityEngine.Random.Range(0, cardsPrefabsEnemy.Length);
 
-            GameObject newCard = GameObject.Instantiate(cardsPrefabs[randomCardIndex], Vector3.up * 30f + Vector3.forward * 20f, Quaternion.identity);
+            GameObject newCard = GameObject.Instantiate(cardsPrefabsEnemy[randomCardIndex], Vector3.up * 30f + Vector3.forward * 20f, Quaternion.identity);
 
             currentCardsAI.Add(newCard);
             newCard.GetComponent<CardBehaviour>().hp += extraHPEnemy;

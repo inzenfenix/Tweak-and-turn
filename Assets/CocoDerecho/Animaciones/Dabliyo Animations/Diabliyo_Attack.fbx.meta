@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Diabliyo_FlyInicial|Diabliyo_idle_poseAction
+      name: DiabliyoAttack
       takeName: Diabliyo_FlyInicial|Diabliyo_idle_poseAction
       internalID: 8762934986218752880
       firstFrame: 0
