@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.265
+    m_Value: 0.487
   clamp:
     m_OverrideState: 0
     m_Value: 0.05
@@ -43,19 +43,19 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 1.13
   intensity:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 3.27
   scatter:
     m_OverrideState: 1
-    m_Value: 0.886
+    m_Value: 0.879
   clamp:
     m_OverrideState: 0
     m_Value: 200
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.9716981, g: 0.9524895, b: 0.637104, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -291,10 +291,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.337
+    m_Value: 0.427
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.451
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -376,10 +376,10 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.08016033}
+    m_Value: {x: 0.99693984, y: 1, z: 0.9319967, w: 0.0056765825}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.08016032}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.20891568}
   highlights:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0.10020042}
@@ -419,7 +419,7 @@ MonoBehaviour:
     m_Value: 30
   gaussianMaxRadius:
     m_OverrideState: 1
-    m_Value: 1.037
+    m_Value: 0.5
   highQualitySampling:
     m_OverrideState: 0
     m_Value: 0
@@ -472,13 +472,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.020040082}
+    m_Value: {x: 1, y: 0.92417765, z: 0.94688535, w: -0.020040082}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.020040082}
+    m_Value: {x: 0.82901925, y: 0.81157064, z: 1, w: 0.07725323}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.5010021}
+    m_Value: {x: 1, y: 0.8288036, z: 0.8512105, w: 0.40343347}
 --- !u!114 &9179878357121154678
 MonoBehaviour:
   m_ObjectHideFlags: 3

@@ -36,8 +36,8 @@ ModelImporter:
       name: IdleParca
       takeName: Armature|Armature|Armature|ArmatureAction
       internalID: 4781951162920444690
-      firstFrame: 0
-      lastFrame: 131
+      firstFrame: 10
+      lastFrame: 115
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
