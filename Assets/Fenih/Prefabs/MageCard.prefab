@@ -68,7 +68,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.039999247, y: 2.3399997}
+  m_AnchoredPosition: {x: 0.039999247, y: 4.38}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &2659285083434598440
@@ -5251,7 +5251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   hp: 1
-  range: 2
+  range: 3
   energyRequired: 3
   ability: 7
   category: 0
