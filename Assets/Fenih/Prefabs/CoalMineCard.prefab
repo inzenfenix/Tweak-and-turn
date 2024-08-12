@@ -5207,7 +5207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e73f2eecd68e8e146991c4a9f0f3bffc, type: 2}
+  - {fileID: 2100000, guid: abf9c08af8eef40489d1558ed8b0f7a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5717,6 +5717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CoalMine
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 15dfaf462b78d374bad898e57906a09e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
