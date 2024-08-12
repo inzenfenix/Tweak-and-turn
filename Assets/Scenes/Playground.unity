@@ -417,6 +417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -495,6 +500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -616,6 +626,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -695,6 +710,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -773,6 +793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -868,6 +893,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (184)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -946,6 +976,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1026,6 +1061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1104,6 +1144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Market
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce817408a5710c645a5f9deaa8919e92,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1184,6 +1229,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1263,6 +1313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (171)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1341,6 +1396,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1710,6 +1770,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1788,6 +1853,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1868,6 +1938,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1946,6 +2021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2026,6 +2106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2104,6 +2189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2184,6 +2274,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2263,6 +2358,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2341,6 +2441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2539,6 +2644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2618,6 +2728,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2696,6 +2811,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2790,6 +2910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeadTree_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2949,6 +3074,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3043,6 +3173,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3122,6 +3257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3200,6 +3340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3414,6 +3559,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3507,6 +3657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (168)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3798,6 +3953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3876,6 +4036,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3956,6 +4121,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4034,6 +4204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4204,6 +4379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4297,6 +4477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeadTree_2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3e2bcd305bac844eb52376b66fcdd52,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4392,6 +4577,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4486,6 +4676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3e2bcd305bac844eb52376b66fcdd52,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4564,6 +4759,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4644,6 +4844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4723,6 +4928,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4801,6 +5011,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4896,6 +5111,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4975,6 +5195,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5053,6 +5278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5148,6 +5378,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5227,6 +5462,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5305,6 +5545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5625,6 +5870,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5704,6 +5954,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5782,6 +6037,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tower (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4b8fd126bdcacf48ad3432f31021cb2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6138,6 +6398,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6216,6 +6481,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6430,6 +6700,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6508,6 +6783,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6588,6 +6868,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6666,6 +6951,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6798,6 +7088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6876,6 +7171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6956,6 +7256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7034,6 +7339,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeadTree_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7114,6 +7424,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7192,6 +7507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (180)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7287,6 +7607,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Castle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 925ac2fb6fd8d9c479498789ecf4ac26,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7365,6 +7690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FarmHouse (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7563,6 +7893,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7590,7 +7925,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &434541318
 Transform:
@@ -7808,6 +8143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (61)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7886,6 +8226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7966,6 +8311,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8044,6 +8394,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8124,6 +8479,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (169)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8202,6 +8562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (178)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8282,6 +8647,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8358,6 +8728,9 @@ MonoBehaviour:
   - {fileID: 4478408636242431220, guid: 513c401e58169434ba44d07dec4ec04f, type: 3}
   - {fileID: 4478408636242431220, guid: 336578a5a31891543b090ea3b024fd55, type: 3}
   - {fileID: 4478408636242431220, guid: 5e3bff6d4951f84428738b6da39c31bf, type: 3}
+  - {fileID: 4081327071009183527, guid: 0487b8d9747c99c4bb079464ca9f0f9b, type: 3}
+  - {fileID: 4478408636242431220, guid: 215e6131ad723b5409d3a2e4c3913676, type: 3}
+  - {fileID: 4478408636242431220, guid: 4b20a4fdffa76b54ebf126eb4814b11d, type: 3}
   cardsPrefabsEnemy: []
   cardsPositions:
   - {fileID: 1775909287}
@@ -8458,7 +8831,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 853835b4dad571a469947df1d81a5102, type: 3}
   - {fileID: 8300000, guid: d8918bb2eda5e704cb82b5f634e1d66a, type: 3}
   - {fileID: 8300000, guid: 709e089f1e3182445976f8034e9e3fe9, type: 3}
-  - {fileID: 8300000, guid: 98624fe84e051f1438b80a5bfe1a19d1, type: 3}
+  - {fileID: 8300000, guid: 5fed8d50bea98084995fc255cbf8ec3a, type: 3}
 --- !u!114 &482099087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8729,6 +9102,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8823,6 +9201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (179)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8901,6 +9284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (56)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9013,6 +9401,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9038,7 +9431,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &510274149
 Transform:
@@ -9411,6 +9804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9670,6 +10068,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9828,6 +10231,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4b8fd126bdcacf48ad3432f31021cb2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9906,6 +10314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tower (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4b8fd126bdcacf48ad3432f31021cb2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10129,6 +10542,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10207,6 +10625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tower (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4b8fd126bdcacf48ad3432f31021cb2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10287,6 +10710,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10365,6 +10793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10445,6 +10878,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10523,6 +10961,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10737,6 +11180,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FarmHouse (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10904,6 +11352,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10982,6 +11435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Market (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce817408a5710c645a5f9deaa8919e92,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11062,6 +11520,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11140,6 +11603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11220,6 +11688,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11298,6 +11771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11589,6 +12067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11667,6 +12150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FarmHouse (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11761,6 +12249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12015,6 +12508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12093,6 +12591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12173,6 +12676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12251,6 +12759,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (173)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12331,6 +12844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (175)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12409,6 +12927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (74)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12661,6 +13184,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12739,6 +13267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (172)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12825,6 +13358,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12903,6 +13441,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (177)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12983,6 +13526,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13062,6 +13610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13140,6 +13693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13235,6 +13793,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13313,6 +13876,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (60)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13424,6 +13992,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13503,6 +14076,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13581,6 +14159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13744,6 +14327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13822,6 +14410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13932,6 +14525,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14061,6 +14659,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14139,6 +14742,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14219,6 +14827,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14278,12 +14891,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -14325,6 +14938,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 62798650}
+  - {fileID: 2058592304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -14399,6 +15013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14479,6 +15098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14557,6 +15181,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14637,6 +15266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14715,6 +15349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14924,6 +15563,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (174)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15002,6 +15646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15082,6 +15731,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Volcano
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 63d3bf4c7a452174babc260d36e6d134,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15160,6 +15814,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FarmHouse (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15240,6 +15899,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15318,6 +15982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15398,6 +16067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15476,6 +16150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15556,6 +16235,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (181)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15634,6 +16318,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15714,6 +16403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15792,6 +16486,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15872,6 +16571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15951,6 +16655,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15973,7 +16682,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.42899996
+      value: -0.69100004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
@@ -15983,7 +16692,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.117
+      value: 4.0420003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
@@ -16029,6 +16738,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16109,6 +16823,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16188,6 +16907,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16266,6 +16990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16482,6 +17211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16560,6 +17294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16774,6 +17513,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16852,6 +17596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (59)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16941,6 +17690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cart (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e283a14da013e7b499efce36f1c1f41d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17036,6 +17790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17114,6 +17873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17194,6 +17958,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17272,6 +18041,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StoneQuarry
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: badf74a29cb29f24abf5899d1cdf6a4c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17360,6 +18134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (183)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17472,6 +18251,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17550,6 +18334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17630,6 +18419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17708,6 +18502,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17803,6 +18602,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17882,6 +18686,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17960,6 +18769,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18055,6 +18869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18133,6 +18952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18213,6 +19037,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18291,6 +19120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18402,7 +19236,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1118459907
 Transform:
@@ -18536,6 +19370,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18698,6 +19537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18964,6 +19808,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Well
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e7ea8f49281c3854ba3c50283ea2e71f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19089,6 +19938,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19167,6 +20021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19288,7 +20147,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1213566695
 Transform:
@@ -19423,6 +20282,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19501,6 +20365,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19595,6 +20464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeadTree_1 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19706,6 +20580,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19784,6 +20663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (69)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19864,6 +20748,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19942,6 +20831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20022,6 +20916,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4b8fd126bdcacf48ad3432f31021cb2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20100,6 +20999,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20180,6 +21084,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20258,6 +21167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20338,6 +21252,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20417,6 +21336,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20495,6 +21419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20606,6 +21535,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20700,6 +21634,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3e2bcd305bac844eb52376b66fcdd52,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20779,6 +21718,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20806,7 +21750,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1359214980
 Transform:
@@ -20941,6 +21885,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21019,6 +21968,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21099,6 +22053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21177,6 +22136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21267,6 +22231,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e283a14da013e7b499efce36f1c1f41d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21345,6 +22314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21425,6 +22399,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21503,6 +22482,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21598,6 +22582,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21676,6 +22665,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22067,6 +23061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (77)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22229,6 +23228,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22307,6 +23311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22387,6 +23396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22465,6 +23479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FarmHouse (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22545,6 +23564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22623,6 +23647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tower (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4b8fd126bdcacf48ad3432f31021cb2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22876,6 +23905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22948,6 +23982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23028,6 +24067,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23106,6 +24150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (176)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23196,6 +24245,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23274,6 +24328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Keep (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 18b058bb22832cb4cbb9c261bc1ca4d0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23354,6 +24413,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23433,6 +24497,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23511,6 +24580,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FarmHouse (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23627,6 +24701,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23705,6 +24784,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23785,6 +24869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23863,6 +24952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23958,6 +25052,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24036,6 +25135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24116,6 +25220,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24195,6 +25304,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (73)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24264,6 +25378,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -3587850765731552111, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -1439730007547781893, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24279,6 +25403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeerStand (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1129496810705857465, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24289,6 +25418,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ce90dabd98b2bf84a99f882ed0e0ec8d, type: 2}
+    - target: {fileID: 2800250516343163423, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849762623622064168, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6944656104360116776, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -24299,6 +25438,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ce90dabd98b2bf84a99f882ed0e0ec8d, type: 2}
+    - target: {fileID: 8513859187771203891, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700725330082129686, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24461,6 +25610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24550,6 +25704,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cart (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e283a14da013e7b499efce36f1c1f41d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24628,6 +25787,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (170)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24723,6 +25887,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (160)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24817,6 +25986,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_2 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3e2bcd305bac844eb52376b66fcdd52,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24895,6 +26069,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24990,6 +26169,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25068,6 +26252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25148,6 +26337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FarmHouse (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25226,6 +26420,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (57)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25321,6 +26520,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3e2bcd305bac844eb52376b66fcdd52,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25399,6 +26603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25484,6 +26693,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25682,6 +26896,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25838,7 +27057,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.528
+      value: -0.7900001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
@@ -25848,7 +27067,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.475
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1668dbd08cfad0548aec23e950a8296f,
         type: 3}
@@ -25894,6 +27113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25989,6 +27213,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26067,6 +27296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26147,6 +27381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26225,6 +27464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26305,6 +27549,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26384,6 +27633,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26462,6 +27716,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wall (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2c12a14cbf4483b43a198c317527af08,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26676,6 +27935,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26754,6 +28018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FarmHouse (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e5b21d0355d7514f90dffb9c88ad972,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26834,6 +28103,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26912,6 +28186,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27002,6 +28281,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27080,6 +28364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27160,6 +28449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27238,6 +28532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27515,6 +28814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27593,6 +28897,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27673,6 +28982,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27695,7 +29009,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 074bbf8b77c7968498c15435620064fc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.428
+      value: -0.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 074bbf8b77c7968498c15435620064fc,
         type: 3}
@@ -27705,7 +29019,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 074bbf8b77c7968498c15435620064fc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.277
+      value: 4.202
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 074bbf8b77c7968498c15435620064fc,
         type: 3}
@@ -27751,6 +29065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27830,6 +29149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock_2 (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27925,6 +29249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (165)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28004,6 +29333,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28082,6 +29416,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28443,6 +29782,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28522,6 +29866,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28600,6 +29949,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (68)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28701,6 +30055,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadTree_1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28779,6 +30138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28905,6 +30269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (164)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28983,6 +30352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Farm
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b0c6750f995697543a3390b3906830b4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29063,6 +30437,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_1 (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1668dbd08cfad0548aec23e950a8296f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29142,6 +30521,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29220,6 +30604,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeadTree_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29331,6 +30720,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29409,6 +30803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29489,6 +30888,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 074bbf8b77c7968498c15435620064fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29567,6 +30971,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_2 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29662,6 +31071,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29741,6 +31155,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29752,6 +31171,143 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2054445575}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2058592303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058592304}
+  - component: {fileID: 2058592306}
+  - component: {fileID: 2058592305}
+  m_Layer: 5
+  m_Name: Keys
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2058592304
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058592303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 850469108}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -118, y: 40}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2058592305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058592303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'A - Move forward
+
+    S - Move back'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: da6d841f1a39a1c4d99c247f54bce17a, type: 2}
+  m_sharedMaterial: {fileID: 5127607249424919725, guid: da6d841f1a39a1c4d99c247f54bce17a,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 12
+  m_fontSizeBase: 12
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 1024
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2058592306
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058592303}
+  m_CullTransparentMesh: 1
 --- !u!1001 &2058931606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29819,6 +31375,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29899,6 +31460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallTree (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29926,7 +31492,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2062212263
 Transform:
@@ -30061,6 +31627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_1 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d88036cc4a3e2d043b340b8d19010d78,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30139,6 +31710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SmallTree (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bef481e3da057354abefad36ee1e327d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30240,6 +31816,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -3587850765731552111, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -1439730007547781893, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -30255,6 +31841,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeerStand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1129496810705857465, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -30265,6 +31856,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ce90dabd98b2bf84a99f882ed0e0ec8d, type: 2}
+    - target: {fileID: 2800250516343163423, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849762623622064168, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6944656104360116776, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -30275,6 +31876,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ce90dabd98b2bf84a99f882ed0e0ec8d, type: 2}
+    - target: {fileID: 8513859187771203891, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700725330082129686, guid: e9e859b9e1323f54ca9e5e4a2bb0fec8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -30512,6 +32123,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigTree (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30539,7 +32155,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2107642090
 Transform:
@@ -30689,6 +32305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (182)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30767,6 +32388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BigTree (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f1b1194a80e1f974e9a93b86e68d0cb7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30862,6 +32488,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (162)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30956,6 +32587,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_2 (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92d5a939aa054f746baf4319ab2725e0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31049,6 +32685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DeadTree_1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af192f76677dc0a46b72c2a3f4afd745,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
