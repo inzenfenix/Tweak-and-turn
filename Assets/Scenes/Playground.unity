@@ -8965,6 +8965,9 @@ MonoBehaviour:
   - {fileID: 4081327071009183527, guid: 0487b8d9747c99c4bb079464ca9f0f9b, type: 3}
   - {fileID: 4478408636242431220, guid: 215e6131ad723b5409d3a2e4c3913676, type: 3}
   - {fileID: 4478408636242431220, guid: 513c401e58169434ba44d07dec4ec04f, type: 3}
+  - {fileID: 4478408636242431220, guid: 336578a5a31891543b090ea3b024fd55, type: 3}
+  - {fileID: 4478408636242431220, guid: 5e3bff6d4951f84428738b6da39c31bf, type: 3}
+  cardsPrefabsEnemy: []
   cardsPositions:
   - {fileID: 1775909287}
   - {fileID: 1232104847}

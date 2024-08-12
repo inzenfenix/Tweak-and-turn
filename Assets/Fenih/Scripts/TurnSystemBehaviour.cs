@@ -44,6 +44,8 @@ public class TurnSystemBehaviour : MonoBehaviour
     private int currentCardAmount = 0;
 
     [SerializeField] private GameObject[] cardsPrefabs;
+    [SerializeField] private GameObject[] cardsPrefabsEnemy;
+
     [SerializeField] private Transform[] cardsPositions;
 
     private int maxAmountOfCards;
