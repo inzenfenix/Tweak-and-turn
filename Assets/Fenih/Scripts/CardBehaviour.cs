@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum SpecialAbilities
@@ -45,13 +46,33 @@ public class CardBehaviour : MonoBehaviour
 
     [SerializeField] private ParticleSystem hitParticleEffect;
 
+    [SerializeField] private TextMeshPro damageText;
+
+    private void Awake()
+    {
+        damageText.text = "";
+        damageText.gameObject.SetActive(false);
+    }
 
     public int TakeDamage(int amount)
     {
         hp -= amount;
         hitParticleEffect.Play();
 
+        StartCoroutine(ShowDamage(amount));
+
         return hp;
+    }
+
+    private IEnumerator ShowDamage(int amount)
+    {
+        yield return new WaitForEndOfFrame();
+        damageText.gameObject.SetActive(true);
+        damageText.text = "-" + amount;
+        yield return new WaitForSeconds(1f);
+
+        damageText.text = "";
+        damageText.gameObject.SetActive(false);
     }
 
     public int HealDamage(int amount)

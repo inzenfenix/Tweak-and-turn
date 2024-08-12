@@ -153,25 +153,6 @@ public class BoardManager : MonoBehaviour
                         rejectSymbol.gameObject.SetActive(false);
                         acceptSymbol.gameObject.SetActive(true);
                         acceptSymbol.position = tile.tileHolder.transform.position + Vector3.up * .05f;
-
-                        switch(chosenCard.ability)
-                        {
-                            case SpecialAbilities.DrawUP:
-                                turnSystemBehaviour.AddExtraDraw(1, false);
-                                break;
-                            case SpecialAbilities.HealCard:
-                                turnSystemBehaviour.extraHPPlayer++;
-                                break;
-                            case SpecialAbilities.EnergyUP:
-                                energyManager.extraEnergy++;
-                                break;
-                            case SpecialAbilities.AttackUp:
-                                turnSystemBehaviour.extraAttackPlayer++;
-                                break;
-
-                            default:
-                                break;
-                        }
                     }
 
                     else if (tile.currentCard != null && chosenCard.category == Category.Throwable)
@@ -232,6 +213,28 @@ public class BoardManager : MonoBehaviour
                             case (SpecialAbilities.HealCard):
                                 hoveredTile.currentCard.GetComponent<CardBehaviour>().HealDamage(curHPHealing);
                                 Destroy(selectedCard);
+                                break;
+                        }
+                    }
+
+                    if(chosenCardBehaviour.category == Category.Building)
+                    {
+                        switch (chosenCardBehaviour.ability)
+                        {
+                            case SpecialAbilities.DrawUP:
+                                turnSystemBehaviour.AddExtraDraw(1, false);
+                                break;
+                            case SpecialAbilities.HealCard:
+                                turnSystemBehaviour.extraHPPlayer++;
+                                break;
+                            case SpecialAbilities.EnergyUP:
+                                energyManager.extraEnergy++;
+                                break;
+                            case SpecialAbilities.AttackUp:
+                                turnSystemBehaviour.extraAttackPlayer++;
+                                break;
+
+                            default:
                                 break;
                         }
                     }
