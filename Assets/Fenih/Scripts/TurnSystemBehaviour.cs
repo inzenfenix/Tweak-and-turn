@@ -612,24 +612,6 @@ public class TurnSystemBehaviour : MonoBehaviour
 
             if ((card.category == Category.Normal || card.category == Category.Special) && card.energyRequired <= energy)
             {
-                if (currentTurn > 3)
-                {
-
-                    for (int j = 0; j < columns; j++)
-                    {
-                        if (!winning[j] && thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null && !thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].isPlayersTile)
-                        {
-                            currentCardsAI.Remove(card.gameObject);
-                            energy -= card.energyRequired;
-
-                            yield return StartCoroutine(PlaceCardOnTileAI(card, thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j]));
-                            break;
-                        }
-                    }
-                }
-
-                else
-                {
                     int farthestRow = boardManager.Tiles.GetLength(0) - 1;
 
                     for (int j = 0; j < rows; j++)
@@ -655,7 +637,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                             break;
                         }
                     }
-                }
+                
             }
         }
 
@@ -709,7 +691,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             {
                 CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
 
-                if (card.energyRequired <= energy && (card.category == Category.Normal || card.category == Category.Special))
+                if (card.energyRequired <= energy && (card.category == Category.Normal || card.category == Category.Special || card.category == Category.Building))
                 {
                     playedCard = true;
 
@@ -717,6 +699,28 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null)
                         {
+                            if(card.category == Category.Building)
+                            {
+                                switch (card.ability)
+                                {
+                                    case SpecialAbilities.DrawUP:
+                                        AddExtraDraw(1, true);
+                                        break;
+                                    case SpecialAbilities.HealCard:
+                                        extraHPEnemy++;
+                                        break;
+                                    case SpecialAbilities.EnergyUP:
+                                        energyManager.extraEnergyAI++;
+                                        break;
+                                    case SpecialAbilities.AttackUp:
+                                        extraAttackEnemy++;
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
+
                             currentCardsAI.Remove(card.gameObject);
                             energy -= card.energyRequired;
 
