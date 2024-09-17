@@ -40,7 +40,7 @@ public class CardBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject drawnCardShow;
     [SerializeField] private GameObject boardCardShow;
-    [SerializeField] private GameObject characterGO;
+    [SerializeField] public GameObject characterGO;
 
     [SerializeField] private Animator characterAnimator;
 
@@ -48,10 +48,13 @@ public class CardBehaviour : MonoBehaviour
 
     [SerializeField] private TextMeshPro damageText;
 
+    [SerializeField] private GameObject boardVisual;
+
     private void Awake()
     {
         damageText.text = "";
         damageText.gameObject.SetActive(false);
+        characterGO.SetActive(false);
     }
 
     public int TakeDamage(int amount)

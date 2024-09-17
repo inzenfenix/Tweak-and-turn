@@ -153,7 +153,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         levelsObeliskPlayer = new bool[obeliskGemsPlayer.Length];
         levelsObeliskEnemy = new bool[obeliskGemsEnemy.Length];
 
-        for(int i = 0; i < obeliskGemsPlayer.Length; i++)
+        for (int i = 0; i < obeliskGemsPlayer.Length; i++)
         {
             levelsObeliskEnemy[i] = levelsObeliskPlayer[i] = false;
         }
@@ -183,6 +183,8 @@ public class TurnSystemBehaviour : MonoBehaviour
             OnCardChoseExited?.Invoke(this, EventArgs.Empty);
 
             currentCards.Remove(selectedCard);
+            StartCoroutine(DuplicateCardToDiscardPile(selectedCard));
+
             selectedCard = null;
 
             isCardSelected = false;
@@ -292,28 +294,28 @@ public class TurnSystemBehaviour : MonoBehaviour
             else enemyWinningCols++;
         }
 
-        if(playerWinningCols != tiles.GetLength(1))
+        if (playerWinningCols != tiles.GetLength(1))
         {
             ResetObelisk();
         }
 
-        if(enemyWinningCols != tiles.GetLength(1))
+        if (enemyWinningCols != tiles.GetLength(1))
         {
             ResetObelisk(true);
         }
 
-        if(playerWinningCols == tiles.GetLength(1))
+        if (playerWinningCols == tiles.GetLength(1))
         {
             currentTurnsObeliskPlayer++;
 
             currentTurnsObeliskPlayer = Mathf.Min(currentTurnsObeliskPlayer, obeliskGemsPlayer.Length);
 
-            for(int i = 0; i < currentTurnsObeliskPlayer; i++)
+            for (int i = 0; i < currentTurnsObeliskPlayer; i++)
             {
                 obeliskGemsPlayer[i].GetComponent<MeshRenderer>().material = obelliskEmissiveMat;
             }
 
-            switch(currentTurnsObeliskPlayer)
+            switch (currentTurnsObeliskPlayer)
             {
                 case (1):
                     if (!levelsObeliskPlayer[currentTurnsObeliskPlayer - 1])
@@ -357,7 +359,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             }
         }
 
-        if(enemyWinningCols == tiles.GetLength(1))
+        if (enemyWinningCols == tiles.GetLength(1))
         {
             currentTurnsObeliskEnemy++;
 
@@ -465,7 +467,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     energyManager.extraEnergy -= 1;
                     break;
                 case (2):
-                        energyManager.extraEnergy -= 2;
+                    energyManager.extraEnergy -= 2;
                     break;
                 case (3):
                     extraHPPlayer -= 1;
@@ -485,7 +487,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     break;
             }
 
-            for(int i = 0; i < levelsObeliskPlayer.Length; i++)
+            for (int i = 0; i < levelsObeliskPlayer.Length; i++)
             {
                 levelsObeliskPlayer[i] = false;
             }
@@ -494,12 +496,12 @@ public class TurnSystemBehaviour : MonoBehaviour
             obelisk = obeliskGemsPlayer;
         }
 
-        for(int i = 0; i < obelisk.Length;i++)
+        for (int i = 0; i < obelisk.Length; i++)
         {
             obelisk[i].GetComponent<MeshRenderer>().material = obelliskNormalMat;
         }
 
-        
+
     }
 
 
@@ -556,7 +558,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         int losingColumnIndex = 0;
         bool losingRow = false;
-        for(int i = 0; i < winning.Length; i++)
+        for (int i = 0; i < winning.Length; i++)
         {
             if (!winning[i])
             {
@@ -566,11 +568,11 @@ public class TurnSystemBehaviour : MonoBehaviour
             }
         }
 
-        if(losingRow)
+        if (losingRow)
         {
             int farthestRow = -1;
 
-            if(thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, losingColumnIndex].currentCard == null)
+            if (thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, losingColumnIndex].currentCard == null)
             {
                 farthestRow = boardManager.Tiles.GetLength(0) - 1;
             }
@@ -749,12 +751,12 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         card.PutCardOnBoard();
 
-        while(lerp < 1)
+        while (lerp < 1)
         {
             lerp += Time.deltaTime * speed;
 
             card.transform.localPosition = Vector3.Lerp(originalPos, Vector3.zero + Vector3.up * .5f, lerp);
-            card.transform.localRotation = Quaternion.Lerp(originalRot, Quaternion.identity * Quaternion.Euler(0,180,0), lerp);
+            card.transform.localRotation = Quaternion.Lerp(originalRot, Quaternion.identity * Quaternion.Euler(0, 180, 0), lerp);
 
             yield return new WaitForEndOfFrame();
         }
@@ -809,7 +811,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                             }
                         }
 
-                        if(!madeDamage && thisTurnTiles[i - 1, j].currentCard == null)
+                        if (!madeDamage && thisTurnTiles[i - 1, j].currentCard == null)
                         {
                             yield return MoveMainCard(i - 1, j, curTile, true);
                         }
@@ -831,7 +833,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                         {
                             if (i - k < 0) break;
 
-                            else if(thisTurnTiles[i - k, j].currentCard != null && thisTurnTiles[i - k, j].isPlayersTile)
+                            else if (thisTurnTiles[i - k, j].currentCard != null && thisTurnTiles[i - k, j].isPlayersTile)
                             {
                                 madeDamage = true;
                                 yield return TryDoingDamage(i - k, j, curTile, true);
@@ -846,7 +848,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     }
                 }
 
-                else if(!curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
+                else if (!curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
                 {
                     if (curTile.secondaryCard != null)
                     {
@@ -881,7 +883,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
 
         currentStateAI = CurrentState.PassTurn;
-        
+
         energyManager.AddEnergyCharge();
         OnChangeCamera?.Invoke(this, CurrentCamera.BatteryCharging);
 
@@ -939,7 +941,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                             }
                         }
 
-                        if(!madeDamage && thisTurnTiles[i + 1, j].currentCard == null)
+                        if (!madeDamage && thisTurnTiles[i + 1, j].currentCard == null)
                         {
                             yield return MoveMainCard(i + 1, j, curTile);
                         }
@@ -1004,7 +1006,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard.cardPlayed) curTile.currentCard.cardPlayed = false;
 
-                if(curTile.secondaryCard != null)
+                if (curTile.secondaryCard != null)
                 {
                     if (curTile.secondaryCard.cardPlayed) curTile.secondaryCard.cardPlayed = false;
                 }
@@ -1085,7 +1087,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private IEnumerator TryDoingDamage(int row, int col, BoardTile curTile, bool isOpponnent = false)
     {
-        if (curTile.currentCard.damage > 0 && ((thisTurnTiles[row, col].isPlayersTile && isOpponnent) ||(!thisTurnTiles[row, col].isPlayersTile && !isOpponnent)))
+        if (curTile.currentCard.damage > 0 && ((thisTurnTiles[row, col].isPlayersTile && isOpponnent) || (!thisTurnTiles[row, col].isPlayersTile && !isOpponnent)))
         {
             curTile.currentCard.GetComponent<CardBehaviour>().MakeDamage();
             yield return new WaitForSeconds(.2f);
@@ -1096,7 +1098,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (cardHP <= 0)
                 {
-                    if(thisTurnTiles[row, col].currentCard.category == Category.Building)
+                    if (thisTurnTiles[row, col].currentCard.category == Category.Building)
                     {
                         DestroyedBuilding(thisTurnTiles[row, col].currentCard, isOpponnent);
                     }
@@ -1210,7 +1212,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
     }
 
-    private void PuttingCardsOnBoard() 
+    private void PuttingCardsOnBoard()
     {
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, cardMask))
@@ -1480,7 +1482,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
             curCard.GetComponent<CardBehaviour>().ShowCard();
 
-            while(lerp < 1)
+            while (lerp < 1)
             {
                 lerp += Time.deltaTime * lerpSpeed;
 
@@ -1574,7 +1576,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             Vector3 originalPos = curCardTransform.localPosition;
             Quaternion originalRot = curCardTransform.localRotation;
 
-            while(lerp < 1)
+            while (lerp < 1)
             {
                 lerp += Time.deltaTime * lerpSpeed;
 
@@ -1626,5 +1628,42 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
     }
 
+    public IEnumerator DuplicateCardToDiscardPile(GameObject card)
+    {
+        currentlyWorking = true;
+
+        GameObject curCard = Instantiate(card);
+        Transform curCardTransform = curCard.transform;
+
+        discardCards.Add(curCard);
+
+        curCardTransform.parent = discardPile;
+        curCardTransform.localScale = new Vector3(0.1f, 0.11f, 0.11f);
+
+        float lerp = 0;
+        float lerpSpeed = 6.5f;
+        Vector3 originalPos = curCardTransform.localPosition;
+        Quaternion originalRot = curCardTransform.localRotation;
+
+        curCard.GetComponent<CardBehaviour>().PutOnPile();
+
+        while (lerp < 1)
+        {
+            lerp += Time.deltaTime * lerpSpeed;
+
+            curCardTransform.localPosition = Vector3.Lerp(originalPos, Vector3.zero + Vector3.up * currentDiscardPileYOffset, lerp);
+            curCardTransform.localRotation = Quaternion.Slerp(originalRot, Quaternion.identity, lerp);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        currentDiscardPileYOffset += .01f;
+
+        curCard.layer = LayerMask.NameToLayer("Default");
+
+        yield return new WaitForEndOfFrame();
+
+        currentlyWorking = false;
+    }
 
 }

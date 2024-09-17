@@ -1,5 +1,40 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &965887716780290569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5143704625374059017}
+  m_Layer: 0
+  m_Name: BoardVisual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5143704625374059017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965887716780290569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3461389871357032676}
+  - {fileID: 3768633246699234109}
+  - {fileID: 1722289467958852103}
+  - {fileID: 6190372663406868904}
+  m_Father: {fileID: 3849821499946292814}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3694348678563862984
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +65,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3849821499946292814}
+  m_Father: {fileID: 5143704625374059017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -200,10 +235,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.5299993, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.09999999, z: 0.09999999}
+  m_LocalScale: {x: 0.099999994, y: 0.09999998, z: 0.09999998}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3849821499946292814}
+  m_Father: {fileID: 5143704625374059017}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &6180551788254052324
 ParticleSystem:
@@ -5092,11 +5127,8 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.11, z: 0.11}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3461389871357032676}
   - {fileID: 3763995081809665358}
-  - {fileID: 3768633246699234109}
-  - {fileID: 1722289467958852103}
-  - {fileID: 6190372663406868904}
+  - {fileID: 5143704625374059017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8642474518627718777
@@ -5146,6 +5178,7 @@ MonoBehaviour:
   characterAnimator: {fileID: 9141520150380622437}
   hitParticleEffect: {fileID: 6180551788254052324}
   damageText: {fileID: 4817864103784019690}
+  boardVisual: {fileID: 965887716780290569}
 --- !u!1 &4937711973653185481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,13 +5289,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6787302617599001597}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.03, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.02999956, z: 0}
   m_LocalScale: {x: 0.29, y: 1, z: 0.34}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5687283382334279970}
-  m_Father: {fileID: 3849821499946292814}
+  m_Father: {fileID: 5143704625374059017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5937929317546880090
 MeshFilter:
@@ -5346,7 +5379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3763995081809665358}
   m_Layer: 9
-  m_Name: DrawnCardShow
+  m_Name: HandVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5542,22 +5575,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3849821499946292814}
+    m_TransformParent: {fileID: 5143704625374059017}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7f456e071ca2a84d828ce291c9ed09c,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.92
+      value: 0.91999996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7f456e071ca2a84d828ce291c9ed09c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.92
+      value: 0.9199999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7f456e071ca2a84d828ce291c9ed09c,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.92
+      value: 0.91999996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7f456e071ca2a84d828ce291c9ed09c,
         type: 3}
