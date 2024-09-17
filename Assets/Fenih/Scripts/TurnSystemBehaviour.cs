@@ -23,6 +23,13 @@ public enum CurrentCamera
     BatteryCharging
 }
 
+[Serializable]
+public class InitialCardsPrefabs
+{
+    public GameObject prefab;
+    public int quantity;
+};
+
 public class TurnSystemBehaviour : MonoBehaviour
 {
     public static event EventHandler<GameObject> OnCardChose;
@@ -39,11 +46,11 @@ public class TurnSystemBehaviour : MonoBehaviour
     private int amountOfDrawCards = 5;
     private int amountOfDrawCardsAI = 6;
 
-    private int drawPileInitialAmount = 50;
+    private int drawPileInitialAmount = 10;
 
     private int currentCardAmount = 0;
 
-    [SerializeField] private GameObject[] cardsPrefabs;
+    [SerializeField] private InitialCardsPrefabs[] cardsInitialPrefabs;
     [SerializeField] private GameObject[] cardsPrefabsEnemy;
 
     [SerializeField] private Transform[] cardsPositions;
@@ -710,7 +717,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             {
                 CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
 
-                if (card.energyRequired <= energy && (card.category == Category.Normal || card.category == Category.Special || card.category == Category.Building))
+                if (card.energyRequired <= energy && (card.category == Category.Normal || card.category == Category.Special))
                 {
                     playedCard = true;
 
@@ -718,28 +725,6 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null)
                         {
-                            if (card.category == Category.Building)
-                            {
-                                switch (card.ability)
-                                {
-                                    case SpecialAbilities.DrawUP:
-                                        AddExtraDraw(1, true);
-                                        break;
-                                    case SpecialAbilities.HealCard:
-                                        extraHPEnemy++;
-                                        break;
-                                    case SpecialAbilities.EnergyUP:
-                                        energyManager.extraEnergyAI++;
-                                        break;
-                                    case SpecialAbilities.AttackUp:
-                                        extraAttackEnemy++;
-                                        break;
-
-                                    default:
-                                        break;
-                                }
-                            }
-
                             currentCardsAI.Remove(card.gameObject);
                             energy -= card.energyRequired;
 
@@ -1438,27 +1423,32 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void CreateCards()
     {
-        int curCard = 0;
+        cardsInitialPrefabs.MMShuffle();
 
-        cardsPrefabs.MMShuffle();
+        List<InitialCardsPrefabs> initialCards = new List<InitialCardsPrefabs>();
 
-        for (int i = 0; i < drawPileInitialAmount; i++)
+        for (int i = 0; i < cardsInitialPrefabs.Length; i++)
         {
-            GameObject card = GameObject.Instantiate(cardsPrefabs[curCard], drawPile);
-
-            curCard++;
-
-            if (curCard >= cardsPrefabs.Length)
+            for (int j = 0; j < cardsInitialPrefabs[i].quantity; j++)
             {
-                cardsPrefabs.MMShuffle();
-                curCard = 0;
+                initialCards.Add(cardsInitialPrefabs[i]);
             }
+        }
+
+        initialCards.MMShuffle();
+        initialCards.MMShuffle();
+        initialCards.MMShuffle();
+
+        for (int i = 0; i < initialCards.Count; i++)
+        {
+            GameObject card = GameObject.Instantiate(initialCards[i].prefab, drawPile);
 
             card.transform.position = drawPile.position + new Vector3(0, currentDrawPileYOffset, 0);
             currentDrawPileYOffset += .01f;
 
             availableCards.Add(card);
         }
+        
     }
 
     private IEnumerator DrawCards()

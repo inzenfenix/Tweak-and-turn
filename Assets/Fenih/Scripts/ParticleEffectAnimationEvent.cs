@@ -6,7 +6,7 @@ public class ParticleEffectAnimationEvent : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particles;
 
-    private void ParticleEffect()
+    public void ParticleEffect()
     {
         particles.Play();
     }

@@ -9170,7 +9170,7 @@ GameObject:
   - component: {fileID: 482099088}
   - component: {fileID: 482099087}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9213,17 +9213,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3725b45c7a426fc49b11852cdc9ff0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardsPrefabs:
-  - {fileID: 4478408636242431220, guid: 4b20a4fdffa76b54ebf126eb4814b11d, type: 3}
-  - {fileID: 4081327071009183527, guid: 0487b8d9747c99c4bb079464ca9f0f9b, type: 3}
-  - {fileID: 4478408636242431220, guid: 215e6131ad723b5409d3a2e4c3913676, type: 3}
-  - {fileID: 4478408636242431220, guid: 513c401e58169434ba44d07dec4ec04f, type: 3}
-  - {fileID: 4478408636242431220, guid: 336578a5a31891543b090ea3b024fd55, type: 3}
-  - {fileID: 4478408636242431220, guid: 5e3bff6d4951f84428738b6da39c31bf, type: 3}
-  - {fileID: 4081327071009183527, guid: 0487b8d9747c99c4bb079464ca9f0f9b, type: 3}
-  - {fileID: 4478408636242431220, guid: 215e6131ad723b5409d3a2e4c3913676, type: 3}
-  - {fileID: 4478408636242431220, guid: 4b20a4fdffa76b54ebf126eb4814b11d, type: 3}
-  - {fileID: 4081327071009183527, guid: 0487b8d9747c99c4bb079464ca9f0f9b, type: 3}
+  cardsInitialPrefabs:
+  - prefab: {fileID: 4478408636242431220, guid: 215e6131ad723b5409d3a2e4c3913676,
+      type: 3}
+    quantity: 5
+  - prefab: {fileID: 4478408636242431220, guid: 513c401e58169434ba44d07dec4ec04f,
+      type: 3}
+    quantity: 2
+  - prefab: {fileID: 4081327071009183527, guid: 0487b8d9747c99c4bb079464ca9f0f9b,
+      type: 3}
+    quantity: 3
   cardsPrefabsEnemy:
   - {fileID: 4478408636242431220, guid: 7f28629277ef1f44ab4c2babe0e0c06e, type: 3}
   - {fileID: 4478408636242431220, guid: 513c401e58169434ba44d07dec4ec04f, type: 3}
