@@ -612,72 +612,91 @@ public class TurnSystemBehaviour : MonoBehaviour
 
             if ((card.category == Category.Normal || card.category == Category.Special) && card.energyRequired <= energy)
             {
-                    int farthestRow = boardManager.Tiles.GetLength(0) - 1;
+                int farthestRow = boardManager.Tiles.GetLength(0) - 1;
 
-                    for (int j = 0; j < rows; j++)
+                for (int j = 0; j < rows; j++)
+                {
+                    for (int k = 0; k < columns; k++)
                     {
-                        for (int k = 0; k < columns; k++)
+                        if (!thisTurnTiles[j, k].isPlayersTile)
                         {
-                            if (!thisTurnTiles[j, k].isPlayersTile)
-                            {
-                                if (j < farthestRow) farthestRow = j;
-                            }
-                        }
-
-                    }
-
-                    for (int j = 0; j < columns; j++)
-                    {
-                        if (!winning[j] && thisTurnTiles[farthestRow, j].currentCard == null && !thisTurnTiles[farthestRow, j].isPlayersTile)
-                        {
-                            currentCardsAI.Remove(card.gameObject);
-                            energy -= card.energyRequired;
-
-                            yield return StartCoroutine(PlaceCardOnTileAI(card, thisTurnTiles[farthestRow, j]));
-                            break;
+                            if (j < farthestRow) farthestRow = j;
                         }
                     }
-                
+
+                }
+
+                for (int j = 0; j < columns; j++)
+                {
+                    if (!winning[j] && thisTurnTiles[farthestRow, j].currentCard == null && !thisTurnTiles[farthestRow, j].isPlayersTile)
+                    {
+
+                        currentCardsAI.Remove(card.gameObject);
+                        energy -= card.energyRequired;
+
+                        yield return StartCoroutine(PlaceCardOnTileAI(card, thisTurnTiles[farthestRow, j]));
+                        break;
+                    }
+                }
+
             }
         }
 
+        //Add buildings
         for (int i = 0; i < currentCardsAI.Count; i++)
         {
             CardBehaviour card = currentCardsAI[i].GetComponent<CardBehaviour>();
 
-            if (card.category == Category.Building && card.energyRequired <= energy)
+            if ((card.category == Category.Building) && card.energyRequired <= energy)
             {
+                int closestRow = 0;
+
+                for (int j = 0; j < rows - 1; j++)
+                {
+                    for (int k = 0; k < columns; k++)
+                    {
+                        if (!thisTurnTiles[j, k].isPlayersTile)
+                        {
+                            if (j > closestRow) closestRow = j;
+                        }
+                    }
+
+                }
+
                 for (int j = 0; j < columns; j++)
                 {
-                    if (!winning[j] && thisTurnTiles[buildingRow, j].currentCard == null)
+                    if (!winning[j] && thisTurnTiles[closestRow, j].currentCard == null && !thisTurnTiles[closestRow, j].isPlayersTile)
                     {
-                        switch (card.ability)
+                        if (card.category == Category.Building)
                         {
-                            case SpecialAbilities.DrawUP:
-                                AddExtraDraw(1, true);
-                                break;
-                            case SpecialAbilities.HealCard:
-                                extraHPEnemy++;
-                                break;
-                            case SpecialAbilities.EnergyUP:
-                                energyManager.extraEnergyAI++;
-                                break;
-                            case SpecialAbilities.AttackUp:
-                                extraAttackEnemy++;
-                                break;
+                            switch (card.ability)
+                            {
+                                case SpecialAbilities.DrawUP:
+                                    AddExtraDraw(1, true);
+                                    break;
+                                case SpecialAbilities.HealCard:
+                                    extraHPEnemy++;
+                                    break;
+                                case SpecialAbilities.EnergyUP:
+                                    energyManager.extraEnergyAI++;
+                                    break;
+                                case SpecialAbilities.AttackUp:
+                                    extraAttackEnemy++;
+                                    break;
 
-                            default:
-                                break;
+                                default:
+                                    break;
+                            }
                         }
 
                         currentCardsAI.Remove(card.gameObject);
                         energy -= card.energyRequired;
 
-                        yield return StartCoroutine(PlaceCardOnTileAI(card, thisTurnTiles[buildingRow, j]));
+                        yield return StartCoroutine(PlaceCardOnTileAI(card, thisTurnTiles[closestRow, j]));
                         break;
-
                     }
                 }
+
             }
         }
 
@@ -699,7 +718,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                     {
                         if (thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null)
                         {
-                            if(card.category == Category.Building)
+                            if (card.category == Category.Building)
                             {
                                 switch (card.ability)
                                 {
