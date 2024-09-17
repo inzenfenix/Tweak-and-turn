@@ -148,16 +148,9 @@ public class BoardManager : MonoBehaviour
                 hoveredTile = tiles[i, j];
                 CardBehaviour chosenCard = selectedCard.GetComponent<CardBehaviour>();
 
-                if (hoveredTile.isPlayersTile && (i == 0 || turnSystemBehaviour.currentTurn <= 3) && chosenCard.category == Category.Normal && hoveredTile.currentCard == null)
-                {
-                    playableTile = true;
-                    rejectSymbol.gameObject.SetActive(false);
-                    acceptSymbol.gameObject.SetActive(true);
-                    acceptSymbol.position = hoveredTile.tileHolder.transform.position + Vector3.up * .05f;
-                    return hoveredTile;
-                }
-
-                else if (hoveredTile.isPlayersTile && i == 1 && chosenCard.category == Category.Building && hoveredTile.currentCard == null)
+                if (hoveredTile.isPlayersTile && 
+                    (chosenCard.category == Category.Normal || chosenCard.category == Category.Building)
+                    && hoveredTile.currentCard == null)
                 {
                     playableTile = true;
                     rejectSymbol.gameObject.SetActive(false);
