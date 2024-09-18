@@ -48,7 +48,7 @@ public class CardBehaviour : MonoBehaviour
     [SerializeField] private ParticleSystem hitParticleEffect;
     [SerializeField] private TextMeshPro damageText;
 
-    [Header("Card Design")]
+    [Header("\nCard Design")]
     [SerializeField] private Color backgroundColor;
 
     private void Awake()
