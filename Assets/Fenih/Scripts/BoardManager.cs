@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
+    [Header("Board creation configs")]
     [SerializeField] private Transform startPoint;
 
     private float XCardSeparation = .5f;
@@ -14,10 +15,12 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private int columnAmount = 4;
     [SerializeField] private int rowAmount = 10;
 
+    [Header("\nBoard Tile Prefab")]
     [SerializeField] private GameObject cardHolderPrefab;
 
     private BoardTile[,] tiles;
 
+    [Header("\nHover Tile Symbols")]
     [SerializeField] private Transform acceptSymbol;
     [SerializeField] private Transform rejectSymbol;
 
@@ -26,6 +29,7 @@ public class BoardManager : MonoBehaviour
 
     private bool selectingBoardTile = false;
 
+    [Header("\nHover Tile Mask")]
     [SerializeField] private LayerMask tileMask;
 
     public static event EventHandler<GameObject> OnPutCardOnBoard;
@@ -34,7 +38,6 @@ public class BoardManager : MonoBehaviour
     private BoardTile hoveredTile = null;
 
     private EnergyManager energyManager;
-
     private TurnSystemBehaviour turnSystemBehaviour;
 
     private int curHPHealing = 1;

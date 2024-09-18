@@ -32,78 +32,86 @@ public class InitialCardsPrefabs
 
 public class TurnSystemBehaviour : MonoBehaviour
 {
+    //Events
     public static event EventHandler<GameObject> OnCardChose;
     public static event EventHandler OnCardChoseExited;
-
     public static event EventHandler<CurrentCamera> OnChangeCamera;
 
+    //Card lists
     private List<GameObject> availableCards;
-
     private List<GameObject> discardCards;
-
     private List<GameObject> currentCards;
 
+    //Initial Config
     private int amountOfDrawCards = 5;
     private int amountOfDrawCardsAI = 6;
-
-    private int drawPileInitialAmount = 10;
-
     private int currentCardAmount = 0;
+    private int maxAmountOfCards;
+    private int maxTurns = 20;
 
+    [HideInInspector] public int currentTurn = 1;
+
+    [Header("Cards initial configs")]
     [SerializeField] private InitialCardsPrefabs[] cardsInitialPrefabs;
     [SerializeField] private GameObject[] cardsPrefabsEnemy;
 
+    [Header("\nPosition of cards on screen")]
     [SerializeField] private Transform[] cardsPositions;
 
-    private int maxAmountOfCards;
-
+    [Header("\nThe pile from which you draw")]
     [SerializeField] private Transform drawPile;
     private float currentDrawPileYOffset = 0;
 
+    [Header("\nThe pile to which you discard")]
     [SerializeField] private Transform discardPile;
     private float currentDiscardPileYOffset = 0;
 
-    private int maxTurns = 20;
-    [HideInInspector] public int currentTurn = 1;
-
+    //Where the rival AI is currently at
     private CurrentState currentState;
     private CurrentState currentStateAI;
 
-    private GameObject hoveredCard;
-    private CardBehaviour hoveredCardBehaviour;
+    private List<GameObject> currentCardsAI;
 
-    private GameObject selectedCard;
-    private Vector3[] defaultCardScale;
 
+
+    [Header("\nInformation to hover/ed cards")]
     [SerializeField] private LayerMask cardMask;
-
     [SerializeField] private Transform chosenCardPos;
 
+    //Variables mantaining dynamic information about the selected card
+    private GameObject hoveredCard;
+    private CardBehaviour hoveredCardBehaviour;
+    private GameObject selectedCard;
+    private bool isCardSelected;
+
+    private Vector3[] defaultCardScale;
+    private bool currentlyWorking = false;
+
+    //Components from the playerSystem
     private EnergyManager energyManager;
     private BoardManager boardManager;
 
+    //Current tile (doesn't make much sense since tiles are referenced
     private BoardTile[,] thisTurnTiles;
-
-    private bool isCardSelected;
-
-    private List<GameObject> currentCardsAI;
-
-    private bool currentlyWorking = false;
-
+    
+    //JuicePlayer which contains animations
     private MMF_Player juicePlayer;
 
+    [Header("\nColor of the tiles")]
     public Color playerColor;
     public Color enemyColor;
 
+    [Header("\nCard audio")]
     [SerializeField] private AudioSource cardWhooshSounds;
     [SerializeField] private AudioClip[] cardWhooshClips;
 
+    [Header("\nCurrent Turn Text")]
     [SerializeField] private TextMeshPro turnText;
 
-    private bool finishGame = false;
 
-    [SerializeField] private GameObject[] obeliskGemsPlayer;
-    [SerializeField] private GameObject[] obeliskGemsEnemy;
+    [Header("Obellisk Configs")]
+    [SerializeField] private GameObject[] obelliskGemsPlayer;
+    [SerializeField] private GameObject[] obelliskGemsEnemy;
 
     [SerializeField] private Material obelliskNormalMat;
     [SerializeField] private Material obelliskEmissiveMat;
@@ -111,14 +119,17 @@ public class TurnSystemBehaviour : MonoBehaviour
     int currentTurnsObeliskPlayer = 0;
     int currentTurnsObeliskEnemy = 0;
 
-    bool[] levelsObeliskPlayer;
-    bool[] levelsObeliskEnemy;
+    private bool[] levelsObeliskPlayer;
+    private bool[] levelsObeliskEnemy;
 
+    //Power-ups to both the player and the enemy
     [HideInInspector] public int extraHPPlayer = 0;
     [HideInInspector] public int extraHPEnemy = 0;
 
     [HideInInspector] public int extraAttackPlayer = 0;
     [HideInInspector] public int extraAttackEnemy = 0;
+
+    private bool finishGame = false;
 
     private void Awake()
     {
@@ -157,10 +168,10 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         finishGame = false;
 
-        levelsObeliskPlayer = new bool[obeliskGemsPlayer.Length];
-        levelsObeliskEnemy = new bool[obeliskGemsEnemy.Length];
+        levelsObeliskPlayer = new bool[obelliskGemsPlayer.Length];
+        levelsObeliskEnemy = new bool[obelliskGemsEnemy.Length];
 
-        for (int i = 0; i < obeliskGemsPlayer.Length; i++)
+        for (int i = 0; i < obelliskGemsPlayer.Length; i++)
         {
             levelsObeliskEnemy[i] = levelsObeliskPlayer[i] = false;
         }
@@ -315,11 +326,11 @@ public class TurnSystemBehaviour : MonoBehaviour
         {
             currentTurnsObeliskPlayer++;
 
-            currentTurnsObeliskPlayer = Mathf.Min(currentTurnsObeliskPlayer, obeliskGemsPlayer.Length);
+            currentTurnsObeliskPlayer = Mathf.Min(currentTurnsObeliskPlayer, obelliskGemsPlayer.Length);
 
             for (int i = 0; i < currentTurnsObeliskPlayer; i++)
             {
-                obeliskGemsPlayer[i].GetComponent<MeshRenderer>().material = obelliskEmissiveMat;
+                obelliskGemsPlayer[i].GetComponent<MeshRenderer>().material = obelliskEmissiveMat;
             }
 
             switch (currentTurnsObeliskPlayer)
@@ -370,11 +381,11 @@ public class TurnSystemBehaviour : MonoBehaviour
         {
             currentTurnsObeliskEnemy++;
 
-            currentTurnsObeliskEnemy = Mathf.Min(currentTurnsObeliskEnemy, obeliskGemsEnemy.Length);
+            currentTurnsObeliskEnemy = Mathf.Min(currentTurnsObeliskEnemy, obelliskGemsEnemy.Length);
 
             for (int i = 0; i < currentTurnsObeliskEnemy; i++)
             {
-                obeliskGemsEnemy[i].GetComponent<MeshRenderer>().material = obelliskEmissiveMat;
+                obelliskGemsEnemy[i].GetComponent<MeshRenderer>().material = obelliskEmissiveMat;
             }
 
             switch (currentTurnsObeliskEnemy)
@@ -432,7 +443,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         {
 
             currentTurnsObeliskEnemy = 0;
-            obelisk = obeliskGemsEnemy;
+            obelisk = obelliskGemsEnemy;
 
             switch (currentTurnsObeliskEnemy)
             {
@@ -500,7 +511,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             }
 
             currentTurnsObeliskPlayer = 0;
-            obelisk = obeliskGemsPlayer;
+            obelisk = obelliskGemsPlayer;
         }
 
         for (int i = 0; i < obelisk.Length; i++)

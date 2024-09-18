@@ -5,28 +5,34 @@ using UnityEngine;
 
 public class EnergyManager : MonoBehaviour
 {
+    [Header("Energy Numerator Objects")]
     [SerializeField] private GameObject[] energyBatteries;
+    [SerializeField] TMPro.TextMeshPro extraEnergyText;
 
     private Material[] energyMats;
 
+    [Header("\nEnergy Configs")]
     [SerializeField] private int startEnergy = 2;
     [SerializeField] private int maxEnergy = 6;
-    private int maxAcumulatedEnergy = 3;
-    private int acumulatedEnergy;
+    private readonly int maxAcumulatedEnergy = 3;
+
     [HideInInspector] public int currentEnergy;
     [HideInInspector] public int currentEnergyAI;
 
     [HideInInspector] public int currentRechargeEnergy;
     [HideInInspector] public int currentRechargeEnergyAI;
 
-
-    [SerializeField] TMPro.TextMeshPro extraEnergyText;
-
     [HideInInspector] public int extraEnergy;
     [HideInInspector] public int extraEnergyAI;
 
+    [Header("\nEnergy Audio")]
     [SerializeField] private AudioSource energySound;
     [SerializeField] private AudioClip[] energyAudios;
+
+    [Header("\nEnergy phases's colors")]
+    [SerializeField] private Color cyan = new Color(68, 155, 184, 255f) / 150f;
+    [SerializeField] private Color gray = new Color(61, 64, 63, 255f) / 150f;
+    [SerializeField] private Color red = new Color(176, 62, 77, 255f) / 150f;
 
 
     private void Awake()
@@ -36,11 +42,9 @@ public class EnergyManager : MonoBehaviour
         for(int i = 0; i < energyBatteries.Length; i++)
         {
             energyMats[i] = energyBatteries[i].GetComponent<MeshRenderer>().material;
-            //energyMats[i].color = Color.black;
         }
 
         currentEnergy = currentEnergyAI = currentRechargeEnergy = currentRechargeEnergyAI = startEnergy;
-        acumulatedEnergy = Mathf.Clamp(currentEnergy, 0, maxAcumulatedEnergy);
 
         extraEnergy = extraEnergyAI = 0;
 
@@ -56,7 +60,8 @@ public class EnergyManager : MonoBehaviour
         {
             for (int i = amount - 1; i >= 0; i--)
             {
-                energyMats[i].color = Color.red;
+                //Red
+                energyMats[i].color = red;
             }
         }
 
@@ -78,7 +83,7 @@ public class EnergyManager : MonoBehaviour
 
                 for (int i = energyMats.Length - 1; i > energyMats.Length - 1 - extraEnergy; i--)
                 {
-                    energyMats[i].color = Color.red;
+                    energyMats[i].color = red;
                 }
             }
 
@@ -93,13 +98,13 @@ public class EnergyManager : MonoBehaviour
         if(amount > currentEnergy) return false;
 
         currentEnergy -= amount;
-        acumulatedEnergy = currentEnergy;
 
         if (currentEnergy <= energyMats.Length)
         {
             for (int i = 0; i < currentEnergy; i++)
             {
-                energyMats[i].color = Color.cyan;
+                //Cyan
+                energyMats[i].color = cyan;
             }
         }
 
@@ -107,7 +112,7 @@ public class EnergyManager : MonoBehaviour
         {
             for (int i = 0; i < energyMats.Length; i++)
             {
-                energyMats[i].color = Color.cyan;
+                energyMats[i].color = cyan;
             }
 
             extraEnergyText.text = "+" + $"{currentEnergy - energyMats.Length}";
@@ -115,7 +120,8 @@ public class EnergyManager : MonoBehaviour
 
         for(int i = currentEnergy; i < maxEnergy; i++)
         {
-            energyMats[i].color = Color.black;
+            //Black
+            energyMats[i].color = gray;
         }
 
         return true;
@@ -126,7 +132,7 @@ public class EnergyManager : MonoBehaviour
 
         for (int i = 0; i < energyBatteries.Length; i++)
         {
-            energyMats[i].color = Color.black;
+            energyMats[i].color = gray;
         }
 
 
@@ -140,7 +146,7 @@ public class EnergyManager : MonoBehaviour
                 energySound.Play();
                 yield return new WaitForEndOfFrame();
                 yield return new WaitForSeconds(.15f);
-                energyMats[i].color = Color.cyan;
+                energyMats[i].color = cyan;
             }
         }
 
@@ -153,7 +159,7 @@ public class EnergyManager : MonoBehaviour
 
                 yield return new WaitForEndOfFrame();
                 yield return new WaitForSeconds(.15f);
-                energyMats[i].color = Color.cyan;
+                energyMats[i].color = cyan;
             }
 
             extraEnergyText.text = "+" + $"{currentEnergy - energyMats.Length}";
@@ -187,7 +193,7 @@ public class EnergyManager : MonoBehaviour
         {
             for (int i = 0; i < currentEnergy; i++)
             {
-                energyMats[i].color = Color.cyan;
+                energyMats[i].color = cyan;
             }
         }
 
@@ -195,7 +201,7 @@ public class EnergyManager : MonoBehaviour
         {
             for (int i = 0; i < maxEnergy; i++)
             {
-                energyMats[i].color = Color.cyan;
+                energyMats[i].color = cyan;
             }
 
             extraEnergyText.text = "+" + (currentEnergy - maxEnergy);
