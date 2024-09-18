@@ -4992,10 +4992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f457e7b957fc07045b6586579b5e137d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
   hp: 1
   range: 1
-  energyRequired: 2
+  energyRequired: 1
   ability: 7
   category: 0
   cardName: DemonWarrior
