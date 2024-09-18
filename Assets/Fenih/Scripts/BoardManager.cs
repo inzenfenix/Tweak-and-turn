@@ -217,8 +217,8 @@ public class BoardManager : MonoBehaviour
 
             CardBehaviour chosenCardBehaviour = selectedCard.GetComponent<CardBehaviour>();
 
-            if(chosenCardBehaviour.characterGO != null)
-                chosenCardBehaviour.characterGO.SetActive(true);
+            if(chosenCardBehaviour.characterBoardVisual != null)
+                chosenCardBehaviour.characterBoardVisual.SetActive(true);
 
             if (chosenCardBehaviour.category != Category.Throwable)
                 tile.currentCard = selectedCard.GetComponent<CardBehaviour>();

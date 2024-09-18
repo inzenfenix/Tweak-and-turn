@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - SecondaryCamera
+  - HandVisual
+  - BoardVisual
+  - CharacterVisual
   layers:
   - Default
   - TransparentFX

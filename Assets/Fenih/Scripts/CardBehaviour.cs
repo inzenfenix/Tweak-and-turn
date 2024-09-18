@@ -27,34 +27,92 @@ public enum Category
 [Serializable]
 public class CardBehaviour : MonoBehaviour
 {
+    [Header("\nCard properties")]
     public int damage;
     public int hp;
     public int range;
     public int energyRequired;
-
     public SpecialAbilities ability;
     public Category category;
     public string cardName;
 
     [HideInInspector] public bool cardPlayed = false;
 
-    [SerializeField] private GameObject drawnCardShow;
-    [SerializeField] private GameObject boardCardShow;
-    [SerializeField] public GameObject characterGO;
+    [Header("Child objects")]
+    private GameObject handVisual;
+    private GameObject boardVisual;
+    [HideInInspector] public GameObject characterBoardVisual;
 
+    [Header("\nComponents and others")]
     [SerializeField] private Animator characterAnimator;
-
     [SerializeField] private ParticleSystem hitParticleEffect;
-
     [SerializeField] private TextMeshPro damageText;
 
-    [SerializeField] private GameObject boardVisual;
+    [Header("Card Design")]
+    [SerializeField] private Color backgroundColor;
 
     private void Awake()
     {
+        GetVisualObjects();
+        ChangeCardsColor();
+
         damageText.text = "";
         damageText.gameObject.SetActive(false);
-        characterGO.SetActive(false);
+        characterBoardVisual.SetActive(false);
+    }
+
+    private void GetVisualObjects()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("HandVisual"))
+            {
+                handVisual = child.gameObject;
+            }
+
+            else if (child.CompareTag("BoardVisual"))
+            {
+                boardVisual = child.gameObject;
+            }
+        }
+
+        if (boardVisual != null)
+        {
+            foreach (Transform child in boardVisual.transform)
+            {
+                if (child.CompareTag("CharacterVisual"))
+                {
+                    characterBoardVisual = child.gameObject;
+                }
+            }
+        }
+    }
+
+    private void ChangeCardsColor()
+    {
+        //Get card from board visual
+        foreach(Transform child in boardVisual.transform)
+        {
+            if(child.name == "Card")
+            {
+                if(child.TryGetComponent(out MeshRenderer renderer))
+                {
+                    renderer.material.color = backgroundColor;
+                }
+            }
+        }
+
+        //Get card from hand visual
+        foreach (Transform child in handVisual.transform)
+        {
+            if (child.name == "Card")
+            {
+                if (child.TryGetComponent(out MeshRenderer renderer))
+                {
+                    renderer.material.color = backgroundColor;
+                }
+            }
+        }
     }
 
     public int TakeDamage(int amount)
@@ -87,23 +145,23 @@ public class CardBehaviour : MonoBehaviour
 
     public void ShowCard()
     {
-        drawnCardShow.SetActive(true);
-        boardCardShow.SetActive(false);
-        characterGO.SetActive(false);
+        handVisual.SetActive(true);
+        boardVisual.SetActive(false);
+        characterBoardVisual.SetActive(false);
     }
 
     public void PutCardOnBoard()
     {
-        drawnCardShow.SetActive(false);
-        boardCardShow.SetActive(true);
-        characterGO.SetActive(true);
+        handVisual.SetActive(false);
+        boardVisual.SetActive(true);
+        characterBoardVisual.SetActive(true);
     }
 
     public void PutOnPile()
     {
-        drawnCardShow.SetActive(false);
-        boardCardShow.SetActive(true);
-        characterGO.SetActive(false);
+        handVisual.SetActive(false);
+        boardVisual.SetActive(true);
+        characterBoardVisual.SetActive(false);
     }
 
     public void MakeDamage()

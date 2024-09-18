@@ -5137,13 +5137,11 @@ MonoBehaviour:
   category: 1
   cardName: Coal Mine
   cardPlayed: 0
-  drawnCardShow: {fileID: 7747813829652821156}
-  boardCardShow: {fileID: 6787302617599001597}
-  characterGO: {fileID: 6448079341473614194}
+  characterBoardVisual: {fileID: 0}
   characterAnimator: {fileID: 0}
   hitParticleEffect: {fileID: 3949182892256066610}
   damageText: {fileID: 8447583887901851150}
-  boardVisual: {fileID: 8064443380645474570}
+  backgroundColor: {r: 0.5660378, g: 0.52137107, b: 0.4886081, a: 0}
 --- !u!1 &4937711973653185481
 GameObject:
   m_ObjectHideFlags: 0
@@ -5156,7 +5154,7 @@ GameObject:
   - component: {fileID: 7655231756880250735}
   - component: {fileID: 7430765615837273553}
   m_Layer: 9
-  m_Name: CajaMagica
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5174,7 +5172,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 1.86, z: 0}
   m_LocalScale: {x: 93.49856, y: 68.95609, z: 97.034485}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6329812572779256911}
   m_Father: {fileID: 3763995081809665358}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7655231756880250735
@@ -5205,7 +5204,173 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abf9c08af8eef40489d1558ed8b0f7a8, type: 2}
+  - {fileID: 2100000, guid: afe3e1c5d5d6e604f85e6323a827f409, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5055752128659963860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5576146191491786094}
+  - component: {fileID: 8848914658599168715}
+  - component: {fileID: 6713001956800732673}
+  m_Layer: 9
+  m_Name: CoalMine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5576146191491786094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055752128659963860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071067, y: -0, z: -0, w: 0.7071069}
+  m_LocalPosition: {x: -0.011999607, y: 1.463, z: -0.09}
+  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3763995081809665358}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &8848914658599168715
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055752128659963860}
+  m_Mesh: {fileID: 3603587025527718098, guid: 15dfaf462b78d374bad898e57906a09e, type: 3}
+--- !u!23 &6713001956800732673
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5055752128659963860}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 140ddf62bcf0c9444a31c980ce8846a3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6448079341473614194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5924482371823965128}
+  - component: {fileID: 7320643829167463533}
+  - component: {fileID: 4790934517315430567}
+  m_Layer: 0
+  m_Name: CoalMine
+  m_TagString: CharacterVisual
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5924482371823965128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448079341473614194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.00000041723246, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000010251999, y: -0.06355739, z: -0.015686035}
+  m_LocalScale: {x: 0.6, y: 0.65999997, z: 0.65999997}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4790446848637661001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &7320643829167463533
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448079341473614194}
+  m_Mesh: {fileID: 3603587025527718098, guid: 15dfaf462b78d374bad898e57906a09e, type: 3}
+--- !u!23 &4790934517315430567
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448079341473614194}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 140ddf62bcf0c9444a31c980ce8846a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5240,7 +5405,7 @@ GameObject:
   - component: {fileID: 3108573933568336919}
   - component: {fileID: 2337512346953092080}
   m_Layer: 0
-  m_Name: PileCardShow
+  m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5290,7 +5455,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abf9c08af8eef40489d1558ed8b0f7a8, type: 2}
+  - {fileID: 2100000, guid: afe3e1c5d5d6e604f85e6323a827f409, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5345,7 +5510,7 @@ GameObject:
   - component: {fileID: 3763995081809665358}
   m_Layer: 9
   m_Name: HandVisual
-  m_TagString: Untagged
+  m_TagString: HandVisual
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5364,7 +5529,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6940999055266130663}
-  - {fileID: 6329812572779256911}
   - {fileID: 5576146191491786094}
   m_Father: {fileID: 3849821499946292814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5380,7 +5544,7 @@ GameObject:
   - component: {fileID: 8757762722786199267}
   - component: {fileID: 4638640083174709752}
   m_Layer: 9
-  m_Name: Carta
+  m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5394,12 +5558,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7995154618166367574}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 96.356, y: 71.06349, z: 51.59217}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.019168444}
+  m_LocalScale: {x: 1.0305613, y: 1.0305616, z: 0.5316891}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3763995081809665358}
+  m_Father: {fileID: 6940999055266130663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8757762722786199267
 MeshFilter:
@@ -5462,7 +5626,7 @@ GameObject:
   - component: {fileID: 4790446848637661001}
   m_Layer: 0
   m_Name: BoardVisual
-  m_TagString: Untagged
+  m_TagString: BoardVisual
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5498,7 +5662,7 @@ GameObject:
   - component: {fileID: 6557720251199629804}
   - component: {fileID: 6429611710333081228}
   m_Layer: 0
-  m_Name: Carta
+  m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5569,207 +5733,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &5397786356241826437
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3763995081809665358}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.011999607
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.463
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071069
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 140ddf62bcf0c9444a31c980ce8846a3, type: 2}
-    - target: {fileID: 919132149155446097, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_Name
-      value: CoalMine
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 15dfaf462b78d374bad898e57906a09e, type: 3}
---- !u!4 &5576146191491786094 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5397786356241826437}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6178169230532080675
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4790446848637661001}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.65999997
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.65999997
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.000010251999
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.06355739
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.015686035
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000041723246
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 140ddf62bcf0c9444a31c980ce8846a3, type: 2}
-    - target: {fileID: 919132149155446097, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_Name
-      value: CoalMine
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 15dfaf462b78d374bad898e57906a09e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 15dfaf462b78d374bad898e57906a09e, type: 3}
---- !u!4 &5924482371823965128 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 15dfaf462b78d374bad898e57906a09e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6178169230532080675}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6448079341473614194 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 15dfaf462b78d374bad898e57906a09e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6178169230532080675}
-  m_PrefabAsset: {fileID: 0}
