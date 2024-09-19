@@ -88,8 +88,8 @@ public class TurnSystemBehaviour : MonoBehaviour
     private bool currentlyWorking = false;
 
     //Components from the playerSystem
-    private EnergyManager energyManager;
-    private BoardManager boardManager;
+    [HideInInspector] public EnergyManager energyManager;
+    [HideInInspector] public BoardManager boardManager;
 
     //Current tile (doesn't make much sense since tiles are referenced
     private BoardTile[,] thisTurnTiles;
@@ -800,86 +800,12 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard.cardPlayed) continue;
 
-                curTile.currentCard.cardPlayed = true;
+                if (curTile.isPlayersTile) continue;
 
-
-                if (!curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
-                {
-                    if (i == thisTurnTiles.GetLength(0) - 1)
-                    {
-                        bool madeDamage = false;
-
-                        if (thisTurnTiles[i - 1, j].currentCard != null)
-                        {
-                            if (thisTurnTiles[i - 1, j].currentCard.category == Category.Building && thisTurnTiles[i - 1, j].secondaryCard == null)
-                            {
-                                yield return MoveSecondaryCard(i - 1, j, curTile);
-                                continue;
-                            }
-                        }
-
-                        for (int k = 1; k <= curTile.currentCard.range; k++)
-                        {
-                            if (i - k < 0) break;
-
-                            if (thisTurnTiles[i - k, j].isPlayersTile)
-                            {
-                                madeDamage = true;
-                                yield return TryDoingDamage(i - k, j, curTile, true);
-                                break;
-                            }
-                        }
-
-                        if (!madeDamage && thisTurnTiles[i - 1, j].currentCard == null)
-                        {
-                            yield return MoveMainCard(i - 1, j, curTile, true);
-                        }
-                    }
-
-                    if (i - 1 == 0)
-                    {
-                        if (thisTurnTiles[i - 1, j].currentCard != null)
-                        {
-                            yield return TryDoingDamage(i - 1, j, curTile, true);
-                        }
-                    }
-
-                    if ((i - 1 >= 0) && (i != thisTurnTiles.GetLength(0) - 1) && (i - 1 != 0))
-                    {
-                        bool madeDamage = false;
-
-                        for (int k = 1; k <= curTile.currentCard.range; k++)
-                        {
-                            if (i - k < 0) break;
-
-                            else if (thisTurnTiles[i - k, j].currentCard != null && thisTurnTiles[i - k, j].isPlayersTile)
-                            {
-                                madeDamage = true;
-                                yield return TryDoingDamage(i - k, j, curTile, true);
-                                break;
-                            }
-                        }
-
-                        if (thisTurnTiles[i - 1, j].currentCard == null && !madeDamage)
-                        {
-                            yield return MoveMainCard(i - 1, j, curTile, true);
-                        }
-                    }
-                }
-
-                else if (!curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
-                {
-                    if (curTile.secondaryCard != null)
-                    {
-                        if (thisTurnTiles[i - 1, j].currentCard == null && !curTile.secondaryCard.cardPlayed)
-                        {
-                            yield return MoveSecondaryCardForward(i - 1, j, curTile, true);
-                        }
-                    }
-                }
+                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor, enemyColor, juicePlayer, this, "-", true);
             }
 
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.1f);
         }
 
         yield return new WaitForSeconds(0.1f);
@@ -931,88 +857,12 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard.cardPlayed) continue;
 
-                curTile.currentCard.cardPlayed = true;
+                if (!curTile.isPlayersTile) continue;
 
-                if (curTile.isPlayersTile && curTile.currentCard.category == Category.Normal)
-                {
-                    if (i == 0)
-                    {
-                        bool madeDamage = false;
-
-                        if (thisTurnTiles[i + 1, j].currentCard != null)
-                        {
-                            if (thisTurnTiles[i + 1, j].currentCard.category == Category.Building && thisTurnTiles[i + 1, j].secondaryCard == null)
-                            {
-                                yield return MoveSecondaryCard(i + 1, j, curTile);
-                                continue;
-                            }
-                        }
-
-                        for (int k = 1; k <= curTile.currentCard.range; k++)
-                        {
-                            if (i + k >= thisTurnTiles.GetLength(0)) break;
-
-                            if (!thisTurnTiles[i + k, j].isPlayersTile)
-                            {
-                                madeDamage = true;
-                                yield return TryDoingDamage(i + k, j, curTile);
-                                break;
-                            }
-                        }
-
-                        if (!madeDamage && thisTurnTiles[i + 1, j].currentCard == null)
-                        {
-                            yield return MoveMainCard(i + 1, j, curTile);
-                        }
-                    }
-
-                    if (i + 1 == thisTurnTiles.GetLength(0) - 1)
-                    {
-
-                        if (thisTurnTiles[i + 1, j].currentCard != null)
-                        {
-                            yield return TryDoingDamage(i + 1, j, curTile);
-                        }
-                    }
-
-
-                    if ((i + 1 < thisTurnTiles.GetLength(0)) && (i != 0) && (i + 1 != thisTurnTiles.GetLength(0) - 1))
-                    {
-
-                        bool madeDamage = false;
-
-                        for (int k = 1; k <= curTile.currentCard.range; k++)
-                        {
-                            if (i + k >= thisTurnTiles.GetLength(0)) break;
-
-                            if (thisTurnTiles[i + k, j].currentCard != null && !thisTurnTiles[i + k, j].isPlayersTile)
-                            {
-                                madeDamage = true;
-                                yield return TryDoingDamage(i + k, j, curTile);
-                                break;
-                            }
-                        }
-
-                        if (thisTurnTiles[i + 1, j].currentCard == null && !madeDamage)
-                        {
-                            yield return MoveMainCard(i + 1, j, curTile);
-                        }
-                    }
-                }
-
-                else if (curTile.isPlayersTile && curTile.currentCard.category == Category.Building)
-                {
-                    if (curTile.secondaryCard != null)
-                    {
-                        if (thisTurnTiles[i + 1, j].currentCard == null && !curTile.secondaryCard.cardPlayed)
-                        {
-                            yield return MoveSecondaryCardForward(i + 1, j, curTile);
-                        }
-                    }
-                }
+                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor, enemyColor, juicePlayer, this, "+", false); 
             }
 
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.1f);
         }
 
         for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
@@ -1050,185 +900,12 @@ public class TurnSystemBehaviour : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    private void DestroyedBuilding(CardBehaviour destroyedCard, bool isOpponent = false)
-    {
-        if (isOpponent)
-        {
-            switch (destroyedCard.ability)
-            {
-                case SpecialAbilities.DrawUP:
-                    SubstractExtraCharge(1, true);
-                    break;
-                case SpecialAbilities.HealCard:
-                    extraHPEnemy--;
-                    break;
-                case SpecialAbilities.EnergyUP:
-                    energyManager.extraEnergyAI--;
-                    break;
-                case SpecialAbilities.AttackUp:
-                    extraAttackEnemy--;
-                    break;
-
-                default:
-                    break;
-            }
-        }
-        else
-        {
-            switch (destroyedCard.ability)
-            {
-                case SpecialAbilities.DrawUP:
-                    SubstractExtraCharge(1, false);
-                    break;
-                case SpecialAbilities.HealCard:
-                    extraHPPlayer--;
-                    break;
-                case SpecialAbilities.EnergyUP:
-                    energyManager.extraEnergy--;
-                    break;
-                case SpecialAbilities.AttackUp:
-                    extraAttackPlayer--;
-                    break;
-
-                default:
-                    break;
-            }
-        }
-    }
-
     private void FinishGame()
     {
         finishGame = true;
         boardManager.FinishGame();
 
         GetComponent<FinishedGameManager>().FinishedGame(thisTurnTiles);
-    }
-
-    private IEnumerator TryDoingDamage(int row, int col, BoardTile curTile, bool isOpponnent = false)
-    {
-        if (curTile.currentCard.damage > 0 && ((thisTurnTiles[row, col].isPlayersTile && isOpponnent) || (!thisTurnTiles[row, col].isPlayersTile && !isOpponnent)))
-        {
-            curTile.currentCard.GetComponent<CardBehaviour>().MakeDamage();
-            yield return new WaitForSeconds(.2f);
-            juicePlayer.PlayFeedbacks();
-            if (thisTurnTiles[row, col].currentCard != null)
-            {
-                int cardHP = thisTurnTiles[row, col].currentCard.TakeDamage(curTile.currentCard.damage);
-
-                if (cardHP <= 0)
-                {
-                    if (thisTurnTiles[row, col].currentCard.category == Category.Building)
-                    {
-                        DestroyedBuilding(thisTurnTiles[row, col].currentCard, isOpponnent);
-                    }
-
-                    Destroy(thisTurnTiles[row, col].currentCard.gameObject, .25f);
-                    thisTurnTiles[row, col].currentCard = null;
-
-                    if (thisTurnTiles[row, col].secondaryCard != null)
-                    {
-                        thisTurnTiles[row, col].currentCard = thisTurnTiles[row, col].secondaryCard;
-                        thisTurnTiles[row, col].secondaryCard = null;
-
-                        thisTurnTiles[row, col].currentCard.transform.position = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
-                    }
-                }
-            }
-        }
-    }
-
-    private IEnumerator MoveMainCard(int row, int col, BoardTile curTile, bool isEnemy = false)
-    {
-        thisTurnTiles[row, col].currentCard = curTile.currentCard;
-        curTile.currentCard = null;
-
-        float lerp = 0;
-        float speed = 7.5f;
-
-        Vector3 originalPos = thisTurnTiles[row, col].currentCard.transform.position;
-        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
-
-        while (lerp < 1)
-        {
-            lerp += Time.deltaTime * speed;
-            thisTurnTiles[row, col].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-            yield return new WaitForEndOfFrame();
-        }
-
-        if (thisTurnTiles[row, col].isPlayersTile && isEnemy)
-        {
-            thisTurnTiles[row, col].isPlayersTile = false;
-            thisTurnTiles[row, col].ChangeTileColor(enemyColor);
-        }
-
-        else if (!thisTurnTiles[row, col].isPlayersTile && !isEnemy)
-        {
-            thisTurnTiles[row, col].isPlayersTile = true;
-            thisTurnTiles[row, col].ChangeTileColor(playerColor);
-        }
-
-        thisTurnTiles[row, col].currentCard.transform.parent = thisTurnTiles[row, col].tileHolder.transform;
-        yield return new WaitForEndOfFrame();
-    }
-
-    private IEnumerator MoveSecondaryCard(int row, int col, BoardTile curTile)
-    {
-        thisTurnTiles[row, col].secondaryCard = curTile.currentCard;
-        curTile.currentCard = null;
-
-        float lerp = 0;
-        float speed = 7.5f;
-
-        Vector3 originalPos = thisTurnTiles[row, col].secondaryCard.transform.position;
-        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .15f;
-
-        while (lerp < 1)
-        {
-            lerp += Time.deltaTime * speed;
-            thisTurnTiles[row, col].secondaryCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-            yield return new WaitForEndOfFrame();
-        }
-
-        thisTurnTiles[row, col].secondaryCard.transform.parent = thisTurnTiles[row, col].tileHolder.transform;
-
-        yield return new WaitForEndOfFrame();
-    }
-
-    private IEnumerator MoveSecondaryCardForward(int row, int col, BoardTile curTile, bool isOpponent = false)
-    {
-        thisTurnTiles[row, col].currentCard = curTile.secondaryCard;
-        curTile.secondaryCard = null;
-
-        float lerp = 0;
-        float speed = 7.5f;
-
-        Vector3 originalPos = thisTurnTiles[row, col].currentCard.transform.position;
-        Vector3 goalPos = thisTurnTiles[row, col].tileHolder.transform.position + Vector3.up * .05f;
-
-        thisTurnTiles[row, col].currentCard.cardPlayed = true;
-
-        while (lerp < 1)
-        {
-            lerp += Time.deltaTime * speed;
-            thisTurnTiles[row, col].currentCard.transform.position = Vector3.Lerp(originalPos, goalPos, lerp);
-            yield return new WaitForEndOfFrame();
-        }
-
-        thisTurnTiles[row, col].currentCard.transform.parent = thisTurnTiles[row, col].tileHolder.transform;
-
-        yield return new WaitForEndOfFrame();
-
-        if (thisTurnTiles[row, col].isPlayersTile && isOpponent)
-        {
-            thisTurnTiles[row, col].isPlayersTile = false;
-            thisTurnTiles[row, col].ChangeTileColor(enemyColor);
-        }
-
-        else if (!thisTurnTiles[row, col].isPlayersTile && !isOpponent)
-        {
-            thisTurnTiles[row, col].isPlayersTile = true;
-            thisTurnTiles[row, col].ChangeTileColor(playerColor);
-        }
     }
 
     private void PuttingCardsOnBoard()
