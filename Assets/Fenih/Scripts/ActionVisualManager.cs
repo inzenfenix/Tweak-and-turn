@@ -46,4 +46,11 @@ public class ActionVisualManager : MonoBehaviour
         sword.SetActive(true);
         arrow.SetActive(false);
     }
+
+    public void DisableAll()
+    {
+        bow.SetActive(false);
+        sword.SetActive(false);
+        arrow.SetActive(false);
+    }
 }

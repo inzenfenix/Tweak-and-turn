@@ -94,7 +94,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     //Current tile (doesn't make much sense since tiles are referenced
     private BoardTile[,] thisTurnTiles;
-    
+
     //JuicePlayer which contains animations
     private MMF_Player juicePlayer;
 
@@ -165,7 +165,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         if (cardWhooshClips.Length > 0)
             cardWhooshSounds.clip = cardWhooshClips[0];
 
-        turnText.text = (Mathf.Max(0,maxTurns - currentTurn + 1)).ToString();
+        turnText.text = (Mathf.Max(0, maxTurns - currentTurn + 1)).ToString();
 
         finishGame = false;
 
@@ -211,6 +211,25 @@ public class TurnSystemBehaviour : MonoBehaviour
             RefreshDrawnCardsPositions();
 
             currentCardAmount--;
+        }
+
+        thisTurnTiles = boardManager.Tiles;
+
+        for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < thisTurnTiles.GetLength(1); j++)
+            {
+                BoardTile curTile = thisTurnTiles[i, j];
+
+                if (curTile.currentCard == null) continue;
+
+                curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+
+                if (curTile.secondaryCard != null)
+                {
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                }
+            }
         }
     }
 
@@ -752,6 +771,23 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         } while (playedCard && plays < 10);
 
+        for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < thisTurnTiles.GetLength(1); j++)
+            {
+                BoardTile curTile = thisTurnTiles[i, j];
+
+                if (curTile.currentCard == null) continue;
+
+                curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+
+                if (curTile.secondaryCard != null)
+                {
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                }
+            }
+        }
+
         yield return new WaitForSeconds(.5f);
         currentStateAI = CurrentState.PlayingCards;
         currentlyWorking = false;
@@ -873,7 +909,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (!curTile.isPlayersTile) continue;
 
-                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor, enemyColor, juicePlayer, this, "+", false); 
+                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor, enemyColor, juicePlayer, this, "+", false);
             }
 
             yield return new WaitForSeconds(.1f);
@@ -1155,7 +1191,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
             availableCards.Add(card);
         }
-        
+
     }
 
     private IEnumerator DrawCards()
@@ -1355,6 +1391,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         GameObject curCard = Instantiate(card);
         Transform curCardTransform = curCard.transform;
 
+
         discardCards.Add(curCard);
 
         curCardTransform.parent = discardPile;
@@ -1366,6 +1403,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         Quaternion originalRot = curCardTransform.localRotation;
 
         curCard.GetComponent<CardBehaviour>().PutOnPile();
+        curCard.GetComponent<CardBehaviour>().DisableActionVisuals();
 
         while (lerp < 1)
         {

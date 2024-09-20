@@ -174,6 +174,10 @@ public class CardBehaviour : MonoBehaviour
         if(characterAnimator != null)
             characterAnimator.SetTrigger("OnMakeDamage");
     }
+    public void DisableActionVisuals()
+    {
+        actionsVisuals.DisableAll();
+    }
 
     public IEnumerator CardActions(BoardTile[,] tiles, BoardTile curTile, int row, int column, Color playerColor, Color enemyColor, 
                                      MMF_Player juiceDamageFeedbackPlayer, TurnSystemBehaviour turnSystem, string op, bool isEnemy = false)
