@@ -226,6 +226,14 @@ public class BoardManager : MonoBehaviour
             if (chosenCardBehaviour.category != Category.Throwable)
                 tile.currentCard = selectedCard.GetComponent<CardBehaviour>();
 
+            if(tile.currentCard.category == Category.Normal)
+            {
+                int row = tile.tileHolder.GetComponent<TileIndices>().row;
+                int col = tile.tileHolder.GetComponent<TileIndices>().col;
+
+                tile.currentCard.CardNextAction(tiles, tile, row, col, "+");
+            }
+
             else if (chosenCardBehaviour.category == Category.Throwable && tile.currentCard != null)
             {
                 switch (chosenCardBehaviour.ability)

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public enum CurrentState
 {
@@ -164,7 +165,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         if (cardWhooshClips.Length > 0)
             cardWhooshSounds.clip = cardWhooshClips[0];
 
-        turnText.text = "Current Turn\n" + currentTurn + "/" + maxTurns;
+        turnText.text = (Mathf.Max(0,maxTurns - currentTurn + 1)).ToString();
 
         finishGame = false;
 
@@ -780,6 +781,11 @@ public class TurnSystemBehaviour : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        int row = tile.tileHolder.GetComponent<TileIndices>().row;
+        int column = tile.tileHolder.GetComponent<TileIndices>().col;
+
+        card.CardNextAction(thisTurnTiles, tile, row, column, "-", true);
+
         yield return new WaitForEndOfFrame();
     }
 
@@ -818,11 +824,19 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard == null) continue;
 
-                if (curTile.currentCard.cardPlayed) curTile.currentCard.cardPlayed = false;
+                if (curTile.currentCard.cardPlayed)
+                {
+                    curTile.currentCard.cardPlayed = false;
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-", true);
+                }
 
                 if (curTile.secondaryCard != null)
                 {
-                    if (curTile.secondaryCard.cardPlayed) curTile.secondaryCard.cardPlayed = false;
+                    if (curTile.secondaryCard.cardPlayed)
+                    {
+                        curTile.secondaryCard.cardPlayed = false;
+                        curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-", true);
+                    }
                 }
             }
         }
@@ -873,18 +887,23 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard == null) continue;
 
-                if (curTile.currentCard.cardPlayed) curTile.currentCard.cardPlayed = false;
+                if (curTile.currentCard.cardPlayed)
+                {
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                    curTile.currentCard.cardPlayed = false;
+                }
 
                 if (curTile.secondaryCard != null)
                 {
                     if (curTile.secondaryCard.cardPlayed) curTile.secondaryCard.cardPlayed = false;
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
                 }
             }
         }
 
 
         currentTurn++;
-        turnText.text = "Current Turn\n" + currentTurn + "/" + maxTurns;
+        turnText.text = (Mathf.Max(0, maxTurns - currentTurn + 1)).ToString();
         if (currentTurn > maxTurns)
         {
             FinishGame();

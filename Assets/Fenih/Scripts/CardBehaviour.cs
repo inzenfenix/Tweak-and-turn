@@ -49,9 +49,12 @@ public class CardBehaviour : MonoBehaviour
     [SerializeField] private Animator characterAnimator;
     [SerializeField] private ParticleSystem hitParticleEffect;
     [SerializeField] private TextMeshPro damageText;
+    [SerializeField] private ActionVisualManager actionsVisuals;
 
     [Header("\nCard Design")]
     [SerializeField] private Color backgroundColor;
+
+    
 
     private void Awake()
     {
@@ -175,17 +178,17 @@ public class CardBehaviour : MonoBehaviour
     public IEnumerator CardActions(BoardTile[,] tiles, BoardTile curTile, int row, int column, Color playerColor, Color enemyColor, 
                                      MMF_Player juiceDamageFeedbackPlayer, TurnSystemBehaviour turnSystem, string op, bool isEnemy = false)
     {
-        curTile.currentCard.cardPlayed = true;
-        bool secondaryCard = false;
+        //Move this card
+        cardPlayed = true;
         int rowEnd = isEnemy ? 0 : tiles.GetLength(0) - 1;
 
-        if (curTile.currentCard.category == Category.Normal)
+        if (category == Category.Normal)
         {
             if (AddOrSubstract(row, op, 1) == rowEnd)
             {
                 if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null)
                 {
-                    yield return TryDoingDamage(tiles, AddOrSubstract(row, op, 1), column, curTile.currentCard, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
+                    yield return TryDoingDamage(tiles, AddOrSubstract(row, op, 1), column, this, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
                 }
             }
 
@@ -204,14 +207,10 @@ public class CardBehaviour : MonoBehaviour
                     {
                         yield return MoveSecondaryCard(tiles, AddOrSubstract(row, op, 1), column, curTile);
                         curTile = tiles[AddOrSubstract(row, op, 1), column];
-
-                        secondaryCard = true;
                     }
                 }
 
-                CardBehaviour curCard = secondaryCard ? curTile.secondaryCard : curTile.currentCard;
-
-                for (int i = 1; i <= curCard.range; i++)
+                for (int i = 1; i <= range; i++)
                 {
                     if (AddOrSubstract(row, op, i) < 0) break;
 
@@ -220,7 +219,7 @@ public class CardBehaviour : MonoBehaviour
                             (!tiles[AddOrSubstract(row, op, i), column].isPlayersTile && !isEnemy)))
                     {
                         madeDamage = true;
-                        yield return TryDoingDamage(tiles, AddOrSubstract(row, op, i), column, curCard, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
+                        yield return TryDoingDamage(tiles, AddOrSubstract(row, op, i), column, this, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
                         break;
                     }
                 }
@@ -232,8 +231,9 @@ public class CardBehaviour : MonoBehaviour
             }
         }
 
-        else if (curTile.currentCard.category == Category.Building)
+        else if (category == Category.Building)
         {
+            //In case the tile has a secondary card
             if (curTile.secondaryCard != null)
             {
                 if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !curTile.secondaryCard.cardPlayed)
@@ -253,6 +253,134 @@ public class CardBehaviour : MonoBehaviour
                         {
                             yield return TryDoingDamage(tiles, AddOrSubstract(row, op, i), column, curTile.secondaryCard, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
                             break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void CardNextAction(BoardTile[,] tiles, BoardTile curTile, int row, int column, string op, bool isEnemy = false)
+    {
+        if (actionsVisuals == null) return;
+
+        //Move this card
+        int rowEnd = isEnemy ? 0 : tiles.GetLength(0) - 1;
+
+        if (category == Category.Normal)
+        {
+            if (AddOrSubstract(row, op, 1) == rowEnd)
+            {
+                if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null)
+                {
+                    actionsVisuals.EnableSword();
+                    return;
+                }
+            }
+
+            bool isARowCond = isEnemy ? AddOrSubstract(row, op, 1) >= 0 : AddOrSubstract(row, op, 1) < tiles.GetLength(0);
+
+            if (isARowCond && (AddOrSubstract(row, op, 1) != rowEnd))
+            {
+                bool madeDamage = false;
+
+                if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null)
+                {
+                    if (tiles[AddOrSubstract(row, op, 1), column].currentCard.category == Category.Building &&
+                        tiles[AddOrSubstract(row, op, 1), column].secondaryCard == null && (
+                        tiles[AddOrSubstract(row, op, 1), column].isPlayersTile && !isEnemy ||
+                        !tiles[AddOrSubstract(row, op, 1), column].isPlayersTile && isEnemy))
+                    {
+                        if(isEnemy)
+                        {
+                            actionsVisuals.EnableArrow("Backward");
+                        }
+
+                        else
+                        {
+                            actionsVisuals.EnableArrow("Forward");
+                        }
+
+                        curTile = tiles[AddOrSubstract(row, op, 1), column];
+                        return;
+                    }
+                }
+
+                for (int i = 1; i <= range; i++)
+                {
+                    if (AddOrSubstract(row, op, i) < 0) break;
+
+                    else if (tiles[AddOrSubstract(row, op, i), column].currentCard != null &&
+                            ((tiles[AddOrSubstract(row, op, i), column].isPlayersTile && isEnemy) ||
+                            (!tiles[AddOrSubstract(row, op, i), column].isPlayersTile && !isEnemy)))
+                    {
+                        madeDamage = true;
+                        
+                        if(range <= 1)
+                        {
+                            actionsVisuals.EnableSword();
+                        }
+                        else
+                        {
+                            actionsVisuals.EnableBow();
+                        }
+
+                        return;
+                    }
+                }
+
+                if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !madeDamage)
+                {
+                    if (isEnemy)
+                    {
+                        actionsVisuals.EnableArrow("Backward");
+                    }
+
+                    else
+                    {
+                        actionsVisuals.EnableArrow("Forward");
+                    }
+                }
+            }
+        }
+
+        else if (category == Category.Building)
+        {
+            //In case the tile has a secondary card
+            if (curTile.secondaryCard != null)
+            {
+                if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !curTile.secondaryCard.cardPlayed)
+                {
+                    if (isEnemy)
+                    {
+                        curTile.secondaryCard.actionsVisuals.EnableArrow("Backward");
+                    }
+
+                    else
+                    {
+                        curTile.secondaryCard.actionsVisuals.EnableArrow("Forward");
+                    }
+                }
+
+                else if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null && !curTile.secondaryCard.cardPlayed)
+                {
+                    for (int i = 1; i <= curTile.secondaryCard.range; i++)
+                    {
+                        if (AddOrSubstract(row, op, i) < 0) break;
+
+                        else if (tiles[AddOrSubstract(row, op, i), column].currentCard != null &&
+                                ((tiles[AddOrSubstract(row, op, i), column].isPlayersTile && isEnemy) ||
+                                (!tiles[AddOrSubstract(row, op, i), column].isPlayersTile && !isEnemy)))
+                        {
+                            if (curTile.secondaryCard.range <= 1)
+                            {
+                                curTile.secondaryCard.actionsVisuals.EnableSword();
+                            }
+                            else
+                            {
+                                curTile.secondaryCard.actionsVisuals.EnableBow();
+                            }
+                            return;
                         }
                     }
                 }
