@@ -167,16 +167,15 @@ public class CardBehaviour : MonoBehaviour
         handVisual.SetActive(false);
         boardVisual.SetActive(true);
         characterBoardVisual.SetActive(false);
+
+        if(actionsVisuals !=  null)
+            actionsVisuals.DisableAll();
     }
 
     public void MakeDamage()
     {
         if(characterAnimator != null)
             characterAnimator.SetTrigger("OnMakeDamage");
-    }
-    public void DisableActionVisuals()
-    {
-        actionsVisuals.DisableAll();
     }
 
     public IEnumerator CardActions(BoardTile[,] tiles, BoardTile curTile, int row, int column, Color playerColor, Color enemyColor, 

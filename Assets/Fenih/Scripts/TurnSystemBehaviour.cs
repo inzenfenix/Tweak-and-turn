@@ -1403,7 +1403,6 @@ public class TurnSystemBehaviour : MonoBehaviour
         Quaternion originalRot = curCardTransform.localRotation;
 
         curCard.GetComponent<CardBehaviour>().PutOnPile();
-        curCard.GetComponent<CardBehaviour>().DisableActionVisuals();
 
         while (lerp < 1)
         {
