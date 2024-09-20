@@ -8928,6 +8928,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   chosenCardPos: {fileID: 1168768980}
+  energyManager: {fileID: 0}
+  boardManager: {fileID: 0}
   playerColor: {r: 0.37753648, g: 0.7924528, b: 0.49430937, a: 0.5529412}
   enemyColor: {r: 0.103773594, g: 0.1032841, b: 0.1032841, a: 0.5176471}
   cardWhooshSounds: {fileID: 624306995}
