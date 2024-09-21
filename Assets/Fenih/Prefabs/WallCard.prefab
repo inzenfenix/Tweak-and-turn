@@ -5467,6 +5467,7 @@ MonoBehaviour:
   actionsVisuals: {fileID: 0}
   backgroundColor: {r: 0.6037736, g: 0.5724457, b: 0.5724457, a: 1}
   backgroundImage: {fileID: 0}
+  changeHandVisualBackgroundColor: 1
 --- !u!1 &5935277152385135129
 GameObject:
   m_ObjectHideFlags: 0
