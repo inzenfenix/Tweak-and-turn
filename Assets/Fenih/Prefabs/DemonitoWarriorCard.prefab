@@ -8378,6 +8378,7 @@ MonoBehaviour:
   damageText: {fileID: 1807621518888666747}
   actionsVisuals: {fileID: 1268793096896483601}
   backgroundColor: {r: 0.24528301, g: 0.24181202, b: 0.24181202, a: 1}
+  backgroundImage: {fileID: 0}
 --- !u!1 &4510782383020844799
 GameObject:
   m_ObjectHideFlags: 0
@@ -11896,6 +11897,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6596622843052405727}
     m_Modifications:
+    - target: {fileID: 2430834216606223763, guid: 2f8679f31703c6046a79be98ad266b42,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4449616218190844121, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11944,6 +11950,16 @@ PrefabInstance:
     - target: {fileID: 4449616218190844121, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789998183971936194, guid: 2f8679f31703c6046a79be98ad266b42,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706751608892182011, guid: 2f8679f31703c6046a79be98ad266b42,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8205698742427064397, guid: 2f8679f31703c6046a79be98ad266b42,

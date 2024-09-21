@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] GameObject lookingCardsOnHandCamera;
     [SerializeField] GameObject puttingCardOnBoardCamera;
     [SerializeField] GameObject lookingAtBatteryCamera;
+    [SerializeField] GameObject lookingAtLeftTurnsCamera;
 
     [SerializeField] GameObject ortoCamera;
 
@@ -33,8 +34,9 @@ public class CameraManager : MonoBehaviour
         lookingAtBatteryCamera.SetActive(false);
         puttingCardOnBoardCamera.SetActive(false);
         lookingCardsOnHandCamera.SetActive(false);
+        lookingAtLeftTurnsCamera.SetActive(false);
 
-        switch(e)
+        switch (e)
         {
             case(CurrentCamera.PlayingCards):
                 puttingCardOnBoardCamera.SetActive(true);
@@ -44,6 +46,9 @@ public class CameraManager : MonoBehaviour
                 break;
             case (CurrentCamera.BatteryCharging):
                 lookingAtBatteryCamera.SetActive(true);
+                break;
+            case (CurrentCamera.LeftTurns):
+                lookingAtLeftTurnsCamera.SetActive(true);
                 break;
             default:
                 break;

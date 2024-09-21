@@ -21,7 +21,8 @@ public enum CurrentCamera
 {
     ChoosingCards,
     PlayingCards,
-    BatteryCharging
+    BatteryCharging,
+    LeftTurns
 }
 
 [Serializable]
@@ -910,6 +911,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         yield return StartCoroutine(energyManager.RestartEnergy());
         yield return new WaitForEndOfFrame();
+
         OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
 
         currentlyWorking = false;
@@ -963,11 +965,17 @@ public class TurnSystemBehaviour : MonoBehaviour
             }
         }
 
-
+        OnChangeCamera?.Invoke(this, CurrentCamera.LeftTurns);
+        yield return new WaitForSeconds(0.6f);
         currentTurn++;
         turnText.text = (Mathf.Max(0, maxTurns - currentTurn + 1)).ToString();
+        yield return new WaitForSeconds(0.75f);
+
+
         if (currentTurn > maxTurns)
         {
+            OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
+            yield return new WaitForSeconds(.5f);
             FinishGame();
         }
 
