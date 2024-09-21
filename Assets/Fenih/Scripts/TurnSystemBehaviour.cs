@@ -964,6 +964,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 }
             }
         }
+        yield return new WaitForSeconds(0.6f);
 
         OnChangeCamera?.Invoke(this, CurrentCamera.LeftTurns);
         yield return new WaitForSeconds(0.6f);
