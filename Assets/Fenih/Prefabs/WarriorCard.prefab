@@ -13035,7 +13035,8 @@ MonoBehaviour:
   hitParticleEffect: {fileID: 3949182892256066610}
   damageText: {fileID: 1807621518888666747}
   actionsVisuals: {fileID: 7415001021513551266}
-  backgroundColor: {r: 0.8538003, g: 0.8867924, b: 0.3890174, a: 1}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  backgroundImage: {fileID: 2800000, guid: 74170e63b3aba904fbdd6819d3c7540d, type: 3}
 --- !u!1 &4527358953905635418
 GameObject:
   m_ObjectHideFlags: 0
@@ -15762,7 +15763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3763995081809665358
 Transform:
   m_ObjectHideFlags: 0
@@ -16870,7 +16871,7 @@ PrefabInstance:
     - target: {fileID: 2430834216606223763, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4449616218190844121, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}
@@ -16925,12 +16926,12 @@ PrefabInstance:
     - target: {fileID: 6789998183971936194, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7706751608892182011, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8205698742427064397, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}

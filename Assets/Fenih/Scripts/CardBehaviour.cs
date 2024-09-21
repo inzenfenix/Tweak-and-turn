@@ -53,6 +53,7 @@ public class CardBehaviour : MonoBehaviour
 
     [Header("\nCard Design")]
     [SerializeField] private Color backgroundColor;
+    [SerializeField] private Texture2D backgroundImage;
 
     
 
@@ -102,7 +103,12 @@ public class CardBehaviour : MonoBehaviour
             {
                 if(child.TryGetComponent(out MeshRenderer renderer))
                 {
+
                     renderer.material.color = backgroundColor;
+                    if (backgroundImage != null)
+                    {
+                        //renderer.material.SetTexture("_BaseMap", backgroundImage);
+                    }
                 }
             }
         }
@@ -115,6 +121,10 @@ public class CardBehaviour : MonoBehaviour
                 if (child.TryGetComponent(out MeshRenderer renderer))
                 {
                     renderer.material.color = backgroundColor;
+                }
+                if (backgroundImage != null)
+                {
+                    renderer.material.SetTexture("_BaseMap", backgroundImage);
                 }
             }
         }
