@@ -1425,6 +1425,15 @@ public class TurnSystemBehaviour : MonoBehaviour
         GameObject curCard = Instantiate(card);
         Transform curCardTransform = curCard.transform;
 
+        CardBehaviour onBoardCardBehaviour = card.GetComponent<CardBehaviour>();
+        CardBehaviour curCardBehaviour = curCard.GetComponent<CardBehaviour>();
+
+
+
+        curCardBehaviour.ResetProperties(onBoardCardBehaviour.defaultDamage, onBoardCardBehaviour.defaultHp, onBoardCardBehaviour.defaultRange, 
+                                               onBoardCardBehaviour.defaultMovementRange, onBoardCardBehaviour.defaultEnergyRequired, onBoardCardBehaviour.defaultAbility, 
+                                               onBoardCardBehaviour.defaultCategory, onBoardCardBehaviour.defaultCardName);
+
 
         discardCards.Add(curCard);
 
@@ -1436,7 +1445,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         Vector3 originalPos = curCardTransform.localPosition;
         Quaternion originalRot = curCardTransform.localRotation;
 
-        curCard.GetComponent<CardBehaviour>().PutOnPile();
+        curCardBehaviour.PutOnPile();
 
         while (lerp < 1)
         {

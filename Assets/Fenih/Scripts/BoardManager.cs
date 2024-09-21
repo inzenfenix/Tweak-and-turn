@@ -78,6 +78,8 @@ public class BoardManager : MonoBehaviour
             {
 
                 GameObject currentTile = GameObject.Instantiate(cardHolderPrefab, startPoint);
+                currentTile.name = "BoardSpace";
+
                 currentTile.transform.localPosition = Vector3.zero;
 
                 currentTile.transform.localPosition += Vector3.right * XCardSeparation + Vector3.forward * ZCardSeparation;

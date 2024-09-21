@@ -38,6 +38,17 @@ public class CardBehaviour : MonoBehaviour
     public Category category;
     public string cardName;
 
+    //DefaultProperties
+    [HideInInspector] public int defaultDamage;
+    [HideInInspector] public int defaultHp;
+    [HideInInspector] public int defaultRange;
+    [HideInInspector] public int defaultMovementRange;
+    [HideInInspector] public int defaultEnergyRequired;
+    [HideInInspector] public SpecialAbilities defaultAbility;
+    [HideInInspector] public Category defaultCategory;
+    [HideInInspector] public string defaultCardName;
+
+    //Has the card been played this turn?
     [HideInInspector] public bool cardPlayed = false;
 
     [Header("Child objects")]
@@ -56,8 +67,6 @@ public class CardBehaviour : MonoBehaviour
     [SerializeField] private Texture2D backgroundImage;
     [SerializeField] private bool changeHandVisualBGColor = true;
 
-
-
     private void Awake()
     {
         GetVisualObjects();
@@ -66,6 +75,17 @@ public class CardBehaviour : MonoBehaviour
         damageText.text = "";
         damageText.gameObject.SetActive(false);
         characterBoardVisual.SetActive(false);
+
+        defaultDamage = damage;
+        defaultHp = hp;
+        defaultRange = range;
+        defaultMovementRange = movementRange;
+        defaultEnergyRequired = energyRequired;
+        defaultAbility = ability;
+        defaultCategory = category;
+        defaultCardName = cardName;
+
+        transform.name = defaultCardName;
     }
 
     private void GetVisualObjects()
@@ -93,6 +113,21 @@ public class CardBehaviour : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetProperties(int damage, int hp, int range, int movementRange, 
+                               int energyRequired, SpecialAbilities ability, Category category, string name)
+    {
+        this.damage = damage;
+        this.hp = hp;
+        this.range = range;
+        this.movementRange = movementRange;
+        this.energyRequired = energyRequired;
+        this.ability = ability;
+        this.category = category;
+        this.cardName = name;
+
+        transform.name = cardName;
     }
 
     private void ChangeCardsColor()
