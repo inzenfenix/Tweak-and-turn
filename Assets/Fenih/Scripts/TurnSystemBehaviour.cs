@@ -475,8 +475,6 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         if (isOpponent)
         {
-
-            currentTurnsObeliskEnemy = 0;
             obelisk = obelliskGemsEnemy;
 
             switch (currentTurnsObeliskEnemy)
@@ -509,6 +507,8 @@ public class TurnSystemBehaviour : MonoBehaviour
             {
                 levelsObeliskEnemy[i] = false;
             }
+
+            currentTurnsObeliskEnemy = 0;
         }
 
         else
@@ -887,6 +887,8 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard == null) continue;
 
+                if (curTile.isPlayersTile) continue;
+
                 if (curTile.currentCard.cardPlayed)
                 {
                     curTile.currentCard.cardPlayed = false;
@@ -925,7 +927,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         thisTurnTiles = boardManager.Tiles;
         currentlyWorking = true;
 
-        for (int i = 0; i < thisTurnTiles.GetLength(0); i++)
+        for (int i = thisTurnTiles.GetLength(0) - 1; i >= 0; i--)
         {
             for (int j = 0; j < thisTurnTiles.GetLength(1); j++)
             {
@@ -950,17 +952,21 @@ public class TurnSystemBehaviour : MonoBehaviour
                 BoardTile curTile = thisTurnTiles[i, j];
 
                 if (curTile.currentCard == null) continue;
+                if(!curTile.isPlayersTile) continue;
 
                 if (curTile.currentCard.cardPlayed)
                 {
-                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+", false);
                     curTile.currentCard.cardPlayed = false;
                 }
 
                 if (curTile.secondaryCard != null)
                 {
-                    if (curTile.secondaryCard.cardPlayed) curTile.secondaryCard.cardPlayed = false;
-                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                    if (curTile.secondaryCard.cardPlayed)
+                    {
+                        curTile.secondaryCard.cardPlayed = false;
+                        curTile.secondaryCard.CardNextAction(thisTurnTiles, curTile, i, j, "+", false);
+                    }
                 }
             }
         }
@@ -1239,7 +1245,6 @@ public class TurnSystemBehaviour : MonoBehaviour
         {
             if (availableCards.Count <= 0)
             {
-                Debug.Log("Out of available cards");
                 if (discardCards.Count > 0)
                 {
                     yield return StartCoroutine(FromDiscardPileToDrawPile());
