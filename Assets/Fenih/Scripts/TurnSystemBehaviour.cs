@@ -223,11 +223,24 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard == null) continue;
 
-                curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
-
-                if (curTile.secondaryCard != null)
+                if (curTile.isPlayersTile)
                 {
-                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+", false);
+
+                    if (curTile.secondaryCard != null)
+                    {
+                        curTile.secondaryCard.CardNextAction(thisTurnTiles, curTile, i, j, "+", false);
+                    }
+                }
+                else
+                {
+
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-", true);
+
+                    if (curTile.secondaryCard != null)
+                    {
+                        curTile.secondaryCard.CardNextAction(thisTurnTiles, curTile, i, j, "-", true);
+                    }
                 }
             }
         }
@@ -779,11 +792,24 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard == null) continue;
 
-                curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-");
-
-                if (curTile.secondaryCard != null)
+                if (curTile.isPlayersTile)
                 {
-                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-");
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+", false);
+
+                    if (curTile.secondaryCard != null)
+                    {
+                        curTile.secondaryCard.CardNextAction(thisTurnTiles, curTile, i, j, "+", false);
+                    }
+                }
+                else
+                {
+
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-", true);
+
+                    if (curTile.secondaryCard != null)
+                    {
+                        curTile.secondaryCard.CardNextAction(thisTurnTiles, curTile, i, j, "-", true);
+                    }
                 }
             }
         }
