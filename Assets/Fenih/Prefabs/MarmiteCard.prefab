@@ -5226,7 +5226,8 @@ MonoBehaviour:
   hitParticleEffect: {fileID: 3949182892256066610}
   damageText: {fileID: 8447583887901851150}
   actionsVisuals: {fileID: 4072399970224008234}
-  backgroundColor: {r: 0.5195334, g: 0.6509434, b: 0.31626025, a: 0}
+  backgroundColor: {r: 0.5195334, g: 0.6509434, b: 0.31626025, a: 1}
+  backgroundImage: {fileID: 0}
 --- !u!1 &4937711973653185481
 GameObject:
   m_ObjectHideFlags: 0

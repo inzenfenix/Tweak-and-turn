@@ -7909,6 +7909,7 @@ MonoBehaviour:
   damageText: {fileID: 1807621518888666747}
   actionsVisuals: {fileID: 6252816823309996092}
   backgroundColor: {r: 0.21698111, g: 0.21391062, b: 0.21391062, a: 1}
+  backgroundImage: {fileID: 0}
 --- !u!1 &4504464492517300230
 GameObject:
   m_ObjectHideFlags: 0
@@ -11430,21 +11431,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 400877316772719181}
     m_Modifications:
-    - target: {fileID: 4449616218190844121, guid: 2f8679f31703c6046a79be98ad266b42,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4449616218190844121, guid: 2f8679f31703c6046a79be98ad266b42,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4449616218190844121, guid: 2f8679f31703c6046a79be98ad266b42,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.11
-      objectReference: {fileID: 0}
     - target: {fileID: 4449616218190844121, guid: 2f8679f31703c6046a79be98ad266b42,
         type: 3}
       propertyPath: m_LocalPosition.x
