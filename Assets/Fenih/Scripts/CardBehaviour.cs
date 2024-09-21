@@ -230,7 +230,7 @@ public class CardBehaviour : MonoBehaviour
     }
 
     public IEnumerator CardActions(BoardTile[,] tiles, BoardTile curTile, int row, int column, Color playerColor, Color enemyColor, 
-                                     MMF_Player juiceDamageFeedbackPlayer, TurnSystemBehaviour turnSystem, string op, bool isEnemy = false)
+                                     MMF_Player juiceDamageFeedbackPlayer, TurnSystemBehaviour turnSystem, string op, bool isEnemy)
     {
         //Move this card
         cardPlayed = true;
@@ -266,7 +266,7 @@ public class CardBehaviour : MonoBehaviour
 
                 for (int i = 1; i <= range; i++)
                 {
-                    if (AddOrSubstract(row, op, i) < 0) break;
+                    if (AddOrSubstract(row, op, i) < 0 || AddOrSubstract(row, op, i) >= tiles.GetLength(0) - 1) break;
 
                     else if (tiles[AddOrSubstract(row, op, i), column].currentCard != null && 
                             ((tiles[AddOrSubstract(row, op, i), column].isPlayersTile && isEnemy) || 
@@ -336,7 +336,6 @@ public class CardBehaviour : MonoBehaviour
 
             if (isARowCond && (AddOrSubstract(row, op, 1) != rowEnd))
             {
-                bool madeDamage = false;
 
                 if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null)
                 {
@@ -354,8 +353,6 @@ public class CardBehaviour : MonoBehaviour
                         {
                             actionsVisuals.EnableArrow("Forward");
                         }
-
-                        curTile = tiles[AddOrSubstract(row, op, 1), column];
                         return;
                     }
                 }
@@ -368,7 +365,6 @@ public class CardBehaviour : MonoBehaviour
                             ((tiles[AddOrSubstract(row, op, i), column].isPlayersTile && isEnemy) ||
                             (!tiles[AddOrSubstract(row, op, i), column].isPlayersTile && !isEnemy)))
                     {
-                        madeDamage = true;
                         
                         if(range <= 1)
                         {
@@ -383,7 +379,7 @@ public class CardBehaviour : MonoBehaviour
                     }
                 }
 
-                if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !madeDamage)
+                if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null)
                 {
                     if (isEnemy)
                     {
@@ -546,9 +542,9 @@ public class CardBehaviour : MonoBehaviour
         }
     }
 
-    private IEnumerator TryDoingDamage(BoardTile[,] thisTurnTiles, int row, int col, CardBehaviour curCard, MMF_Player juicePlayer, TurnSystemBehaviour turnSystem, bool isOpponnent = false)
+    private IEnumerator TryDoingDamage(BoardTile[,] thisTurnTiles, int row, int col, CardBehaviour curCard, MMF_Player juicePlayer, TurnSystemBehaviour turnSystem, bool isEnemy)
     {
-        if (curCard.damage > 0 && ((thisTurnTiles[row, col].isPlayersTile && isOpponnent) || (!thisTurnTiles[row, col].isPlayersTile && !isOpponnent)))
+        if (curCard.damage > 0 && ((thisTurnTiles[row, col].isPlayersTile && isEnemy) || (!thisTurnTiles[row, col].isPlayersTile && !isEnemy)))
         {
             curCard.GetComponent<CardBehaviour>().MakeDamage();
             yield return new WaitForSeconds(.2f);
@@ -561,7 +557,7 @@ public class CardBehaviour : MonoBehaviour
                 {
                     if (thisTurnTiles[row, col].currentCard.category == Category.Building)
                     {
-                        DestroyedBuilding(thisTurnTiles[row, col].currentCard, turnSystem, isOpponnent);
+                        DestroyedBuilding(thisTurnTiles[row, col].currentCard, turnSystem, !isEnemy);
                     }
 
                     Destroy(thisTurnTiles[row, col].currentCard.gameObject, .25f);
@@ -579,9 +575,9 @@ public class CardBehaviour : MonoBehaviour
         }
     }
 
-    private void DestroyedBuilding(CardBehaviour destroyedCard, TurnSystemBehaviour turnSystem, bool isOpponent = false)
+    private void DestroyedBuilding(CardBehaviour destroyedCard, TurnSystemBehaviour turnSystem, bool isPlayer = false)
     {
-        if (isOpponent)
+        if (isPlayer)
         {
             switch (destroyedCard.ability)
             {

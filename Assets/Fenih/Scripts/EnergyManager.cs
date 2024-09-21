@@ -16,14 +16,14 @@ public class EnergyManager : MonoBehaviour
     [SerializeField] private int maxEnergy = 6;
     private readonly int maxAcumulatedEnergy = 3;
 
-    [HideInInspector] public int currentEnergy;
-    [HideInInspector] public int currentEnergyAI;
+    public int currentEnergy;
+    public int currentEnergyAI;
 
-    [HideInInspector] public int currentRechargeEnergy;
-    [HideInInspector] public int currentRechargeEnergyAI;
+    public int currentRechargeEnergy;
+    public int currentRechargeEnergyAI;
 
-    [HideInInspector] public int extraEnergy;
-    [HideInInspector] public int extraEnergyAI;
+    public int extraEnergy;
+    public int extraEnergyAI;
 
     [Header("\nEnergy Audio")]
     [SerializeField] private AudioSource energySound;
