@@ -779,11 +779,11 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.currentCard == null) continue;
 
-                curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-");
 
                 if (curTile.secondaryCard != null)
                 {
-                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "+");
+                    curTile.currentCard.CardNextAction(thisTurnTiles, curTile, i, j, "-");
                 }
             }
         }
