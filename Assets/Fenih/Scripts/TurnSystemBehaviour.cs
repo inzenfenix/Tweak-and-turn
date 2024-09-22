@@ -44,12 +44,13 @@ public class TurnSystemBehaviour : MonoBehaviour
     private List<GameObject> discardCards;
     private List<GameObject> currentCards;
 
-    //Initial Config
+    [Header("\nInitial turn configs")]
+    [SerializeField] private int maxTurns = 20;
     private int amountOfDrawCards = 5;
     private int amountOfDrawCardsAI = 6;
     private int currentCardAmount = 0;
     private int maxAmountOfCards;
-    private int maxTurns = 20;
+    
 
     [HideInInspector] public int currentTurn = 1;
 
