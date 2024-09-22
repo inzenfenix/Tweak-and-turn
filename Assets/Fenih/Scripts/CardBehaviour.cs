@@ -250,7 +250,6 @@ public class CardBehaviour : MonoBehaviour
 
             if (isARowCond && (AddOrSubstract(row, op, 1) != rowEnd))
             {
-                bool madeDamage = false;
 
                 if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null)
                 {
@@ -272,14 +271,14 @@ public class CardBehaviour : MonoBehaviour
                             ((tiles[AddOrSubstract(row, op, i), column].isPlayersTile && isEnemy) || 
                             (!tiles[AddOrSubstract(row, op, i), column].isPlayersTile && !isEnemy)))
                     {
-                        madeDamage = true;
                         yield return TryDoingDamage(tiles, AddOrSubstract(row, op, i), column, this, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
                         break;
                     }
                 }
 
-                if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !madeDamage)
+                if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null)
                 {
+                    yield return new WaitForSeconds(.2f);
                     yield return MoveMainCard(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
                 }
             }
@@ -308,6 +307,12 @@ public class CardBehaviour : MonoBehaviour
                             yield return TryDoingDamage(tiles, AddOrSubstract(row, op, i), column, curTile.secondaryCard, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
                             break;
                         }
+                    }
+
+                    if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null)
+                    {
+                        yield return new WaitForSeconds(.2f);
+                        yield return MoveSecondaryCardForward(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
                     }
                 }
             }
