@@ -222,6 +222,8 @@ public class BoardManager : MonoBehaviour
 
             CardBehaviour chosenCardBehaviour = selectedCard.GetComponent<CardBehaviour>();
 
+            chosenCardBehaviour.ResetRotationCardBoardVisual();
+
             if(chosenCardBehaviour.characterBoardVisual != null)
                 chosenCardBehaviour.characterBoardVisual.SetActive(true);
 

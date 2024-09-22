@@ -130,6 +130,17 @@ public class CardBehaviour : MonoBehaviour
         transform.name = cardName;
     }
 
+    public void ResetRotationCardBoardVisual()
+    {
+        foreach (Transform child in boardVisual.transform)
+        {
+            if (child.name == "Card")
+            {
+                child.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
+    }
+
     private void ChangeCardsColor()
     {
         //Get card from board visual
@@ -137,6 +148,8 @@ public class CardBehaviour : MonoBehaviour
         {
             if(child.name == "Card")
             {
+                child.rotation = Quaternion.Euler(0, 0, 180);
+
                 if(child.TryGetComponent(out MeshRenderer renderer))
                 {
 
