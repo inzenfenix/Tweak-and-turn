@@ -9,12 +9,12 @@ public class RoomBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnEndTurn += GameManager_OnEndTurn;
+        BoardGameManager.OnEndTurn += GameManager_OnEndTurn;
     }
 
     private void OnDisable()
     {
-        GameManager.OnEndTurn -= GameManager_OnEndTurn;
+        BoardGameManager.OnEndTurn -= GameManager_OnEndTurn;
     }
 
     private void GameManager_OnEndTurn(object sender, System.EventArgs e)

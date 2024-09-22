@@ -183,7 +183,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnEndTurn += GameManager_OnEndTurn;
+        BoardGameManager.OnEndTurn += GameManager_OnEndTurn;
         BoardManager.OnPutCardOnBoard += BoardManager_OnPutCardOnBoard;
     }
 
@@ -191,7 +191,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.OnEndTurn -= GameManager_OnEndTurn;
+        BoardGameManager.OnEndTurn -= GameManager_OnEndTurn;
         BoardManager.OnPutCardOnBoard -= BoardManager_OnPutCardOnBoard;
     }
 
@@ -909,12 +909,31 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         currentStateAI = CurrentState.PassTurn;
 
-        energyManager.AddEnergyCharge();
-        OnChangeCamera?.Invoke(this, CurrentCamera.BatteryCharging);
+        OnChangeCamera?.Invoke(this, CurrentCamera.LeftTurns);
+        yield return new WaitForSeconds(0.6f);
+        currentTurn++;
+        turnText.text = (Mathf.Max(0, maxTurns - currentTurn + 1)).ToString();
+        yield return new WaitForSeconds(0.75f);
 
-        yield return StartCoroutine(energyManager.RestartEnergy());
-        yield return new WaitForEndOfFrame();
 
+        if (currentTurn > maxTurns)
+        {
+            OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
+            yield return new WaitForSeconds(.5f);
+            FinishGame();
+        }
+
+        else
+        {
+
+            energyManager.AddEnergyCharge();
+            OnChangeCamera?.Invoke(this, CurrentCamera.BatteryCharging);
+
+            yield return StartCoroutine(energyManager.RestartEnergy());
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return new WaitForSeconds(.2f);
         OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
 
         currentlyWorking = false;
@@ -973,28 +992,13 @@ public class TurnSystemBehaviour : MonoBehaviour
         }
         yield return new WaitForSeconds(0.6f);
 
-        OnChangeCamera?.Invoke(this, CurrentCamera.LeftTurns);
-        yield return new WaitForSeconds(0.6f);
-        currentTurn++;
-        turnText.text = (Mathf.Max(0, maxTurns - currentTurn + 1)).ToString();
-        yield return new WaitForSeconds(0.75f);
-
-
-        if (currentTurn > maxTurns)
-        {
-            OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
-            yield return new WaitForSeconds(.5f);
-            FinishGame();
-        }
-
-        else
-        {
-            currentState = CurrentState.PassTurn;
-            currentlyWorking = false;
-            OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
-        }
+        currentState = CurrentState.PassTurn;
+        OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
 
         yield return new WaitForEndOfFrame();
+        currentlyWorking = false;
+
+             
     }
 
     private void FinishGame()
