@@ -571,6 +571,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             currentCardsAI.Add(newCard);
             newCard.GetComponent<CardBehaviour>().hp += extraHPEnemy;
             newCard.GetComponent<CardBehaviour>().damage += extraAttackEnemy;
+            newCard.GetComponent<CardBehaviour>().ResetRotationCardBoardVisual();
         }
 
         currentStateAI = CurrentState.PuttingCardsOnBoard;
