@@ -5151,7 +5151,8 @@ MonoBehaviour:
   hitParticleEffect: {fileID: 3949182892256066610}
   damageText: {fileID: 8447583887901851150}
   actionsVisuals: {fileID: 0}
-  backgroundColor: {r: 0.5660378, g: 0.52137107, b: 0.4886081, a: 1}
+  boardVisualBackgroundColor: {r: 0.5, g: 0.46437186, b: 0.370283, a: 1}
+  handVisualBackgroundColor: {r: 0.5754717, g: 0.515713, b: 0.4261748, a: 1}
   backgroundImage: {fileID: 0}
   changeHandVisualBGColor: 1
 --- !u!1 &4937711973653185481

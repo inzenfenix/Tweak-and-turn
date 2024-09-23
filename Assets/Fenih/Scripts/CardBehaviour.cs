@@ -63,7 +63,8 @@ public class CardBehaviour : MonoBehaviour
     [SerializeField] private ActionVisualManager actionsVisuals;
 
     [Header("\nCard Design")]
-    [SerializeField] private Color backgroundColor;
+    [SerializeField] private Color boardVisualBackgroundColor;
+    [SerializeField] private Color handVisualBackgroundColor;
     [SerializeField] private Texture2D backgroundImage;
     [SerializeField] private bool changeHandVisualBGColor = true;
 
@@ -153,7 +154,7 @@ public class CardBehaviour : MonoBehaviour
                 if(child.TryGetComponent(out MeshRenderer renderer))
                 {
 
-                    renderer.material.color = backgroundColor;
+                    renderer.material.color = boardVisualBackgroundColor;
 
                     if (backgroundImage != null)
                     {
@@ -172,7 +173,7 @@ public class CardBehaviour : MonoBehaviour
                 {
                     if (changeHandVisualBGColor)
                     {
-                        renderer.material.color = backgroundColor;
+                        renderer.material.color = handVisualBackgroundColor;
                     }
 
                     if (backgroundImage != null)
