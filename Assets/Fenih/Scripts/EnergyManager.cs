@@ -16,14 +16,14 @@ public class EnergyManager : MonoBehaviour
     [SerializeField] private int maxEnergy = 6;
     private readonly int maxAcumulatedEnergy = 3;
 
-    public int currentEnergy;
-    public int currentEnergyAI;
+    [HideInInspector] public int currentEnergy;
+    [HideInInspector] public int currentEnergyAI;
 
-    public int currentRechargeEnergy;
-    public int currentRechargeEnergyAI;
+    [HideInInspector] public int currentRechargeEnergy;
+    [HideInInspector] public int currentRechargeEnergyAI;
 
-    public int extraEnergy;
-    public int extraEnergyAI;
+    [HideInInspector] public int extraEnergy;
+    [HideInInspector] public int extraEnergyAI;
 
     [Header("\nEnergy Audio")]
     [SerializeField] private AudioSource energySound;
@@ -56,9 +56,9 @@ public class EnergyManager : MonoBehaviour
     {
         if (amount > currentEnergy) return false;
 
-        if (currentEnergy <= maxEnergy)
+        if (currentEnergy <= energyBatteries.Length)
         {
-            for (int i = amount - 1; i >= 0; i--)
+            for (int i = 0; i < amount; i++)
             {
                 //Red
                 energyMats[i].color = red;
@@ -67,7 +67,7 @@ public class EnergyManager : MonoBehaviour
 
         else
         {
-            int extraEnergy = (-amount) + (currentEnergy - maxEnergy);
+            int extraEnergy = (-amount) + (currentEnergy - energyBatteries.Length);
 
             if(extraEnergy > 0)
             {
@@ -118,7 +118,7 @@ public class EnergyManager : MonoBehaviour
             extraEnergyText.text = "+" + $"{currentEnergy - energyMats.Length}";
         }
 
-        for(int i = currentEnergy; i < maxEnergy; i++)
+        for(int i = currentEnergy; i < energyMats.Length; i++)
         {
             //Black
             energyMats[i].color = gray;
@@ -189,7 +189,7 @@ public class EnergyManager : MonoBehaviour
 
     public void StopHoveringEnergy()
     {
-        if (currentEnergy <= maxEnergy)
+        if (currentEnergy <= energyBatteries.Length)
         {
             for (int i = 0; i < currentEnergy; i++)
             {
@@ -199,12 +199,12 @@ public class EnergyManager : MonoBehaviour
 
         else
         {
-            for (int i = 0; i < maxEnergy; i++)
+            for (int i = 0; i < energyBatteries.Length; i++)
             {
                 energyMats[i].color = cyan;
             }
 
-            extraEnergyText.text = "+" + (currentEnergy - maxEnergy);
+            extraEnergyText.text = "+" + (currentEnergy - energyBatteries.Length);
         }
     }
 

@@ -13877,7 +13877,7 @@ MonoBehaviour:
   chosenCardPos: {fileID: 1168768980}
   energyManager: {fileID: 0}
   boardManager: {fileID: 0}
-  playerColor: {r: 0.34509808, g: 0.5949479, b: 0.7254902, a: 0.47058824}
+  playerColor: {r: 0.7075472, g: 0.5941697, b: 0.28368637, a: 0.47058824}
   enemyColor: {r: 0.103773594, g: 0.1032841, b: 0.1032841, a: 0.47058824}
   cardWhooshSounds: {fileID: 624306995}
   cardWhooshClips:
@@ -13945,8 +13945,8 @@ MonoBehaviour:
   - {fileID: 2590567100001419528}
   - {fileID: 7725086982166391893}
   extraEnergyText: {fileID: 692084108}
-  startEnergy: 2
-  maxEnergy: 6
+  startEnergy: 1
+  maxEnergy: 4
   currentEnergy: 0
   currentEnergyAI: 0
   currentRechargeEnergy: 0
@@ -13961,9 +13961,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d8918bb2eda5e704cb82b5f634e1d66a, type: 3}
   - {fileID: 8300000, guid: 709e089f1e3182445976f8034e9e3fe9, type: 3}
   - {fileID: 8300000, guid: 5fed8d50bea98084995fc255cbf8ec3a, type: 3}
-  cyan: {r: 0.23366857, g: 0.73347, b: 0.8396226, a: 1.7}
+  cyan: {r: 0.8867924, g: 0.5459242, b: 0.18823427, a: 1.7}
   gray: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1.7}
-  red: {r: 0.8113208, g: 0.23344605, b: 0.2976544, a: 1.7}
+  red: {r: 0.8207547, g: 0.31359026, b: 0.36879197, a: 1.7}
 --- !u!114 &482099087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18416,8 +18416,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288324671
-  m_fontColor: {r: 0.24510503, g: 0.6415094, b: 0.6043465, a: 1}
+    rgba: 4279107854
+  m_fontColor: {r: 0.05490196, g: 0.003921569, b: 0.05490196, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

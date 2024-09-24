@@ -344,7 +344,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             }
 
             if (tilesPerColPlayer > tilesPerColEnemy) playerWinningCols++;
-            else enemyWinningCols++;
+            else if (tilesPerColPlayer < tilesPerColEnemy) enemyWinningCols++;
         }
 
         if (playerWinningCols != tiles.GetLength(1))
