@@ -67,14 +67,14 @@ public class BoardManager : MonoBehaviour
         playerColor = turnSystemBehaviour.playerColor;
         enemyColor = turnSystemBehaviour.enemyColor;
 
-        tiles = new BoardTile[rowAmount,columnAmount];
+        tiles = new BoardTile[rowAmount, columnAmount];
 
         int startTilesPerPlayer = (columnAmount * rowAmount) / 2;
 
         int currentTileNum = 0;
-        for(int i = 0; i < rowAmount; i++)
+        for (int i = 0; i < rowAmount; i++)
         {
-            for(int j = 0; j < columnAmount; j++)
+            for (int j = 0; j < columnAmount; j++)
             {
 
                 GameObject currentTile = GameObject.Instantiate(cardHolderPrefab, startPoint);
@@ -96,9 +96,10 @@ public class BoardManager : MonoBehaviour
                 }
 
                 tiles[i, j] = new BoardTile(curColor, currentTile, isPlayersTile);
+                tiles[i, j].isUsable = true;
 
                 currentTile.GetComponent<TileIndices>().row = i;
-                currentTile.GetComponent<TileIndices>().col = j;
+                currentTile.GetComponent<TileIndices>().col = j;                
 
                 currentTileNum++;
             }
@@ -126,9 +127,9 @@ public class BoardManager : MonoBehaviour
 
         if (selectingBoardTile)
         {
-            BoardTile tile = HoverTile();            
+            BoardTile tile = HoverTile();
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && tile != null)
             {
                 PlayCard(tile);
             }
@@ -153,11 +154,18 @@ public class BoardManager : MonoBehaviour
                 hoveredTile = tiles[i, j];
                 CardBehaviour chosenCard = selectedCard.GetComponent<CardBehaviour>();
 
-                if (hoveredTile.isPlayersTile && 
+                if (!hoveredTile.isUsable)
+                {
+                    acceptSymbol.gameObject.SetActive(false);
+                    rejectSymbol.gameObject.SetActive(true);
+                    rejectSymbol.position = hoveredTile.tileHolder.transform.position + Vector3.up * .05f;
+                    return null;
+                }
+
+                else if (hoveredTile.isPlayersTile &&
                     (chosenCard.category == Category.Normal || chosenCard.category == Category.Building)
                     && hoveredTile.currentCard == null)
                 {
-                    playableTile = true;
                     rejectSymbol.gameObject.SetActive(false);
                     acceptSymbol.gameObject.SetActive(true);
                     acceptSymbol.position = hoveredTile.tileHolder.transform.position + Vector3.up * .05f;
@@ -166,7 +174,6 @@ public class BoardManager : MonoBehaviour
 
                 else if (hoveredTile.currentCard != null && chosenCard.category == Category.Throwable)
                 {
-                    playableTile = true;
                     rejectSymbol.gameObject.SetActive(false);
                     acceptSymbol.gameObject.SetActive(true);
                     acceptSymbol.position = hoveredTile.currentCard.transform.position + Vector3.up * 1f;
@@ -178,14 +185,17 @@ public class BoardManager : MonoBehaviour
                     acceptSymbol.gameObject.SetActive(false);
                     rejectSymbol.gameObject.SetActive(true);
                     rejectSymbol.position = hoveredTile.tileHolder.transform.position + Vector3.up * .05f;
-                    playableTile = false;
                     return null;
                 }
             }
 
             else
             {
-                return hoveredTile;
+                if (hoveredTile.isPlayersTile && hoveredTile.currentCard == null && hoveredTile.isUsable)
+                    return hoveredTile;
+
+                else
+                    return null;
             }
         }
 
@@ -197,93 +207,89 @@ public class BoardManager : MonoBehaviour
             acceptSymbol.gameObject.SetActive(false);
             rejectSymbol.gameObject.SetActive(false);
 
-            playableTile = false;
-
             return null;
         }
     }
 
     private void PlayCard(BoardTile tile)
     {
-        if (playableTile)
+        if (!energyManager.UseEnergy(selectedCard.GetComponent<CardBehaviour>().energyRequired))
         {
-            if (!energyManager.UseEnergy(selectedCard.GetComponent<CardBehaviour>().energyRequired))
-            {
-                return;
-            }
-
-            selectedCard.transform.position = tile.tileHolder.transform.position + Vector3.up * .05f;
-            selectedCard.transform.rotation = Quaternion.identity;
-            selectedCard.transform.parent = selectedTile.transform;
-
-            selectedCard.transform.localScale += new Vector3(1, 0, 1) * 0.04f;
-
-            selectedCard.GetComponent<CardBehaviour>().PutCardOnBoard();
-
-            CardBehaviour chosenCardBehaviour = selectedCard.GetComponent<CardBehaviour>();
-
-            chosenCardBehaviour.ResetRotationCardBoardVisual();
-
-            if(chosenCardBehaviour.characterBoardVisual != null)
-                chosenCardBehaviour.characterBoardVisual.SetActive(true);
-
-            if (chosenCardBehaviour.category != Category.Throwable)
-                tile.currentCard = selectedCard.GetComponent<CardBehaviour>();
-
-            if(tile.currentCard.category == Category.Normal)
-            {
-                int row = tile.tileHolder.GetComponent<TileIndices>().row;
-                int col = tile.tileHolder.GetComponent<TileIndices>().col;
-
-                tile.currentCard.CardNextAction(tiles, tile, row, col, "+");
-            }
-
-            else if (chosenCardBehaviour.category == Category.Throwable && tile.currentCard != null)
-            {
-                switch (chosenCardBehaviour.ability)
-                {
-                    case (SpecialAbilities.HealCard):
-                        tile.currentCard.GetComponent<CardBehaviour>().HealDamage(curHPHealing);
-                        StartCoroutine(turnSystemBehaviour.DuplicateCardToDiscardPile(selectedCard));
-                        Destroy(selectedCard);
-                        break;
-                }
-            }
-
-            if (chosenCardBehaviour.category == Category.Building)
-            {
-                switch (chosenCardBehaviour.ability)
-                {
-                    case SpecialAbilities.DrawUP:
-                        turnSystemBehaviour.AddExtraDraw(1, false);
-                        break;
-                    case SpecialAbilities.HealCard:
-                        turnSystemBehaviour.extraHPPlayer++;
-                        break;
-                    case SpecialAbilities.EnergyUP:
-                        energyManager.extraEnergy++;
-                        break;
-                    case SpecialAbilities.AttackUp:
-                        turnSystemBehaviour.extraAttackPlayer++;
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-
-            selectedTile = null;
-            hoveredTile = null;
-
-            acceptSymbol.gameObject.SetActive(false);
-            rejectSymbol.gameObject.SetActive(false);
-
-
-            OnPutCardOnBoard?.Invoke(this, selectedCard);
-            selectedCard = null;
-
             return;
         }
+
+        selectedCard.transform.position = tile.tileHolder.transform.position + Vector3.up * .05f;
+        selectedCard.transform.rotation = Quaternion.identity;
+        selectedCard.transform.parent = selectedTile.transform;
+
+        selectedCard.transform.localScale += new Vector3(1, 0, 1) * 0.04f;
+
+        selectedCard.GetComponent<CardBehaviour>().PutCardOnBoard();
+
+        CardBehaviour chosenCardBehaviour = selectedCard.GetComponent<CardBehaviour>();
+
+        chosenCardBehaviour.ResetRotationCardBoardVisual();
+
+        if (chosenCardBehaviour.characterBoardVisual != null)
+            chosenCardBehaviour.characterBoardVisual.SetActive(true);
+
+        if (chosenCardBehaviour.category != Category.Throwable)
+            tile.currentCard = selectedCard.GetComponent<CardBehaviour>();
+
+        if (tile.currentCard.category == Category.Normal)
+        {
+            int row = tile.tileHolder.GetComponent<TileIndices>().row;
+            int col = tile.tileHolder.GetComponent<TileIndices>().col;
+
+            tile.currentCard.CardNextAction(tiles, tile, row, col, "+");
+            ChangeStateTile(row, col, 1, 1, false);
+        }
+
+        else if (chosenCardBehaviour.category == Category.Throwable && tile.currentCard != null)
+        {
+            switch (chosenCardBehaviour.ability)
+            {
+                case (SpecialAbilities.HealCard):
+                    tile.currentCard.GetComponent<CardBehaviour>().HealDamage(curHPHealing);
+                    StartCoroutine(turnSystemBehaviour.DuplicateCardToDiscardPile(selectedCard));
+                    Destroy(selectedCard);
+                    break;
+            }
+        }
+
+        if (chosenCardBehaviour.category == Category.Building)
+        {
+            switch (chosenCardBehaviour.ability)
+            {
+                case SpecialAbilities.DrawUP:
+                    turnSystemBehaviour.AddExtraDraw(1, false);
+                    break;
+                case SpecialAbilities.HealCard:
+                    turnSystemBehaviour.extraHPPlayer++;
+                    break;
+                case SpecialAbilities.EnergyUP:
+                    energyManager.extraEnergy++;
+                    break;
+                case SpecialAbilities.AttackUp:
+                    turnSystemBehaviour.extraAttackPlayer++;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        selectedTile = null;
+        hoveredTile = null;
+
+        acceptSymbol.gameObject.SetActive(false);
+        rejectSymbol.gameObject.SetActive(false);
+
+
+        OnPutCardOnBoard?.Invoke(this, selectedCard);
+        selectedCard = null;
+
+        return;
     }
     private void TurnSystemBehaviour_OnCardChose(object sender, GameObject e)
     {
@@ -313,5 +319,31 @@ public class BoardManager : MonoBehaviour
     public void FinishGame()
     {
         finishGame = true;
+    }
+
+    public void ChangeStateTile(int row, int col, int deltaRow, int deltaCol, bool isUsable)
+    {
+        BoardTile tile = tiles[row, col];
+        tile.isUsable = isUsable;
+
+        for(int i = row - deltaRow; i <= row + deltaRow; i++)
+        {
+            //All conditions that we don't want to change the state of the tile, like the last rows or out-of-bounds rows
+            if (i >= tiles.GetLength(0) - 1 || i <= 0 || i == row) continue;
+
+            tiles[i, col].isUsable = isUsable;
+        }
+
+        //Don't change the tiles at the end of each extreme side
+        if (row != 0 && row != tiles.GetLength(0) - 1)
+        {
+            for (int j = col - deltaCol; j <= col + deltaCol; j++)
+            {
+                //All conditions that we don't want to change the state of the tile
+                if (j >= tiles.GetLength(1) || j < 0 || j == col) continue;
+
+                tiles[row, j].isUsable = isUsable;
+            }
+        }
     }
 }

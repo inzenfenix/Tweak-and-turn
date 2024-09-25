@@ -14,6 +14,8 @@ public class BoardTile
     public GameObject tileHolder;
     public bool isPlayersTile;
 
+    public bool isUsable;
+
     private Material tileMat;
 
 

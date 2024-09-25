@@ -50,7 +50,7 @@ public class TurnSystemBehaviour : MonoBehaviour
     private int amountOfDrawCardsAI = 6;
     private int currentCardAmount = 0;
     private int maxAmountOfCards;
-    
+
 
     [HideInInspector] public int currentTurn = 1;
 
@@ -631,14 +631,11 @@ public class TurnSystemBehaviour : MonoBehaviour
                 farthestRow = boardManager.Tiles.GetLength(0) - 1;
             }
 
-            if (currentTurn < 3)
+            for (int i = rows - 1; i >= 0; i--)
             {
-                for (int i = rows - 1; i >= 0; i--)
+                if (!thisTurnTiles[i, losingColumnIndex].isPlayersTile && thisTurnTiles[i, losingColumnIndex].currentCard == null && thisTurnTiles[i, losingColumnIndex].isUsable)
                 {
-                    if (!thisTurnTiles[i, losingColumnIndex].isPlayersTile && thisTurnTiles[i, losingColumnIndex].currentCard == null)
-                    {
-                        farthestRow = i;
-                    }
+                    farthestRow = i;
                 }
             }
 
@@ -672,7 +669,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 {
                     for (int k = 0; k < columns; k++)
                     {
-                        if (!thisTurnTiles[j, k].isPlayersTile)
+                        if (!thisTurnTiles[j, k].isPlayersTile && thisTurnTiles[i, losingColumnIndex].isUsable)
                         {
                             if (j < farthestRow) farthestRow = j;
                         }
@@ -682,7 +679,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 for (int j = 0; j < columns; j++)
                 {
-                    if (!winning[j] && thisTurnTiles[farthestRow, j].currentCard == null && !thisTurnTiles[farthestRow, j].isPlayersTile)
+                    if (!winning[j] && thisTurnTiles[farthestRow, j].currentCard == null && !thisTurnTiles[farthestRow, j].isPlayersTile && thisTurnTiles[i, losingColumnIndex].isUsable)
                     {
 
                         currentCardsAI.Remove(card.gameObject);
@@ -709,7 +706,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 {
                     for (int k = 0; k < columns; k++)
                     {
-                        if (!thisTurnTiles[j, k].isPlayersTile)
+                        if (!thisTurnTiles[j, k].isPlayersTile && thisTurnTiles[i, losingColumnIndex].isUsable)
                         {
                             if (j > closestRow) closestRow = j;
                         }
@@ -719,7 +716,9 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 for (int j = 0; j < columns; j++)
                 {
-                    if (!winning[j] && thisTurnTiles[closestRow, j].currentCard == null && !thisTurnTiles[closestRow, j].isPlayersTile)
+                    if (!winning[j] && thisTurnTiles[closestRow, j].currentCard == null &&
+                        !thisTurnTiles[closestRow, j].isPlayersTile &&
+                        thisTurnTiles[i, losingColumnIndex].isUsable)
                     {
                         if (card.category == Category.Building)
                         {
@@ -770,7 +769,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                     for (int j = 0; j < columns; j++)
                     {
-                        if (thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null)
+                        if (thisTurnTiles[boardManager.Tiles.GetLength(0) - 1, j].currentCard == null && thisTurnTiles[i, losingColumnIndex].isUsable)
                         {
                             currentCardsAI.Remove(card.gameObject);
                             energy -= card.energyRequired;
@@ -829,7 +828,7 @@ public class TurnSystemBehaviour : MonoBehaviour
         card.transform.parent = tile.tileHolder.transform;
 
         float lerp = 0;
-        float speed = 7f;
+        float speed = 0.9f;
 
         Vector3 originalPos = card.transform.localPosition;
         Quaternion originalRot = card.transform.localRotation;
@@ -848,6 +847,8 @@ public class TurnSystemBehaviour : MonoBehaviour
 
         int row = tile.tileHolder.GetComponent<TileIndices>().row;
         int column = tile.tileHolder.GetComponent<TileIndices>().col;
+
+        boardManager.ChangeStateTile(row, column, 1, 1, false);
 
         card.CardNextAction(thisTurnTiles, tile, row, column, "-", true);
 
@@ -873,7 +874,7 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (curTile.isPlayersTile) continue;
 
-                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor, enemyColor, juicePlayer, this, "-", true);
+                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor, enemyColor, juicePlayer, this, boardManager, "-", true);
             }
 
             yield return new WaitForSeconds(.1f);
@@ -960,7 +961,8 @@ public class TurnSystemBehaviour : MonoBehaviour
 
                 if (!curTile.isPlayersTile) continue;
 
-                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor, enemyColor, juicePlayer, this, "+", false);
+                yield return curTile.currentCard.CardActions(thisTurnTiles, curTile, i, j, playerColor,
+                                                             enemyColor, juicePlayer, this, boardManager, "+", false);
             }
 
             yield return new WaitForSeconds(.1f);
@@ -973,7 +975,7 @@ public class TurnSystemBehaviour : MonoBehaviour
                 BoardTile curTile = thisTurnTiles[i, j];
 
                 if (curTile.currentCard == null) continue;
-                if(!curTile.isPlayersTile) continue;
+                if (!curTile.isPlayersTile) continue;
 
                 if (curTile.currentCard.cardPlayed)
                 {
@@ -994,12 +996,11 @@ public class TurnSystemBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
 
         currentState = CurrentState.PassTurn;
-        OnChangeCamera?.Invoke(this, CurrentCamera.ChoosingCards);
 
         yield return new WaitForEndOfFrame();
         currentlyWorking = false;
 
-             
+
     }
 
     private void FinishGame()
@@ -1442,8 +1443,8 @@ public class TurnSystemBehaviour : MonoBehaviour
 
 
 
-        curCardBehaviour.ResetProperties(onBoardCardBehaviour.defaultDamage, onBoardCardBehaviour.defaultHp, onBoardCardBehaviour.defaultRange, 
-                                               onBoardCardBehaviour.defaultMovementRange, onBoardCardBehaviour.defaultEnergyRequired, onBoardCardBehaviour.defaultAbility, 
+        curCardBehaviour.ResetProperties(onBoardCardBehaviour.defaultDamage, onBoardCardBehaviour.defaultHp, onBoardCardBehaviour.defaultRange,
+                                               onBoardCardBehaviour.defaultMovementRange, onBoardCardBehaviour.defaultEnergyRequired, onBoardCardBehaviour.defaultAbility,
                                                onBoardCardBehaviour.defaultCategory, onBoardCardBehaviour.defaultCardName);
 
 

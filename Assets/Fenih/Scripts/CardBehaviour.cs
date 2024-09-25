@@ -244,11 +244,17 @@ public class CardBehaviour : MonoBehaviour
     }
 
     public IEnumerator CardActions(BoardTile[,] tiles, BoardTile curTile, int row, int column, Color playerColor, Color enemyColor, 
-                                     MMF_Player juiceDamageFeedbackPlayer, TurnSystemBehaviour turnSystem, string op, bool isEnemy)
+                                   MMF_Player juiceDamageFeedbackPlayer, TurnSystemBehaviour turnSystem, 
+                                   BoardManager boardManager, string op, bool isEnemy)
     {
         //Move this card
         cardPlayed = true;
         int rowEnd = isEnemy ? 0 : tiles.GetLength(0) - 1;
+
+        if (curTile.secondaryCard == null)
+        {
+            boardManager.ChangeStateTile(row, column, 1, 1, true);
+        }
 
         if (category == Category.Normal)
         {
@@ -294,6 +300,7 @@ public class CardBehaviour : MonoBehaviour
                 {
                     yield return new WaitForSeconds(.2f);
                     yield return MoveMainCard(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
+                    boardManager.ChangeStateTile(AddOrSubstract(row, op, 1), column, 1, 1, false);
                 }
             }
         }
@@ -306,6 +313,7 @@ public class CardBehaviour : MonoBehaviour
                 if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !curTile.secondaryCard.cardPlayed)
                 {
                     yield return MoveSecondaryCardForward(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
+                    boardManager.ChangeStateTile(AddOrSubstract(row, op, 1), column, 1, 1, false);
                 }
 
                 else if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null && !curTile.secondaryCard.cardPlayed)
@@ -327,6 +335,7 @@ public class CardBehaviour : MonoBehaviour
                     {
                         yield return new WaitForSeconds(.2f);
                         yield return MoveSecondaryCardForward(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
+                        boardManager.ChangeStateTile(AddOrSubstract(row, op, 1), column, 1, 1, false);
                     }
                 }
             }
