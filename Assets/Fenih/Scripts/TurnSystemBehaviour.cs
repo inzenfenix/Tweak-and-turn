@@ -132,6 +132,8 @@ public class TurnSystemBehaviour : MonoBehaviour
 
     private bool finishGame = false;
 
+    private UnityEngine.Quaternion targetHoveredCardRotation = UnityEngine.Quaternion.identity;
+
     private void Awake()
     {
         amountOfDrawCards = 5;
@@ -1016,9 +1018,25 @@ public class TurnSystemBehaviour : MonoBehaviour
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(cameraRay, out RaycastHit hit, float.MaxValue, cardMask))
         {
+            if (hoveredCard != null)
+            {
+                Vector3 cardScreenPos = Camera.main.WorldToScreenPoint(hoveredCard.transform.position);
+
+                float offsetX = (Input.mousePosition.x - cardScreenPos.x) / Screen.width;
+                float offsetY = (Input.mousePosition.y - cardScreenPos.y) / Screen.height;
+
+                targetHoveredCardRotation = Quaternion.Euler(new Vector3(
+                                            0 - offsetY * 60f,
+                                            0,
+                                            0 + offsetX * 90f
+                                            ));
+
+                hoveredCard.transform.localRotation = Quaternion.Lerp(hoveredCard.transform.localRotation, targetHoveredCardRotation, 5f * Time.deltaTime);
+            }
+
             if (hoveredCard != hit.collider.gameObject)
             {
-
+                
                 if (hoveredCard != null)
                 {
                     StartCoroutine(ReturnToDefaultScale(hoveredCard));
@@ -1048,7 +1066,8 @@ public class TurnSystemBehaviour : MonoBehaviour
         else
         {
             if (hoveredCard != null)
-            {
+            {               
+
                 StartCoroutine(ReturnToDefaultScale(hoveredCard));
 
                 if (!isCardSelected)
@@ -1056,10 +1075,12 @@ public class TurnSystemBehaviour : MonoBehaviour
                     energyManager.StopHoveringEnergy();
                     boardManager.StopCheckingUsableTiles();
                 }
+
                 hoveredCard = null;
                 hoveredCardBehaviour = null;
+                targetHoveredCardRotation = Quaternion.identity;
 
-                
+
             }
         }
 
@@ -1183,6 +1204,7 @@ public class TurnSystemBehaviour : MonoBehaviour
     {
         int index = currentCards.IndexOf(card);
         Vector3 currentScale = card.transform.localScale;
+        Quaternion currentRot = card.transform.localRotation;
 
         if (index != -1)
         {
@@ -1194,6 +1216,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             {
                 lerp += Time.deltaTime * speed;
                 card.transform.localScale = Vector3.Lerp(currentScale, defaultCardScale[index], lerp);
+                card.transform.localRotation = Quaternion.Lerp(currentRot, Quaternion.identity, lerp);
                 yield return new WaitForEndOfFrame();
             }
         }
