@@ -269,6 +269,7 @@ public class CardBehaviour : MonoBehaviour
 
             if (isARowCond && (AddOrSubstract(row, op, 1) != rowEnd))
             {
+                bool makeDamage = false;
 
                 if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null)
                 {
@@ -290,18 +291,21 @@ public class CardBehaviour : MonoBehaviour
                             ((tiles[AddOrSubstract(row, op, i), column].isPlayersTile && isEnemy) || 
                             (!tiles[AddOrSubstract(row, op, i), column].isPlayersTile && !isEnemy)))
                     {
+                        makeDamage = true;
                         yield return TryDoingDamage(tiles, AddOrSubstract(row, op, i), column, this, juiceDamageFeedbackPlayer, turnSystem, isEnemy);
                         break;
                     }
                 }
 
-                if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null)
+                if ((tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !makeDamage) || 
+                    (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && makeDamage && range <= 1))
                 {
                     yield return new WaitForSeconds(.2f);
                     yield return MoveMainCard(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
-                    boardManager.ChangeStateTile(AddOrSubstract(row, op, 1), column, 1, 1, false);
                 }
             }
+
+            boardManager.ChangeStateTile(row, column, 1, 1, false);
         }
 
         else if (category == Category.Building)
@@ -311,8 +315,10 @@ public class CardBehaviour : MonoBehaviour
             {
                 if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null && !curTile.secondaryCard.cardPlayed)
                 {
-                    yield return MoveSecondaryCardForward(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
                     boardManager.ChangeStateTile(AddOrSubstract(row, op, 1), column, 1, 1, false);
+                    yield return new WaitForSeconds(.15f);
+                    yield return MoveSecondaryCardForward(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
+                    
                 }
 
                 else if (tiles[AddOrSubstract(row, op, 1), column].currentCard != null && !curTile.secondaryCard.cardPlayed)
@@ -332,9 +338,9 @@ public class CardBehaviour : MonoBehaviour
 
                     if (tiles[AddOrSubstract(row, op, 1), column].currentCard == null)
                     {
-                        yield return new WaitForSeconds(.2f);
-                        yield return MoveSecondaryCardForward(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
                         boardManager.ChangeStateTile(AddOrSubstract(row, op, 1), column, 1, 1, false);
+                        yield return new WaitForSeconds(.15f);
+                        yield return MoveSecondaryCardForward(tiles, AddOrSubstract(row, op, 1), column, curTile, playerColor, enemyColor, isEnemy);
                     }
                 }
             }
