@@ -1,7 +1,6 @@
 using MoreMountains.Feedbacks;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -497,13 +496,13 @@ public class CardBehaviour : MonoBehaviour
         if (thisTurnTiles[row, col].isPlayersTile && isEnemy)
         {
             thisTurnTiles[row, col].isPlayersTile = false;
-            thisTurnTiles[row, col].ChangeTileColor(enemyColor);
+            thisTurnTiles[row, col].ChangeTileColor(enemyColor, true);
         }
 
         else if (!thisTurnTiles[row, col].isPlayersTile && !isEnemy)
         {
             thisTurnTiles[row, col].isPlayersTile = true;
-            thisTurnTiles[row, col].ChangeTileColor(playerColor);
+            thisTurnTiles[row, col].ChangeTileColor(playerColor, true);
         }
 
         thisTurnTiles[row, col].currentCard.transform.parent = thisTurnTiles[row, col].tileHolder.transform;
@@ -560,13 +559,13 @@ public class CardBehaviour : MonoBehaviour
         if (thisTurnTiles[row, col].isPlayersTile && isOpponent)
         {
             thisTurnTiles[row, col].isPlayersTile = false;
-            thisTurnTiles[row, col].ChangeTileColor(enemyColor);
+            thisTurnTiles[row, col].ChangeTileColor(enemyColor, true);
         }
 
         else if (!thisTurnTiles[row, col].isPlayersTile && !isOpponent)
         {
             thisTurnTiles[row, col].isPlayersTile = true;
-            thisTurnTiles[row, col].ChangeTileColor(playerColor);
+            thisTurnTiles[row, col].ChangeTileColor(playerColor, true);
         }
     }
 

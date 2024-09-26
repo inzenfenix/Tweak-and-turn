@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -16,10 +13,12 @@ public class BoardTile
 
     public bool isUsable;
 
-    private Material tileMat;
+    private readonly Material tileMat;
+
+    private Color defColor;
 
 
-    public BoardTile(UnityEngine.Color color, GameObject tileHolder, bool isPlayersTile)
+    public BoardTile(Color color, GameObject tileHolder, bool isPlayersTile)
     {
         this.color = color;
         this.tileHolder = tileHolder;
@@ -28,13 +27,20 @@ public class BoardTile
 
         tileMat = tileHolder.GetComponent<MeshRenderer>().material;
 
-        tileMat.color = color;
+        tileMat.color = defColor = color;
     }
 
-    public void ChangeTileColor(Color color)
+    public void ChangeTileColor(Color color, bool isDefColor = false)
     {
         tileMat.color = color;
+
+        if(isDefColor)
+            defColor = color;
     }
 
+    public void ResetTileColor()
+    {
+        tileMat.color = defColor;
+    }
 
 }

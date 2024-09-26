@@ -4,9 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public enum CurrentState
 {
@@ -211,6 +209,8 @@ public class TurnSystemBehaviour : MonoBehaviour
             isCardSelected = false;
 
             RefreshDrawnCardsPositions();
+
+            boardManager.StopCheckingUsableTiles();
 
             currentCardAmount--;
         }
@@ -1026,6 +1026,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                     hoveredCard = hit.collider.gameObject;
                     hoveredCardBehaviour = hoveredCard.GetComponent<CardBehaviour>();
 
+                    boardManager.CheckUsableTiles();
+
                     energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired);
 
                     StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .05f, hoveredCard));
@@ -1036,6 +1038,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                     hoveredCard = hit.collider.gameObject;
                     hoveredCardBehaviour = hoveredCard.GetComponent<CardBehaviour>();
                     energyManager.HoverEnergy(hoveredCardBehaviour.energyRequired);
+
+                    boardManager.CheckUsableTiles();
 
                     StartCoroutine(CardScale(hoveredCard.transform.localScale, hoveredCard.transform.localScale + new Vector3(1, 0, 1) * .05f, hoveredCard));
                 }
@@ -1048,10 +1052,14 @@ public class TurnSystemBehaviour : MonoBehaviour
                 StartCoroutine(ReturnToDefaultScale(hoveredCard));
 
                 if (!isCardSelected)
+                {
                     energyManager.StopHoveringEnergy();
-
+                    boardManager.StopCheckingUsableTiles();
+                }
                 hoveredCard = null;
                 hoveredCardBehaviour = null;
+
+                
             }
         }
 
@@ -1068,6 +1076,7 @@ public class TurnSystemBehaviour : MonoBehaviour
             hoveredCard.transform.position = chosenCardPos.position;
             hoveredCard.transform.rotation = chosenCardPos.rotation;
             hoveredCard.transform.parent = chosenCardPos;
+            boardManager.CheckUsableTiles();
 
             hoveredCard.layer = LayerMask.NameToLayer("Default");
 
@@ -1096,6 +1105,8 @@ public class TurnSystemBehaviour : MonoBehaviour
                 selectedCard.transform.parent = cardsPositions[index];
                 selectedCard.layer = LayerMask.NameToLayer("DrawnCards");
                 selectedCard = null;
+
+                boardManager.StopCheckingUsableTiles();
 
                 isCardSelected = false;
             }

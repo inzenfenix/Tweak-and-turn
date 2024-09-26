@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class BoardManager : MonoBehaviour
@@ -29,8 +27,9 @@ public class BoardManager : MonoBehaviour
 
     private bool selectingBoardTile = false;
 
-    [Header("\nHover Tile Mask")]
+    [Header("\nHover Tile properties")]
     [SerializeField] private LayerMask tileMask;
+    [SerializeField] private Color hoverCardColor;
 
     public static event EventHandler<GameObject> OnPutCardOnBoard;
 
@@ -42,8 +41,10 @@ public class BoardManager : MonoBehaviour
 
     private int curHPHealing = 1;
 
-    private UnityEngine.Color playerColor;
-    private UnityEngine.Color enemyColor;
+    private Color playerColor;
+    private Color enemyColor;
+
+    
 
     private bool finishGame = false;
 
@@ -343,6 +344,35 @@ public class BoardManager : MonoBehaviour
                 if (j >= tiles.GetLength(1) || j < 0 || j == col) continue;
 
                 tiles[row, j].isUsable = isUsable;
+            }
+        }
+    }
+
+    public void CheckUsableTiles()
+    {
+        for(int i = 0; i < tiles.GetLength(0); i++)
+        {
+            for(int j = 0; j < tiles.GetLength(1); j++)
+            {
+                BoardTile tile = tiles[i, j];
+
+                if (!tile.isUsable || tile.currentCard != null)
+                {
+                    tile.ChangeTileColor(hoverCardColor);
+                }
+            }
+        }
+    }
+
+    public void StopCheckingUsableTiles()
+    {
+        for (int i = 0; i < tiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < tiles.GetLength(1); j++)
+            {
+                BoardTile tile = tiles[i, j];
+
+                tile.ResetTileColor();
             }
         }
     }

@@ -13925,6 +13925,7 @@ MonoBehaviour:
   tileMask:
     serializedVersion: 2
     m_Bits: 2048
+  hoverCardColor: {r: 0.6226415, g: 0.22027412, b: 0.22027412, a: 0.47058824}
 --- !u!114 &482099086
 MonoBehaviour:
   m_ObjectHideFlags: 0
