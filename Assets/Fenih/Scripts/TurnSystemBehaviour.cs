@@ -1026,9 +1026,9 @@ public class TurnSystemBehaviour : MonoBehaviour
                 float offsetY = (Input.mousePosition.y - cardScreenPos.y) / Screen.height;
 
                 targetHoveredCardRotation = Quaternion.Euler(new Vector3(
-                                            0 - offsetY * 60f,
+                                            0 - offsetY * 16f,
                                             0,
-                                            0 + offsetX * 90f
+                                            0 + offsetX * 38f
                                             ));
 
                 hoveredCard.transform.localRotation = Quaternion.Lerp(hoveredCard.transform.localRotation, targetHoveredCardRotation, 5f * Time.deltaTime);
